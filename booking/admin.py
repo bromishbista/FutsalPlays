@@ -5,6 +5,6 @@ from .models import *
 
 
 admin.site.register(Team)
-admin.site.register(Futsal)
+# admin.site.register(Futsal)
 
 
