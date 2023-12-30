@@ -24,10 +24,11 @@
 </head>
 
 <body>
+    
     <section class="booking-footsal">
         <div class="booking-form login-form">
             <div class="login-image login-form1">
-                <img src="{% static 'img/sport.png' %}" alt="">
+                <img src="{% static 'img/sign in.jpg' %}" alt="">
             </div>
             <div class="booking-form-content login-form1">
                 <div class="footsal-title">
@@ -45,13 +46,22 @@
                     {% if error_message %}
                         <div class="error-message">{{ error_message }}</div>
                     {% endif %}
-                   
+                    <div class="already-account">
+                        <p>Create an account<a href="" style="text-decoration: none;" class="sign-btn">Sign Up</a></p>
+                    </div>
                 </form>
                 <h4 class="text-center pt-5">Sign in with</h4>
-                
+                <div class="already-account">
+                    <p><a href="" style="text-decoration: none;" class="sign-btn">Forget Password?</a></p>
+                </div>
+                <div class="signin-with d-flex justify-content-center">
+                    <a href=""><i class="fa-brands fa-google"></i>oogle</a>
+                    <a href=""><i class="fa-brands fa-facebook"></i>acebook</a>
+                </div>
             </div>
         </div>
     </section>
+
     <!-- bootstrap Link -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
