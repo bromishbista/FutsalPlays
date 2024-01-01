@@ -8,15 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <!-- bootstrap link for css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- JavaScript -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+        <!-- JavaScript -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
     <!-- CSS -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+
     <!-- Default theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    
     <!-- link for fontawesome icon -->
     <script src="https://kit.fontawesome.com/ecd7f2ff6f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -25,13 +28,13 @@
 
 <body>
     
-    <section class="booking-footsal">
-        <div class="booking-form login-form">
-            <div class="login-image login-form1">
+    <section class="book-futsal">
+        <div class="book-form login-form11">
+            <div class="login-image login-form12">
                 <img src="{% static 'img/sign in.jpg' %}" alt="">
             </div>
-            <div class="booking-form-content login-form1">
-                <div class="footsal-title">
+            <div class="book-form-content login-form12">
+                <div class="futsal-title">
                     <h2>Sign In Account</h2>
                 </div>
                 <form action=" " class="login-form" method='POST'>
@@ -46,7 +49,7 @@
                     {% if error_message %}
                         <div class="error-message">{{ error_message }}</div>
                     {% endif %}
-                    <div class="already-account">
+                    <div class="already-acc">
                         <p>Create an account<a href="" style="text-decoration: none;" class="sign-btn">Sign Up</a></p>
                     </div>
                 </form>
@@ -63,10 +66,12 @@
     </section>
 
     <!-- bootstrap Link -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+    crossorigin="anonymous"></script>
+
     <script>
+        
     {% for message in messages %}
     alertify.set('notifier','position', 'top-right');
     

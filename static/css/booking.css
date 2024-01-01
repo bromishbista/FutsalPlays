@@ -6,14 +6,14 @@
 }
 
 
-.booking-footsal{
+.book-futsal{
    
     padding: 20rem 10rem 10rem;
     background-color: #1F306E;
     height: 600px;
     background-size: contain;
 }
-.booking-form{
+.book-form{
     width: 90%;
     display: flex;
     flex-wrap: wrap;
@@ -21,7 +21,7 @@
     margin: auto;
     margin-top: -100px;
 }
-.login-form1{
+.login-form12{
     flex: 1 1 400px;
    
   
@@ -37,25 +37,25 @@
 
  
 
-.footsal-title{
+.futsal-title{
     padding-bottom: 1rem;
     text-align: center;
 }
-.booking-form-content{
+.book-form-content{
     border-radius: 30px;
     padding: 1rem 2rem;
     background-color: rgb(244, 235, 235);
 }
-.login-form{
+.login-form11{
     padding: 1rem 3rem;
 
 }
-.booking-form-content{
+.book-form-content{
     border-radius:20px ;
     padding: 1.5rem 0;
     overflow: hidden;
 }
-.already-account{
+.already-acc{
     text-align: center;
   
 }
@@ -63,15 +63,16 @@
     padding: 1rem 1rem;
     font-size: 1rem;
     
+    
 }
-.login-form input{
+.login-form11 input{
     border-radius: 1rem 1rem 1rem;
     width: 70%;
     height: 35px;
     
 }
 
-.booking input{
+.book input{
     width: 500%;
     padding: 0.5rem;
     margin-bottom: 1rem;
