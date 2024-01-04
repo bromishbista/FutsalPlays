@@ -18,5 +18,6 @@ from django.db.models import Q
 def LoginView(request):
     return render(request, 'login.html')
 
-
+def RegisterView(request):
+    return render(request, 'register.html')
 

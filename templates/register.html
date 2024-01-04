@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+{% load socialaccount %}
+
+
+<head> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <!-- bootstrap link for css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- link for fontawesome icon -->
+    <script src="https://kit.fontawesome.com/ecd7f2ff6f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/booking.css' %}">
+</head>
+
+<body>
+    <section class="book-futsal">
+        <div class="book-form login-form">
+            <div class="login-image login-form12 register-image">
+                <img src="{% static 'img/sport.png' %}">
+            </div>
+            <div class="book-form-content login-form12">
+                <div class="futsal-title">
+                    <h2>Sign Up</h2>
+                </div>
+                <form action=" " class="login-form12" method='POST'>
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button class="button" type="submit" name="submit">Create Account</button>
+                    <div class="already-account">
+                        <p>Already have an account ?<a href="login.html" class="sign-btn">Sign In</a></p>
+                    </div>
+                </form>
+                <h4 class="text-center">Sign in with</h4>
+                <div class="signin-with d-flex justify-content-center">
+                            
+                    <a href=""><i class="fa-brands fa-google"></i>oogle</a>
+                    <a href=""><i class="fa-brands fa-facebook"></i>acebook</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- bootstrap Link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 
+         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" 
+         crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+

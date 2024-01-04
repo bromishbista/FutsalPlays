@@ -99,3 +99,22 @@ label{
     margin: 1rem;
 }
 /* booking form */
+.signin-with{
+    text-align: center;
+ }
+ .signin-with a{
+     text-decoration: none;
+     font-size: 1.3rem;
+     padding: 0 1rem;
+ }
+ 
+ @media screen and (max-width:600px) {
+     .book-futsal,.login-form11, .book-form, .book-form-content{
+         padding: 1rem 0.5rem !important;
+     }
+     .top-content a{
+         display: block;
+         padding: 0.5rem;
+     }
+     
+ }

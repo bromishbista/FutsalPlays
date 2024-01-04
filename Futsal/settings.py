@@ -34,13 +34,17 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
+    
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'crispy_forms',
     'booking',
+    'user_acc',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -74,6 +78,10 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+
+            'libraries' : {
+                'staticfiles': 'django.templatetags.static', 
+            }
         },
     },
 ]
