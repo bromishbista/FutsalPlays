@@ -22,9 +22,8 @@
     margin-top: -100px;
 }
 .login-form12{
-    flex: 1 1 400px;
-   
-  
+    height: 10%;
+    
 }
 
 
@@ -48,6 +47,7 @@
 }
 .login-form11{
     padding: 1rem 3rem;
+   
 
 }
 .book-form-content{
@@ -98,23 +98,5 @@ label{
     background: rgb(141, 110, 71);
     margin: 1rem;
 }
-/* booking form */
-.signin-with{
-    text-align: center;
- }
- .signin-with a{
-     text-decoration: none;
-     font-size: 1.3rem;
-     padding: 0 1rem;
- }
- 
- @media screen and (max-width:600px) {
-     .book-futsal,.login-form11, .book-form, .book-form-content{
-         padding: 1rem 0.5rem !important;
-     }
-     .top-content a{
-         display: block;
-         padding: 0.5rem;
-     }
-     
- }
+
+

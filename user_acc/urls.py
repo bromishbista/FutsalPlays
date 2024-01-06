@@ -14,8 +14,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('register/', authviews.register, name="register"),
-    path('login/', authviews.loginpage, name="login"),
-    path('logout/', authviews.logoutpage, name="logout"),
+    # path('login/', authviews.loginpage, name="login"),
+    
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
