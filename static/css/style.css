@@ -1,218 +1,817 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
-*,
-*::before,
-*::after{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-.Home-Container{
-    margin-top: 3.2rem;
+
+
+/* slider */
+
+@media(max-width:780px) {
+    .carousel-item {
+        width: 100% !important;
+        height: 100% !important;
+    }
 }
-.HomeHeaderContainer {
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    background: url(../../images/banner.jpg);
+
+
+/* dark mode */
+
+
+/* body {
+    padding: 25px;
+    background-color: white;
+    color: black;
+  } */
+
+
+/* .dark-mode {
+    background-color: black;
+    color: white;
+  } */
+
+
+/* dark mode */
+
+header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1;
+}
+
+.footsal-navbar {
+    background-color: antiquewhite;
+}
+
+.header {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.top-content a {
+    text-decoration: none;
+    font-size: large;
+    padding: 0 1rem;
+}
+
+.navbar-light .navbar-toggler {
+    color: 0 !important;
+    border-color: #fff !important;
+    border: none;
+}
+
+
+/* sliders */
+
+.carousel-item img {
+    height: calc(100vh - 115px);
+    object-fit: cover;
+}
+
+.carousel-caption {
+    color: #000;
+}
+
+.book-btn {
+    padding: 0.3rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    background: rgb(210, 199, 145);
+    box-shadow: 2px 3px 3px #000;
+}
+
+.book-btn:hover {
+    background: rgb(220, 219, 165);
+}
+
+.carousel-caption {
+    top: 40%;
+}
+
+.carousel-caption {}
+
+
+/* sliders */
+
+
+/* footsal */
+
+.search-section-form {
+    text-align: center;
+}
+
+.foot-search {
+    padding: 2rem;
+    background-image: url("../img/player1.jpg");
+    background-size: cover;
+    background-position: content;
+}
+
+.footsal-section {
+    max-width: 700px;
+    margin: auto;
+    padding: 2rem;
+    background-color: rgb(243, 243, 243);
+}
+
+.footsal-search-main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.footsal-search {
+    padding: 1rem;
+    flex: 1 1 250px;
     align-items: center;
-    justify-content: center;
-  }
+    border: none;
+}
 
-  .hearContainer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+.footsal-search input,
+select {
+    border: none;
+}
 
-  .headerQuote{
-    margin-bottom: 4rem;
-  }
-
-  .headerQuote h1{
-    line-height: 4.5rem;
-    font-size: 62px;
-    font-family: 'Poppins', sans-serif;
-    margin-right: 4rem;
-    color: #ffff;
-
-  }
-  .headerQuote .above-quote{
-    font-size: 20px;
-    font-family: 'Poppins', sans-serif;
-    margin-bottom: 15px;
-    color: #AAF40C;
-  }
-
-  .headerQuote h1 span{
-    color: #AAF40C;
-  }
-
-  .Home-Container img {
-    height: auto;
-    max-width: 420px;
-  }
-
-  .VenueListContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-  }
-
-  .venueListQuote{
-    font-family: 'Poppins', sans-serif;
-    margin-bottom: 2rem;
-    /* display: flex;
-    flex-direction: column; */
-  }
-
-  .venueListQuote h2 span{
-    color: #457eff;
-  }
-
-  .venueListQuote p{
-    max-width: 700px
-  }
-
-  .venueContainer {
-    display: flex;
-    gap: 1rem;
-    transition: transform 0.5s ease-in-out; /* Add a smooth transition for sliding */
-  }
-
-  .venueList{
-    height: 28rem;
-    width: 25rem;
-    border: 1px solid #edf0f2;
-    border-radius: 8px;
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  }
-
-  .venueList.first {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-
-  .venueImage{
-    height: 12rem; 
+.footsal-search select,
+input {
     width: 100%;
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    overflow: hidden; 
-  }
-  
-  .venueImage img{
-    height: 100%; 
-    width: 100%;
-    object-fit: cover; 
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-  }
+    padding: 0.75rem;
+}
 
-  .likeIcon{
-    margin-top: 10px;
-    margin-left: 22rem;
-    display: block;
+.fa-football1,
+.fa-search {
+    background: #fff;
+    padding: 1rem;
+}
+
+.footsal-search-btn {
+    padding: 0.3rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 2px 3px 5px #000;
+    background-color: rgb(207, 190, 107);
+}
+
+
+/* footsal */
+
+
+/* latest footsal */
+
+.latest-footsal {
+    padding: 2rem 0;
+}
+
+.new-footsal {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+input {
+    border: none;
+}
+
+.search-name {
+    width: 20%;
+}
+
+.new-form-search input[type="text"] {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: antiquewhite;
+}
+
+.new-form-search input[type="submit"] {
+    background-color: rgb(204, 151, 81);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.foot-wrapper-section {
+    width: 80%;
+}
+
+.new-form-search {
+    display: flex;
+}
+
+.popular {
+    padding: 1.5rem 0;
+}
+
+.popular a {
+    text-decoration: none;
+}
+
+.latest-listed-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.foot-match-content {
+    text-decoration: none;
+    padding: 1rem;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+.foot-match-content a {
+    text-decoration: none;
+}
+
+.inner-footsal-items {
+    text-align: center;
+}
+
+.footsal-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+
+.footsal-item-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footsal-item {
+    flex: 1 1 250px;
+    padding: 0 1rem;
+}
+
+.more-info {
+    padding: 0.3rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 2px 3px 5px #000;
+    background-color: rgb(207, 190, 107);
+}
+
+
+/* latest footsal */
+
+
+/* latest Blogs */
+
+.latest-blogs {
+    padding: 2rem 0;
+}
+
+.inner-blogs-items {
+    text-align: left;
+}
+
+.blogs-item img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+}
+
+.blogs-item-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.blogs-item {
+    flex: 1 1 250px;
+    padding: 0 1rem;
+}
+
+.more-info {
+    padding: 0.3rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 2px 3px 5px #000;
+    background-color: rgb(207, 190, 107);
+}
+
+
+/* latest Blogs */
+
+
+/* contact */
+
+.contact {
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.contact-form input {
+    border: solid rgb(186, 185, 185);
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+textarea {
+    width: 100%;
+    border: solid rgb(186, 185, 185);
+}
+
+.send-contact {
+    float: right;
+    width: 100px;
+    margin-top: 0.5rem;
+}
+
+.right-contact-section {
+    padding: 2rem;
+    text-align: left !important;
+}
+
+
+/* contact */
+
+
+/* our Footsal Teams */
+
+.count-section {
+    margin: 2rem 0;
+    background-color: rgb(207, 197, 183);
+}
+
+.count {
+    text-align: center;
+    padding: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.count-item {
+    flex: 1 1 200px;
+    padding: 1.5rem 0;
+}
+
+.count-item:hover {
+    box-shadow: 1px 2px 3px #000;
+}
+
+
+/* our Footsal Teams */
+
+
+/* pagination */
+
+.pagination-custom {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: #fff;
+}
+
+.pagination-custom a {
+    /* display: inline-block; */
+    padding: 1rem;
+    text-decoration: none;
+    font-size: larger;
+}
+
+
+/* pagination */
+
+
+/* footsal-lists */
+
+.footsal-search2 {
+    padding: 1rem;
+}
+
+.footsal-lists-title {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footsal-item-wrapper2 {
+    display: flex;
+}
+
+.footsal-list-about {
+    width: 60% !important;
+}
+
+.footsal-list-booking-today {
+    width: 40% !important;
+}
+
+.pro-lists {
+    padding: 1rem;
+}
+
+
+/* teams */
+
+.search-team-form {
+    padding: 2rem 0;
+}
+
+.footsal-team {
+    display: flex;
+    padding: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.right-team-lists h3 {
+    text-align: center;
+}
+
+.teams-items {
+    text-align: center;
+}
+
+.team {
+    padding: 0 2rem;
+}
+
+.left-team-section {
+    flex: 4;
+}
+
+.team-bg-image img {
+    width: 100%;
+    height: 500px;
+}
+
+.team-bg-image1 {
+    overflow: auto;
+}
+
+.team-bg-image1 img {
+    width: 100%;
+    height: 365px;
+}
+
+.right-team-section {
+    flex: 6;
+}
+
+.teams-items a {
+    display: inline-block;
+    padding: 2rem 2rem;
+    text-decoration: none;
     font-size: 1.2rem;
-  }
+}
 
-  .venueInfoContainer{
-    padding-left: 18px;
-    padding-top: 20px;
-  }
+.team-join {
+    margin-bottom: 1.5rem;
+}
 
-  .venueName{
-    font-size: 1.3rem;
-    font-weight: 600;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .venueInfo{
-    color: #7b8292;
-    margin-top: 10px;
+.join-team-member {
+    padding: 2rem 0;
+}
+
+.join-team-member a {
+    padding: 1rem 2rem;
+}
+
+.search-name3 {
+    padding: 2rem 1rem;
+}
+
+.team-members-image {
+    padding: 1rem;
+}
+
+.join-team-member {
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 0.1rem 0.1rem 0.5rem #000;
+}
+
+.team-members-image img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.footsal-items3 {
     display: flex;
-    align-items: center;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-  }
-  
-  .venueIcon {
-    font-size: 1.2rem;
-  }
-
-  .venueInfo .venueText{
-    margin-left: 5px;
-  }
-  
-  .venueInfoContainer .venueInfo:nth-child(3) {
-    margin-left: 5px;
-  }
-
-  .venueInfoContainer hr{
-    margin-top: 1.2rem;
-  }
-
-  .userInfo-bookButton{
-    margin-top: 15px;
-    display: flex;
-    flex-direction: row;
-    /* justify-content: space-between; */
-    /* width: 100%;  */
-  }
-
-  .userInfo{
-    display:  flex;
+    /* flex-wrap: wrap; */
     /* justify-content: center; */
-    align-items: center;
-    flex-grow: 1;
-    gap: 10px;
-  }
+}
 
-  .userInfo img{
-    border-radius: 50%;
-    height: 2.5rem;
-  }
 
-  .userInfo .userName{
-    color: #7b8292;
-    font-weight: 500;
-  }
-  .bookButton{
-    border: 2px solid #457eff; 
-    height: 3rem;
-    width: 20rem;
+/* teams */
+
+
+/* footsal-lists */
+
+
+/* gallery */
+
+.gallery {
+    padding: 3rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.gallery-item {
+    padding: 1rem;
+    flex: 1 1 200px;
+    text-align: center;
+}
+
+.gallery-item img {
+    width: 100%;
+}
+
+
+/* gallery */
+
+
+/* testimonials */
+
+.test-section {
+    text-align: center;
+    padding: 2rem;
+    width: 70%;
+    margin: auto;
+}
+
+.latest-bg {
+    padding: 2rem;
+    background-color: rgb(247, 247, 247);
+}
+
+.testimonials-section {
+    padding: 2rem;
+}
+
+.main-testimonials-items {
+    display: flex;
+    padding: 2rem;
+    justify-content: space-evenly;
+    background: rgb(228, 228, 228);
+}
+
+.test-message {
+    padding: 0 2rem;
+}
+
+.wrapper-test {
+    margin: 1rem 0;
+}
+
+.test-image img {
+    width: 100%;
+    height: auto;
+}
+
+
+/* testimonials */
+
+
+/* matches */
+
+.all-mateches-teams {
+    overflow-x: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem;
+    justify-content: space-around;
+}
+
+.wrapper-test-mateches {
+    padding: 1.5rem;
+    border-radius: 20px;
+}
+
+.matches-teams {
+    padding: 1rem;
+}
+
+.wrapper-test-mateches:hover {
+    box-shadow: 1px 2px 10px rgb(183, 178, 178);
+    background-color: rgb(244, 244, 239);
+}
+
+.team-name,
+.matches-teams h3 {
+    text-align: center;
+}
+
+.main-matches-items {
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* align-items: center; */
+    justify-content: space-evenly;
+}
+
+.matches-teams img {
+    width: 100%;
+    height: 200px;
+    padding: 1rem 0;
+}
+
+
+/* matches */
+
+
+/* footer section */
+
+.footer-main-section {
+    padding: 1rem !important;
+}
+
+footer {
+    background-color: aliceblue;
+}
+
+.footer-wrapper {
+    padding: 4rem 0rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-links-items {
+    flex: 1 1 300px;
+    padding: 1rem;
+}
+
+.quick-link a {
+    display: block;
+    padding: 0.5rem 0 0 2rem;
+    text-decoration: none;
+}
+
+.ending-footer {
+    background-color: antiquewhite;
+    text-align: center;
+}
+
+.ending-footer p {
+    padding: 1rem;
+    margin-bottom: 0 !important;
+}
+
+.end-foot {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fa-angle-up {
+    font-size: 2rem;
+}
+
+.ending-footer {
+    flex: 9.5;
+}
+
+.bottom-top {
+    justify-content: flex-end;
+    flex: 0.5;
+    padding: 0 2rem;
+}
+
+
+/* footer section */
+
+
+/* top to up arrow */
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: rgb(177, 177, 177);
+    color: white;
+    cursor: pointer;
+    padding: 15px;
     border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    font-weight: 600;
-    margin-right: 1rem;
-    cursor: pointer;
-    flex-grow: 1
-  }
-  
-  .slide-dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 1rem;
-  }
-  
-  .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #ccc;
-    margin: 0 5px;
-    cursor: pointer;
-  }
-  
-  .dot.active {
-    background-color: #457eff;
-  }
+}
+
+#myBtn:hover {
+    background-color: #555;
+}
+
+
+/* top to up arrow */
+
+@media (max-width:992px) {
+    .teams-items a {
+        display: inline-block;
+        padding: 1rem;
+        text-decoration: none;
+    }
+    .team-bg-image img {
+        width: 100%;
+        height: 300px;
+        object-fit: contain;
+    }
+    .main-testimonials-items {
+        flex-direction: column;
+        text-align: center;
+        padding: 3rem;
+    }
+    .test-message {
+        padding: 2rem 1rem;
+    }
+    .main-testimonials-items {
+        padding: 0;
+    }
+    .testimonials-section {
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (max-width:786px) {
+    .d-none {
+        display: block !important;
+    }
+    .footsal-items3 {
+        flex-direction: column;
+    }
+    .test-section {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+    .main-matches-items {
+        display: flex;
+        /* flex-wrap: wrap; */
+        justify-content: space-evenly;
+    }
+    .team-name {
+        font-size: medium;
+    }
+    .matches-teams img {
+        width: 100%;
+        height: 100px;
+        padding: 1rem 0;
+        object-fit: contain;
+    }
+    .wrapper-test-mateches {
+        padding: 0rem;
+    }
+    .search-name,
+    .foot-wrapper-section {
+        width: 100%;
+    }
+    .search-name {
+        padding: 1rem;
+    }
+    .footsal-item-wrapper2 {
+        display: flex;
+    }
+    .footsal-item-wrapper2 {
+        flex-direction: column;
+    }
+    .pro-lists {
+        width: 100%;
+    }
+    .search-team-form {
+        padding: 1rem;
+    }
+    .footsal-team {
+        flex-direction: column !important;
+    }
+    .right-team-section {
+        order: 1;
+    }
+    .left-team-section {
+        order: 2;
+    }
+    .footer-wrapper {
+        text-align: left;
+    }
+    .login-form1 img {
+        display: none;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .header {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 0;
+    }
+    .d-none {
+        display: block !important;
+    }
+    .book-btn {
+        width: 150px;
+        display: block;
+        margin: 1rem auto;
+        text-align: center;
+    }
+}

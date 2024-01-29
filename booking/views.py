@@ -60,3 +60,6 @@ def index(request):
     context = {'futsals': futsals}
     return render(request, 'index.html', context)
 
+def booking(request):
+    return render(request, 'booking.html')
+

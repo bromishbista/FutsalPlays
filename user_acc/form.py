@@ -1,10 +1,10 @@
 from django.contrib.auth.forms import UserCreationForm
 
 from .models import User
-from .models import *
+from . models import *
 from django import forms
 from allauth.account.models import EmailAddress
-
+from allauth.socialaccount.models import SocialAccount, SocialApp, SocialToken
 from django.contrib.auth.models import User, Group
 from django.contrib.sites.models import Site
 
@@ -18,3 +18,40 @@ class CustomUserForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'futsal', 'email', 'password1', 'password2']
+
+
+class EmailForm(forms.ModelForm):
+    class Meta:
+        model = EmailAddress
+        fields = '__all__'
+
+class GroupForm(forms.ModelForm):
+    class Meta:
+        model = Group
+        fields = '__all__'
+
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = '__all__'
+class SocialAccountForm(forms.ModelForm):
+    class Meta:
+        model = SocialAccount
+        fields = '__all__'
+
+class SocialAppForm(forms.ModelForm):
+    class Meta:
+        model = SocialApp
+        fields = '__all__'
+
+class SocialTokenForm(forms.ModelForm):
+    class Meta:
+        model = SocialToken
+        fields = '__all__'
+
+class SiteForm(forms.ModelForm):
+    class Meta:
+        model = Site
+        fields = '__all__'
+
