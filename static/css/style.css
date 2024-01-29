@@ -1,7 +1,218 @@
-* {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+.Home-Container{
+    margin-top: 3.2rem;
+}
+.HomeHeaderContainer {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    background: url(../../images/banner.jpg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
+  .hearContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .headerQuote{
+    margin-bottom: 4rem;
+  }
+
+  .headerQuote h1{
+    line-height: 4.5rem;
+    font-size: 62px;
+    font-family: 'Poppins', sans-serif;
+    margin-right: 4rem;
+    color: #ffff;
+
+  }
+  .headerQuote .above-quote{
+    font-size: 20px;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 15px;
+    color: #AAF40C;
+  }
+
+  .headerQuote h1 span{
+    color: #AAF40C;
+  }
+
+  .Home-Container img {
+    height: auto;
+    max-width: 420px;
+  }
+
+  .VenueListContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .venueListQuote{
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 2rem;
+    /* display: flex;
+    flex-direction: column; */
+  }
+
+  .venueListQuote h2 span{
+    color: #457eff;
+  }
+
+  .venueListQuote p{
+    max-width: 700px
+  }
+
+  .venueContainer {
+    display: flex;
+    gap: 1rem;
+    transition: transform 0.5s ease-in-out; /* Add a smooth transition for sliding */
+  }
+
+  .venueList{
+    height: 28rem;
+    width: 25rem;
+    border: 1px solid #edf0f2;
+    border-radius: 8px;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  }
+
+  .venueList.first {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  .venueImage{
+    height: 12rem; 
+    width: 100%;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    overflow: hidden; 
+  }
+  
+  .venueImage img{
+    height: 100%; 
+    width: 100%;
+    object-fit: cover; 
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+
+  .likeIcon{
+    margin-top: 10px;
+    margin-left: 22rem;
+    display: block;
+    font-size: 1.2rem;
+  }
+
+  .venueInfoContainer{
+    padding-left: 18px;
+    padding-top: 20px;
+  }
+
+  .venueName{
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .venueInfo{
+    color: #7b8292;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .venueIcon {
+    font-size: 1.2rem;
+  }
+
+  .venueInfo .venueText{
+    margin-left: 5px;
+  }
+  
+  .venueInfoContainer .venueInfo:nth-child(3) {
+    margin-left: 5px;
+  }
+
+  .venueInfoContainer hr{
+    margin-top: 1.2rem;
+  }
+
+  .userInfo-bookButton{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    /* width: 100%;  */
+  }
+
+  .userInfo{
+    display:  flex;
+    /* justify-content: center; */
+    align-items: center;
+    flex-grow: 1;
+    gap: 10px;
+  }
+
+  .userInfo img{
+    border-radius: 50%;
+    height: 2.5rem;
+  }
+
+  .userInfo .userName{
+    color: #7b8292;
+    font-weight: 500;
+  }
+  .bookButton{
+    border: 2px solid #457eff; 
+    height: 3rem;
+    width: 20rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    font-weight: 600;
+    margin-right: 1rem;
+    cursor: pointer;
+    flex-grow: 1
+  }
+  
+  .slide-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #ccc;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .dot.active {
+    background-color: #457eff;
+  }
