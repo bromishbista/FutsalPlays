@@ -5,6 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from  user_acc.controller import authviews
 from django.contrib.auth import views as auth_views
+from .views import loginpage as custom_login
 from . import views
 
 
@@ -13,8 +14,12 @@ from django.urls import path, include
 
 
 urlpatterns = [
+    
     path('register/', authviews.register, name="register"),
     # path('login/', authviews.loginpage, name="login"),
+    # path('admin/login/?next=/admin/', custom_login, name='custom_login'),
+    path('admin/', admin.site.urls, name='index'),
+    path('login/', authviews.loginpage, name="login"),
     
 ]
 if settings.DEBUG:
