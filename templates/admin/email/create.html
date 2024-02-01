@@ -1,0 +1,12 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+
+<h1>Email List</h1>
+
+<form class="m-5" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'email_list' %}" class="btn btn-primary">Back</a>
+{% endblock content %}

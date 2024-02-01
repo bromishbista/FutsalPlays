@@ -1,0 +1,11 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h2 class="text-center"> Socialaccount </h2>
+<h5>Are you sure you want to delete "{{ socialaccount.user }}" provided by "{{ socialaccount.provider }}"?</h5>
+<form method ="post">
+{% csrf_token %}
+<button class="btn btn-danger" type="submit">Yes, delete</button>
+<a href="{% url 'socialaccount_list' %}" class="btn btn-primary">No, cancel</a>
+
+</form>
+{% endblock content %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Futsal Lists{% endblock title %}
+{% block body %}
+    <!-- sliders -->
+    
+    <section class="foot-search">
+        <div class="footsal-section">
+            <div class="search-section-form">
+                <div class="search-title">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="/">Home</a></li>
+                          <li class="breadcrumb-item">Futsal Lists</li>
+                        </ol>
+                      </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- sliders -->
+
+
+    <!-- latest footsal -->
+    <section>
+        <div class="container latest-footsal">
+            <h2 class="footsal-search1">Latest footsal</h2>
+            <div class="footsal-items new-footsal">
+                <div class="search-name pt-4">
+                    <form action="" class="new-form-search">
+                        <input type="text" placeholder="Enter Footsal Name">
+                        <input type="submit" style="width:100px">
+                    </form>
+                    <div class="popular ">
+                        <div class="popular-item">
+                            <a href="">
+                                <h4>Lorem, ipsum dolor.</h4>
+                                <p><span>Date:2323-23-23</span></p>
+                            </a>
+                        </div>
+                        <div class="popular-item">
+                            <a href="">
+                                <h4>Lorem, ipsum dolor.</h4>
+                                <p><span>Date:2323-23-23</span></p>
+                            </a>
+                        </div>
+                        <div class="popular-item">
+                            <a href="">
+                                <h4>Lorem, ipsum dolor.</h4>
+                                <p><span>Date:2323-23-23</span></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="foot-wrapper-section">
+                    <div class="footsal-item-wrapper">
+                        <div class="footsal-item pt-4">
+                            <img src="./assets/img/player1.jpg" alt="">
+                            <div class="inner-footsal-items pt-4">
+                                <img src="./assets/img/player2.jpg" alt="" style="width: 50px; height: 40px;">
+                                <a href=""><i class="fa-solid fa-location-dot"></i>Pokhara</a>
+                                <p>Rs. 12000</p>
+                                <button class="more-info"><a href="footsal-details.html"class="text-decoration-none text-dark">More info</a></button>
+                            </div>
+                        </div>
+                        <div class="footsal-item pt-4">
+                            <img src="./assets/img/player1.jpg" alt="">
+                            <div class="inner-footsal-items pt-4">
+                                <img src="./assets/img/player2.jpg" alt="" style="width: 50px; height: 40px;">
+                                <a href=""><i class="fa-solid fa-location-dot"></i>Pokhara</a>
+                                <p>Rs. 12000</p>
+                                <button class="more-info"><a href="footsal-details.html"class="text-decoration-none text-dark">More info</a></button>
+                            </div>
+                        </div>
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pagination-custom">
+            <a href="">Pre</a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">Next</a>
+        </div>
+    </section>
+    <!-- latest footsal -->
+    {% endblock body %}

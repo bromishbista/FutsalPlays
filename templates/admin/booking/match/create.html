@@ -1,0 +1,12 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+
+<h1>Match </h1>
+
+<form class="m-5" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'match_list' %}" class="btn btn-primary">Back</a>
+{% endblock content %}

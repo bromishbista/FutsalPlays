@@ -1,0 +1,36 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h2 class="text-center">Socialtoken List</h2>
+
+<div>
+    <div class="mb-5"><a href="{% url 'socialtoken_create' %}" class="btn btn-success float-end mx-5" >Create</a>
+    </div>
+    <div class="container p-5">
+      {% for socialtoken in socialtoken %} 
+        <table class="table table-bordered" style="font-size:18px;">
+            <thead>
+              <tr>
+                <th scope="col">App</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+            
+              <tr>
+                <td>{{ socialtoken.app }}</td>
+                <td>
+                  <button type="button" class="btn btn-warning"><a href="{% url 'socialtoken_edit' socialtoken.pk %}" class="btn btn-warning" >
+                    Edit</a></button>
+                  <button type="button" class="btn btn-danger"><a href="{% url 'socialtoken_delete' socialtoken.pk %}" class="btn btn-danger">Delete</a></button>
+                </td>
+             
+              </tr>
+            {% empty %}
+              <h2>No socialtoken found.</h2>
+            {% endfor %}  
+            </tbody>
+        </table> 
+    </div>
+</div>
+{% endblock content %}

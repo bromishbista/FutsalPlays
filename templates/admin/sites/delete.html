@@ -1,0 +1,11 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h2 class="text-center"> Sites</h2>
+<h5>Are you sure you want to delete "{{ site.domain }}"?</h5>
+<form method ="post">
+{% csrf_token %}
+<button class="btn btn-danger" type="submit">Yes, delete</button>
+<a href="{% url 'site_list' %}" class="btn btn-primary">No, cancel</a>
+
+</form>
+{% endblock content %}

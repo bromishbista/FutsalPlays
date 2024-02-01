@@ -1,0 +1,39 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h1>Match List</h1>
+
+<div>
+    <div class="mb-5"><a href="{% url 'match_create' %}" class="btn btn-success float-end mx-5" >Create</a>
+    </div>
+    <div class="container p-5">
+        <table class="table table-bordered" style="font-size:18px;">
+            <thead>
+              <tr>
+                <th scope="col">Futsal</th>
+                <th scope="col">First Team</th>
+                <th scope="col">Second Team</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+            {% for match in match %} 
+              <tr>
+                <td>{{ match.futsal }}</td>
+                <td>{{ match.first_team }}</td>
+                <td>{{ match.second_team }}</td>
+                <td>
+                  <button type="button" class="btn btn-warning"><a href="{% url 'match_edit' match.pk %}" class="btn btn-warning" >
+                    Edit</a></button>
+                  <button type="button" class="btn btn-danger"><a href="{% url 'match_delete' match.pk %}" class="btn btn-danger">Delete</a></button>
+                </td>
+             
+              </tr>
+            {% empty %}
+              <li>No matchs found.</li>
+            {% endfor %}  
+            </tbody>
+        </table> 
+    </div>
+</div>
+{% endblock content %}

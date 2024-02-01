@@ -1,0 +1,22 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+
+<h1>Review</h1>
+
+<h1>Create Review</h1>
+	<form method="post" enctype="multipart/form-data">
+		{% csrf_token %}
+		<label>User:</label>
+		<input type="text" name="user"><br><br>
+		<label>Futasl:</label>
+		<input type="text" name="futsal"><br><br>
+		<label>Text:</label>
+		<input type="text" name="text"><br><br>
+		<label>Created at:</label>
+		<input type="datetime-local" name="created_at"><br><br>
+		<label>Description:</label>
+		<textarea name="description"></textarea><br><br>
+
+	</form>
+<a href="{% url 'review_list' %}" class="btn btn-primary">Back</a>
+{% endblock content %}

@@ -1,0 +1,11 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h1>Breadcrumbs</h1>
+<h5>Are you sure you want to delete "{{ about.title }}"?</h5>
+<form method ="post">
+{% csrf_token %}
+<button class="btn btn-danger" type="submit">Yes, delete</button>
+<a href="{% url 'about_list' %}" class="btn btn-primary">No, cancel</a>
+
+</form>
+{% endblock content %}

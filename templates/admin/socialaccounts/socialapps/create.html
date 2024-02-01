@@ -1,0 +1,12 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+
+<h2 class="text-center">Social Apps Create</h2>
+
+<form class="m-5" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+<a href="{% url 'socialapp_list' %}" class="btn btn-primary">Back</a>
+{% endblock content %}

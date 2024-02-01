@@ -56,7 +56,7 @@
                                 <a class="nav-link active" aria-current="page" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="}">Booking</a>
+                                {% comment %} <a class="nav-link" href="{% url 'booking' %}">Booking</a> {% endcomment %}
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link" href"">About</a>
@@ -103,7 +103,7 @@
                                     {% else %}
                                     <li style="list-style-type: none;"><a class="dropdown-item" href="">Create Team</a></li>
                                     {% endif %}
-                                    <li style="list-style-type: none;"><a class="dropdown-item" href="">Sign Out</a></li>
+                                    <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a></li>
                                     {% else %}
                                     <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'register' %}">Sign Up</a></li>
                                     <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'login' %}">Sign In</a></li>
@@ -112,15 +112,7 @@
                                 </ul>
                             </li>
                         </ul>
-                            {% comment %} <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'userdashboard' %}">User Dashboard</a></li>
-                            {% endcomment %}
-                            {% comment %} {% if team_status %} 
-                            {% for team_status in team_status  %}
-                            <li style="list-style-type: none;"><a class="dropdown-item" href={% url 'team_detail' team_status.id %} >View Team</a></li>
-                            {% endfor %}
-                            {% else %}
-                            <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'create_team' %}">Create Team</a></li>
-                            {% endif %} {% endcomment %}
+                          
                            
                         </div>
                     </div>

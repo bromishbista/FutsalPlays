@@ -1,3 +1,4 @@
+from ast import Match
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
@@ -5,59 +6,63 @@ from django.contrib import messages
 # Create your views here.
 
 
-from booking.models import Futsal, Book_futsal, User, Review
+from booking.models import Blog, Futsal, Book_futsal, Team, Testimonials, User, Review
 from django.contrib.admin.views.decorators import staff_member_required
 from calendar import month_name
+from django.contrib.auth.decorators import login_required
 
-# @staff_member_required
-# def index(request):
-#     futsal_count = Futsal.objects.count()
-#     booking_count = Book_futsal.objects.count()
-#     user_count = User.objects.count()
-#     review_count = Review.objects.count()
-#     teams = Team.objects.count()
-#     match = Match.objects.count()
-#     blog = Blog.objects.count()
-#     testimonials = Testimonials.objects.count()
-#     futsal=Book_futsal.objects.all().order_by('-date')[:5]
-#     booked_futsal=Futsal.objects.all()
-#     book_futsal=[]
-#     futsaldata=[]
+@staff_member_required
+def index(request):
+    futsal_count = Futsal.objects.count()
+    booking_count = Book_futsal.objects.count()
+    user_count = User.objects.count()
+    review_count = Review.objects.count()
+    teams = Team.objects.count()
+    match = Match.objects.count()
+    blog = Blog.objects.count()
+    testimonials = Testimonials.objects.count()
+    futsal=Book_futsal.objects.all().order_by('-date')[:5]
+    booked_futsal=Futsal.objects.all()
+    book_futsal=[]
+    futsaldata=[]
     
-#     for booking in booked_futsal:
-#         futsalcount=Book_futsal.objects.filter(futsal=booking).count()
-#         futsaldata.append(booking.name)
-#         book_futsal.append(futsalcount)
+    for booking in booked_futsal:
+        futsalcount=Book_futsal.objects.filter(futsal=booking).count()
+        futsaldata.append(booking.name)
+        book_futsal.append(futsalcount)
 
-#     print(futsaldata)
-#     print(book_futsal)
+    print(futsaldata)
+    print(book_futsal)
 
-#     context = {
-#         'futsal_count': futsal_count,
-#         'booking_count': booking_count,
-#         'user_count': user_count,
-#         'review_count': review_count,
-#         'teams':teams,
-#         'match':match,
-#         'blog':blog,
-#         'testimonials':testimonials,
-#         'futsals':futsal,
-#         'futsaldata':futsaldata,
-#         'book_futsal':book_futsal,
+    context = {
+        'futsal_count': futsal_count,
+        'booking_count': booking_count,
+        'user_count': user_count,
+        'review_count': review_count,
+        'teams':teams,
+        'match':match,
+        'blog':blog,
+        'testimonials':testimonials,
+        'futsals':futsal,
+        'futsaldata':futsaldata,
+        'book_futsal':book_futsal,
       
 
-#     }
-#     return render(request, 'admin/index.html', context)
+    }
+    return render(request, 'admin/index.html', context)
 
-# user portal start
-
+#user portal start
 def logout_view(request):
     logout(request)
     return redirect('signup')
 
+
+# Original home view
 def home(request):
-    futsals = Futsal.objects.all()
-    context = {'futsals': futsals}
+    futsals = Futsal.objects.all() # Retrieve all Futsal objects
+    context = {'futsals': futsals} # Create a context dictionary with 'futsals' key
+
+    # Check if the user is authenticated
     if request.user.is_authenticated:
         team_status = Team.objects.filter(user=request.user)
     else:
@@ -68,7 +73,7 @@ def home(request):
     }
     return render(request, 'index.html', context)
 
-
+#register page
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -79,7 +84,7 @@ def register(request):
         form = UserCreationForm()
     return render(request, 'register.html', context={'form': form})
     
-
+#login page
 def loginpage(request):
     if request.user.is_authenticated:
         messages.warning(request, "You are already logged in")
@@ -101,4 +106,52 @@ def loginpage(request):
                 messages.error(request, "Invalid username or password")
                 return redirect("register")
         return render(request, "login.html")
+    
+
+    
+#logout index
+def logout_view(request):
+    logout(request)
+    return redirect('index')
+
+## Home view
+def home(request):
+    futsals = Futsal.objects.all()
+    context = {'futsals': futsals}
+    if request.user.is_authenticated:
+        team_status = Team.objects.filter(user=request.user)
+    else:
+        team_status = None
+    context = {
+    'team_status': team_status,
+    'futsals': futsals,
+    }
+    return render(request, 'index.html', context)
+
+#redirect new home view
+def home(request):
+    # detail = Details.objects.all()
+    # Slider = slider.objects.all()
+    futsal = Futsal.objects.all()
+    testimonials= Testimonials.objects.all()
+    # beadcrumbs= Beadcrumbs.objects.all()
+    if request.user.is_authenticated:
+        team_status = Team.objects.filter(user=request.user)
+    else:
+        team_status = None
+    context = {
+        # 'detail':detail, 
+        # 'Slider':Slider, 'futsal':futsal, 
+        'testimonials':testimonials, 
+        # 'beadcrumbs':beadcrumbs,
+        'team_status': team_status,
+        }
+    
+    return render(request, 'index.html', context)
+
+#logout admin
+@login_required
+def custom_logout(request):
+    logout(request)
+    return render(request, 'admin/logout.html')
     

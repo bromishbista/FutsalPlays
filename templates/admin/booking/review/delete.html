@@ -1,0 +1,11 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h3> Delete Review</h3>
+<h5>Are you sure you want to delete review "{{ review.text }}" by "{{ review.user }}" ?</h5>
+<form method ="post">
+{% csrf_token %}
+<button class="btn btn-danger" type="submit">Yes, delete</button>
+<a href="{% url 'review_list' %}" class="btn btn-primary">No, cancel</a>
+
+</form>
+{% endblock content %}

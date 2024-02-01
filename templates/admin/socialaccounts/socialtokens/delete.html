@@ -1,0 +1,11 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h2 class="text-center">Socialtoken List</h2>
+<h5>Are you sure you want to delete "{{ socialtoken.app }}"?</h5>
+<form method ="post">
+{% csrf_token %}
+<button class="btn btn-danger" type="submit">Yes, delete</button>
+<a href="{% url 'socialtoken_list' %}" class="btn btn-primary">No, cancel</a>
+
+</form>
+{% endblock content %}

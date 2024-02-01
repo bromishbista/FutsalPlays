@@ -1,0 +1,36 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h2 class="text-center">Breadcrumbs Panel</h2>
+
+<div>
+    <!-- <div class="mb-5"><a href="{% url 'beadcrumbs_create' %}" class="btn btn-success float-end mx-5" >Create</a> -->
+    </div>
+    <div class="container p-5">
+        <table class="table table-bordered " style="font-size:18px;">
+            <thead>
+              <tr>
+                <th scope="col">Join Teams</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+            {% for beadcrumbs in beadcrumbs %} 
+              <tr>
+                <td>{{ beadcrumbs.Total_Join_Teams }}</td>
+                <td>
+                  <button type="button" class="btn btn-warning"><a href="{% url 'beadcrumbs_edit' beadcrumbs.pk %}" class="btn btn-warning" >
+                    Edit</a></button>
+                  <button type="button" class="btn btn-danger"><a href="{% url 'beadcrumbs_delete' beadcrumbs.pk %}" class="btn btn-danger">Delete</a></button>
+                </td>
+             
+              </tr>
+            {% empty %}
+              <li>No beadcrumbss found.</li>
+            {% endfor %}  
+            </tbody>
+        </table> 
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,41 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<center><h3>Review List</h3></center>
+
+<div>
+    <!-- <div class="mb-5"><a href="{% url 'review_create' %}" class="btn btn-success float-end mx-5" >Create</a> -->
+    </div>
+    <div class="container p-5">
+        <table class="table table-bordered" style="font-size:18px;">
+            <thead>
+              <tr>
+                <th scope="col">User</th>
+                <th scope="col">Futsal</th>
+                <th scope="col">Text</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+            {% for review in review %} 
+              <tr>
+                <td>{{ review.futsal }}</td>
+                <td>{{ review.futsal }}</td>
+                <td>{{ review.text }}</td>
+                <td>{{ review.rating }}</td>
+                <td>
+                  <!-- <button type="button" class="btn btn-warning"><a href="{% url 'review_edit' review.pk %}" class="btn btn-warning" >
+                    Edit</a></button> -->
+                  <button type="button" class="btn btn-danger"><a href="{% url 'review_delete' review.pk %}" class="btn btn-danger">Delete</a></button>
+                </td>
+             
+              </tr>
+            {% empty %}
+              <li>No reviews found.</li>
+            {% endfor %}  
+            </tbody>
+        </table> 
+    </div>
+</div>
+{% endblock content %}

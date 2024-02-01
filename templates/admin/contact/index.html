@@ -1,0 +1,39 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h3><center>Contact List</center></h3>
+
+<div>
+    <div class="mb-5"><a href="{% url 'contact_create' %}" class="btn btn-success float-end mx-5" >Add</a>
+    </div>
+    <div class="container p-5">
+        <table class="table " style="font-size:18px;">
+            <thead>
+              <tr>
+                <th scope="col">Full Name</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Message</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+            {% for contact in contact %} 
+              <tr>
+                <td>{{ contact.full_name }}</td>
+                <td>{{ contact.phone }}</td>
+                <td>{{ contact.message }}</td>
+                <td>
+                  <button type="button" class="btn btn-warning"><a href="{% url 'contact_edit' contact.pk %}" class="btn btn-warning" >
+                    Edit</a></button>
+                  <button type="button" class="btn btn-danger"><a href="{% url 'contact_delete' contact.pk %}" class="btn btn-danger">Delete</a></button>
+                </td>
+             
+              </tr>
+            {% empty %}
+              <li>No contacts found.</li>
+            {% endfor %}  
+            </tbody>
+        </table> 
+    </div>
+</div>
+{% endblock content %}

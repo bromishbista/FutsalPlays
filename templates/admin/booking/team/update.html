@@ -1,0 +1,12 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h3> Team Update</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Update</button>
+    <a href="{% url 'team_list' %}" class="btn btn-primary">Back</a>
+</form>
+</br>
+</br>
+{% endblock content %}

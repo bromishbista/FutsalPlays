@@ -1,0 +1,151 @@
+{% extends 'admin/inc/base.html' %} 
+
+
+{% load static %}
+
+{% block content %}
+<h2 class="text-center"><marquee>Welcome to Admin Dashboard</marquee></h2>
+<h3><section></h3>
+  <div class="container py-4">
+    <div class="row gx-3">
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+        <div class="card shadow ">
+          <div class="card-body text-center">
+            <h5 class="card-title text-success">Total Fustal</h5>
+            <p class="card-text">
+                {{futsal_count}} 
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+        <div class="card shadow ">
+          <div class="card-body text-center">
+            <h5 class="card-title text-success">Total Booking</h5>
+            <p class="card-text">
+             {{ booking_count }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+        <div class="card shadow ">
+          <div class="card-body text-center">
+            <h5 class="card-title text-success">Total User</h5>
+            <p class="card-text">
+            {{ user_count }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+        <div class="card shadow ">
+          <div class="card-body text-center">
+            <h5 class="card-title text-success">Total Reviews</h5>
+            <p class="card-text">
+            {{ review_count }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+        <div class="card shadow ">
+          <div class="card-body text-center">
+            <h5 class="card-title text-success">Total Teams</h5>
+            <p class="card-text">
+            {{ teams }}
+            </p>
+          </div>
+        </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+          <div class="card shadow ">
+            <div class="card-body text-center">
+              <h5 class="card-title text-success">Total Match</h5>
+              <p class="card-text">
+              {{ match }}
+              </p>
+            </div>
+          </div>
+          </div>
+          <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+            <div class="card shadow ">
+              <div class="card-body text-center">
+                <h5 class="card-title text-success">Total Blogs</h5>
+                <p class="card-text">
+                {{ blog }}
+                </p>
+              </div>
+            </div>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+              <div class="card shadow ">
+                <div class="card-body text-center">
+                  <h5 class="card-title text-success">Total Testimonials</h5>
+                  <p class="card-text">
+                  {{ testimonials }}
+                  </p>
+                </div>
+              </div>
+              </div>
+    </div>
+  </div>
+</section>
+<section>
+  <h1 style="text-align:center;" class="text-success">Latest Booked Futsals</h1>
+  <table class="table table-bordered" style="font-size:18px;">
+    <thead>
+      <tr>
+        <th>S.N.</th>
+        <th>Futsal Name</th>
+        <th>Futsal Location</th>
+        <th>Date</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for futsal in futsals %}
+      <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{futsal.futsal.name}}</td>
+        <td>{{futsal.futsal.location}}</td>
+        <td>{{futsal.date}}</td>
+        <td>From {{futsal.start_time}} - {{futsal.end_time}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+<section>
+  <h1 style="text-align:center;" class="text-success">Graph (Futsal vs Booking)</h1>
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  const ctx = document.getElementById('myChart');
+  var futsaldata = {{futsaldata|safe}};
+  var book_futsal = {{book_futsal|safe}};
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: futsaldata,
+      datasets: [{
+        label: '# of Booking',
+        data: book_futsal,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+{% endblock %}

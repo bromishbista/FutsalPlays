@@ -1,0 +1,20 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+
+<h1>Chat </h1>
+
+<form class="m-5" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+		<label>User:</label>
+		<input type="text" class="form-control" name="user"><br><br>
+		<label>Futasl:</label>
+		<input type="text" class="form-control" name="futsal"><br><br>
+		<label>Message:</label>
+		<input type="text" class="form-control" name="message"><br><br>
+		<label>Timestamp:</label>
+		<input type="datetime-local" class="form-control" name="timestamp"><br><br>
+    <button type="submit" class="btn btn-success">Create</button>
+	<a href="{% url 'chatMessage_list' %}" class="btn btn-primary">Back</a>
+</form>
+
+{% endblock content %}

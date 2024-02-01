@@ -1,7 +1,10 @@
 
-
+from datetime import timezone
+import datetime
+from http.client import PAYMENT_REQUIRED
 import math
 from django.shortcuts import render, redirect, get_object_or_404
+
 from groupchat.models import UserGroups
 
 from django.views import View
@@ -39,11 +42,7 @@ def calculate_distance(lat1, lon1, lat2, lon2):
 
 
 
-def LoginView(request):
-    return render(request, 'login.html')
 
-def RegisterView(request):
-    return render(request, 'register.html')
 
 def get_recommendations():
     user_lat, user_lng = get_user_location()
@@ -62,4 +61,8 @@ def index(request):
 
 def booking(request):
     return render(request, 'booking.html')
+
+
+
+
 

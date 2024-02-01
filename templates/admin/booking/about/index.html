@@ -1,0 +1,34 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<center><h3>About-us Page</h3></center>
+<div>
+    <div class="mb-3"><a href="{% url 'about_create' %}" class="btn btn-success float-end mx-5" >Add</a></br>
+    </div>
+    <div class="container">
+        <table class="table table-bordered " style="font-size:18px;">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+            {% for about in about %} 
+              <tr>
+                <td>{{ about.title }}</td>
+                <td>
+                  <button type="button" class="btn btn-warning"><a href="{% url 'about_edit' about.pk %}" class="btn btn-warning" >
+                    Edit</a></button>
+                  <button type="button" class="btn btn-danger"><a href="{% url 'about_delete' about.pk %}" class="btn btn-danger">Delete</a></button>
+                </td>
+             
+              </tr>
+            {% empty %}
+              <li>No abouts found.</li>
+            {% endfor %}  
+            </tbody>
+        </table> 
+    </div>
+</div>
+{% endblock content %}

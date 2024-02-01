@@ -1,0 +1,249 @@
+{% extends 'base.html' %} 
+{% load ratings %}
+{% block css %}
+<style></style>
+{% endblock css %} {% block body %}
+
+<style>
+  #chat1 .form-outline .form-control~.form-notch div {
+pointer-events: none;
+border: 1px solid;
+border-color: #eee;
+box-sizing: border-box;
+background: transparent;
+}
+
+#chat1 .form-outline .form-control~.form-notch .form-notch-leading {
+left: 0;
+top: 0;
+height: 100%;
+border-right: none;
+border-radius: .65rem 0 0 .65rem;
+}
+
+#chat1 .form-outline .form-control~.form-notch .form-notch-middle {
+flex: 0 0 auto;
+max-width: calc(100% - 1rem);
+height: 100%;
+border-right: none;
+border-left: none;
+}
+
+#chat1 .form-outline .form-control~.form-notch .form-notch-trailing {
+flex-grow: 1;
+height: 100%;
+border-left: none;
+border-radius: 0 .65rem .65rem 0;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-leading {
+border-top: 0.125rem solid #39c0ed;
+border-bottom: 0.125rem solid #39c0ed;
+border-left: 0.125rem solid #39c0ed;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-leading,
+#chat1 .form-outline .form-control.active~.form-notch .form-notch-leading {
+border-right: none;
+transition: all 0.2s linear;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-middle {
+border-bottom: 0.125rem solid;
+border-color: #39c0ed;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-middle,
+#chat1 .form-outline .form-control.active~.form-notch .form-notch-middle {
+border-top: none;
+border-right: none;
+border-left: none;
+transition: all 0.2s linear;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-trailing {
+border-top: 0.125rem solid #39c0ed;
+border-bottom: 0.125rem solid #39c0ed;
+border-right: 0.125rem solid #39c0ed;
+}
+
+#chat1 .form-outline .form-control:focus~.form-notch .form-notch-trailing,
+#chat1 .form-outline .form-control.active~.form-notch .form-notch-trailing {
+border-left: none;
+transition: all 0.2s linear;
+}
+
+#chat1 .form-outline .form-control:focus~.form-label {
+color: #39c0ed;
+}
+
+#chat1 .form-outline .form-control~.form-label {
+color: #bfbfbf;
+}
+</style>
+
+<section class="foot-search">
+  <div class="footsal-section">
+      <div class="search-section-form">
+          <div class="search-title">
+              <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="/">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">Futsals</li>
+                      <li class="breadcrumb-item active" aria-current="page">Futsals-Details</li>
+                  </ol>
+              </nav>
+          </div>
+      </div>
+  </div>
+</section><br><br><br>
+<!-- sliders -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <img
+        src="{{ futsal.image.url }}"
+        alt="{{ futsal.name }}"
+        class="img-fluid w-100"
+        style="height: 400px; object-fit: cover"
+      />
+    </div>
+  </div>
+
+
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <h1>{{ futsal.name }}</h1>
+        <p>{{ futsal.location }}</p>
+        <p>{{ futsal.description }}</p>
+        <p><b>Price: Rs. {{ futsal.price }}/hrs</b></p>
+        <a href="{% url 'book_futsal' %}" class="btn btn-success btn-sm text-white"> Book Now</a>
+      </div>
+      <div class="col-lg-4">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Chat Now
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                    <div class="row d-flex justify-content-center">
+                      <div class="col-md-12 col-lg-12 col-xl-12">
+                
+                        <div class="card" id="chat1" style="border-radius: 15px;">
+                          <div
+                            class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
+                            style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                            <p class="mb-0 fw-bold">Live chat</p>
+                            <i  type="button" class="fas fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
+                          </div>
+                          
+                          <div class="card-body">
+                          {% if user.is_authenticated %}
+                            {% if chat_messages %} <ul>
+                              {% for message in chat_messages %}
+                
+                            <div class="d-flex flex-row justify-content-start mb-4">
+                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                alt="avatar 1" style="width: 45px; height: 100%;">
+                              <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                                <p class="small mb-0">{{ message.timestamp }} - {{ message.user }}: {{ message.message }}</p>
+                              </div>
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <p>No chat messages yet.</p>
+                            {% endif %}
+                            <div class="form-outline">
+                              <form action="" method="POST">
+                                  {% csrf_token %} 
+                                  {{ chat_form.as_p }}
+                                  <button type="submit" class="btn btn-sm btn-danger">Send<i class=" ms-1 fas fa-play"></i></button>
+                              </form>
+                            </div>
+                          {% else %}
+                          <p>You must be logged in to send a message.</p>
+                          <a href="{% url 'login' %}">Log in</a>
+                          {% endif %}
+                          </div>
+                        </div>
+                
+                      </div>
+                    </div>
+                
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% comment %} map section {% endcomment %}
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-lg-12">
+        <iframe src="{{ futsal.location_url }}" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="container py-5">
+    <div class="row">
+      <div class="title">
+        <h5>Write your review</h3>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-12">
+        <form method="post">
+          {% csrf_token %} {{ form.as_p }}
+          <button type="submit" class="btn btn-primary">Submit Review</button>
+        </form>
+      </div>
+      <div class="col-lg-7 col-md-7 col-sm-12" >
+        <h5>Current Reviews</h5>
+       <div class="review" style="height:200px; overflow-y: auto;">
+        {% for review in reviews %}
+        <p>Review:{{ review.text }}</p>
+        <p>Rated:
+          <div class="rating" data-rating="{{ review.rating }}">
+          
+        </div>
+      </p>
+        
+        <p>By: {{ review.user.username }}</p>
+        <hr>
+        {% empty %}
+        <p>No reviews yet.</p>
+        {% endfor %}
+       </div>
+      </div>
+    </div>
+  </div>
+
+
+
+    </div>
+  </div>
+</div>
+  {% endblock %}
+
+{% block scripts %}
+
+<script>
+  var ratings = document.querySelectorAll('.rating');
+  ratings.forEach(function(rating) {
+      var stars = rating.children;
+      var numStars = parseInt(rating.getAttribute('data-rating'));
+      for (var i = 0; i < numStars; i++) {
+          stars[i].classList.remove('fa-star-o');
+          stars[i].classList.add('fa-star');
+      }
+  });
+</script>
+{% endblock scripts %}

@@ -1,0 +1,37 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h1>Email List</h1>
+
+<div>
+    <div class="mb-5"><a href="{% url 'email_create' %}" class="btn btn-success float-end mx-5" >Create</a>
+    </div>
+    <div class="container p-5">
+        <table class="table " style="font-size:18px;">
+            <thead>
+              <tr>
+                <th scope="col">E-mail</th>
+                <th scope="col">User</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+            {% for email in emailaddress %} 
+              <tr>
+                <td>{{ email.email }}</td>
+                <td>{{ email.user }}</td>
+                <td>
+                  <button type="button" class="btn btn-warning"><a href="{% url 'email_edit' email.pk %}" class="btn btn-warning" >
+                    Edit</a></button>
+                  <button type="button" class="btn btn-danger"><a href="{% url 'email_delete' email.pk %}" class="btn btn-danger">Delete</a></button>
+                </td>
+             
+              </tr>
+            {% empty %}
+              <li>No emails found.</li>
+            {% endfor %}  
+            </tbody>
+        </table> 
+    </div>
+</div>
+{% endblock content %}
