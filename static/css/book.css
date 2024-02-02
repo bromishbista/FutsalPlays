@@ -33,12 +33,13 @@
 .login-form12{
     height: 10%;
     
+    
 }
 
 
-.login-image img{
-    width: 106%;
-    height: 500px;
+.login-image img {
+    width: 300px; 
+    height: 200px; 
     object-fit: fill;
     border-radius: 10px;
 }

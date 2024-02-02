@@ -10,8 +10,8 @@
   *,
   *::before,
   *::after{
-      margin: 0;
-      padding: 0;
+      margin: 10;
+      padding: 10;
       box-sizing: border-box;
   }
   .Home-Container{
@@ -254,7 +254,20 @@
               </h1>
             </div>
       
-            <img src="{% static 'img/banner.png' %}" alt="" />
+            <style>
+              .responsive-img {
+                  max-width: 100%;
+                  height: auto;
+                  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+              }
+          
+              .responsive-img:hover {
+                  transform: scale(1.1); /* Increase the size on hover */
+              }
+          </style>
+           <img src="{% static 'img/whi.png' %}" alt="" class="responsive-img" />
+          
+
           </div>
         </div>
       

@@ -286,3 +286,44 @@ def user_delete(request, pk):
 def match_list(request):
     matches = Match.objects.all()
     return render(request, 'match_list.html', {'matches': matches})
+
+
+# views.py match list for admin
+from django.shortcuts import render, redirect, get_object_or_404
+from booking.models import Match
+from booking.form import MatchForm
+
+def match_list(request):
+    matches = Match.objects.all()
+    return render(request, 'match_list.html', {'matches': matches})
+
+def match_detail(request, pk):
+    match = get_object_or_404(Match, pk=pk)
+    return render(request, 'match_detail.html', {'match': match})
+
+def match_create(request):
+    if request.method == 'POST':
+        form = MatchForm(request.POST, request.FILES)
+        if form.is_valid():
+    
+            match = form.save()
+            return redirect('match_detail', pk=match.pk)
+        else:
+            messages.error(request, 'Please correct the form errors below.')
+    else:
+        form = MatchForm()
+    return render(request, 'match_form.html', {'form': form})
+
+def match_edit(request, pk):
+    match = get_object_or_404(Match, pk=pk)
+    if request.method == 'POST':
+        form = MatchForm(request.POST, request.FILES, instance=match)
+        if form.is_valid():
+        
+            match = form.save()
+            return redirect('match_detail', pk=match.pk)
+    else:
+        form = MatchForm(instance=match)
+    return render(request, 'match_form.html', {'form': form})
+
+

@@ -11,6 +11,8 @@ from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
+
+    path('adminmatch/', views.match, name='adminmatch'),
     # path('login/', LoginView, name='login'),
     # path('register/', RegisterView, name='register'),
     
@@ -63,6 +65,19 @@ urlpatterns = [
     path('teamcreate/', views.team_create, name='team_create'),
     path('team/<int:pk>/edit/', views.team_edit, name='team_edit'),
     path('team/<int:pk>/delete/', views.team_delete, name='team_delete'),
+
+# CRUD operations for reviewing team 
+    path('adminreview/', views.adminreview_list, name='review_list'),
+    path('reviewcreate/', views.review_create, name='review_create'),
+    path('review/<int:pk>/edit/', views.review_edit, name='review_edit'),
+    path('review/<int:pk>/delete/', views.review_delete, name='review_delete'),
+
+# CRUD operations  for chat Message
+    path('adminchatMessage/', views.adminchatMessage_list, name='chatMessage_list'),
+    path('chatMessagecreate/', views.chatMessage_create, name='chatMessage_create'),
+    path('chatMessage/<int:pk>/edit/', views.chatMessage_edit, name='chatMessage_edit'),
+    path('chatMessage/<int:pk>/delete/', views.chatMessage_delete, name='chatMessage_delete'),
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

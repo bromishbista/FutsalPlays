@@ -109,3 +109,39 @@ class MatchForm(forms.ModelForm):
             'playercount': forms.Select(attrs={'class': 'form-control'}),
             'gametype': forms.Select(attrs={'class': 'form-control'}),
         }
+
+
+# class for creating review 
+from .models import Review
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields=['text', 'rating']
+    
+        widgets = {
+            'text': forms.Textarea(attrs={'class': 'form-control', 'rows': 3}),
+            'rating': forms.NumberInput(attrs={'class': 'form-control', 'min': 1, 'max': 5}),
+        }
+
+
+# for creating chat messgaes form
+class ChatMessageForm(forms.ModelForm):
+    message = forms.CharField(widget=forms.Textarea(attrs={'rows': 3}))
+
+    class Meta:
+        model = ChatMessage
+        fields = ('message',)
+
+    def __init__(self, user, futsal, *args, **kwargs):
+        self.user = user
+        self.futsal = futsal
+        super().__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        instance.user = self.user
+        instance.futsal = self.futsal
+        if commit:
+            instance.save()
+        return instance

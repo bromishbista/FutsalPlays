@@ -289,3 +289,81 @@ def team_delete(request, pk):
         team.delete()
         return redirect('team_list')
     return render(request, 'admin/booking/team/delete.html', {'team': team})
+
+
+# CRUD operation for  review 
+def adminreview_list(request):
+    review = Review.objects.all()
+    return render(request, 'admin/booking/review/index.html', {'review': review})
+
+def review_create(request):
+    if request.method == 'POST':
+        review = Review()
+        review.user = request.POST['user']
+        review.futsal = request.POST['futsal']
+        review.text = request.POST['text']
+        review.rating = request.POST['rating']
+        review.created_at = request.POST['created_at']
+        review.save()
+        return redirect('review_list')
+    else:
+        return render(request, 'admin/booking/review/create.html')
+
+def review_edit(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+    form = ReviewForm(request.POST, request.FILES or None, instance=review)
+    if form.is_valid():
+        form.save()
+        return redirect('review_list')
+    return render(request, 'admin/booking/review/update.html', {'form': form})
+
+def review_delete(request, pk):
+    review = get_object_or_404(Review, pk=pk)
+    if request.method == 'POST':
+        review.delete()
+        return redirect('review_list')
+    return render(request, 'admin/booking/review/delete.html', {'review': review})
+
+# CRUD operations for creating chatMessage 
+def adminchatMessage_list(request):
+    chatMessage = ChatMessage.objects.all()
+    return render(request, 'admin/booking/chatMessage/index.html', {'chatMessage': chatMessage})
+
+def chatMessage_create(request):
+    if request.method == 'POST':
+        chatMessage = ChatMessage()
+        chatMessage.user = request.POST['user']
+        chatMessage.futsal = request.POST['futsal']
+        chatMessage.message = request.POST['message']
+        chatMessage.timestamp = request.POST['timestamp']
+        chatMessage.save()
+        return redirect('chatMessage_list')
+    else:
+        return render(request, 'admin/booking/chatMessage/create.html')
+
+def chatMessage_edit(request, pk):
+    chatMessage = get_object_or_404(ChatMessage, pk=pk)
+    form = ChatMessageForm(request.POST, request.FILES or None, instance=chatMessage)
+    if form.is_valid():
+        form.save()
+        return redirect('chatMessage_list')
+    return render(request, 'admin/booking/chatMessage/update.html', {'form': form})
+
+def chatMessage_delete(request, pk):
+    chatMessage = get_object_or_404(ChatMessage, pk=pk)
+    if request.method == 'POST':
+        ChatMessage.delete()
+        return redirect('chatMessage_list')
+    return render(request, 'admin/booking/chatMessage/delete.html', {'chatMessage': chatMessage})
+
+def match(request):
+    if request.user.is_authenticated:
+        team_status = Team.objects.filter(user=request.user)
+    else:
+        team_status= None
+
+    match = Match.objects.all() 
+    context = {'match':match,
+            'team_status': team_status,
+               }
+    return render(request, 'matches.html', context)
