@@ -109,7 +109,7 @@ class About(models.Model):
     def _str_(self):
         return str(self.title)
 
-
+#need to rename later
 class Beadcrumbs(models.Model):
     Total_Join_Teams = models.IntegerField()
     Total_Play_Games = models.IntegerField()
