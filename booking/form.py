@@ -4,6 +4,8 @@ from django.core.exceptions import ValidationError
 from .models import Book_futsal
 from django.forms import DateInput
 
+
+#booking futsal form
 class BookFutsalForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(BookFutsalForm, self).__init__(*args, **kwargs)
@@ -145,3 +147,13 @@ class ChatMessageForm(forms.ModelForm):
         if commit:
             instance.save()
         return instance
+    
+# classs for slider list form 
+class SliderForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(SliderForm, self).__init__(*args, **kwargs)
+        for field in self.visible_fields():
+            field.field.widget.attrs['class'] = 'form-control'
+    class Meta:
+        model =slider
+        fields = '__all__'

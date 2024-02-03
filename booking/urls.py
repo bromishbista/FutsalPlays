@@ -22,6 +22,9 @@ urlpatterns = [
 
     # path('futsal/', views.futsal_list, name='futsal'),
     # path('futsal/<int:pk>/', views.futsal_details, name='futsal_detail'),
+#book_futsal booking futsal 
+ path('book_futsal/', views.BookFutsal.as_view(), name='book_futsal'),
+
 
 # CRUD for breadcrumbs operations 
     path('adminbeadcrumbs/', views.beadcrumbs_list, name='beadcrumbs_list'),
@@ -77,6 +80,13 @@ urlpatterns = [
     path('chatMessagecreate/', views.chatMessage_create, name='chatMessage_create'),
     path('chatMessage/<int:pk>/edit/', views.chatMessage_edit, name='chatMessage_edit'),
     path('chatMessage/<int:pk>/delete/', views.chatMessage_delete, name='chatMessage_delete'),
+
+# CRUD operations for slider team list
+    path('adminslider/', views.slider_list, name='slider_list'),
+    path('slidercreate/', views.Slider_create, name='slider_create'),
+    path('slider/<int:pk>/edit/', views.Slider_edit, name='slider_edit'),
+    path('slider/<int:pk>/delete/', views.Slider_delete, name='slider_delete'),
+
 
 ]
 if settings.DEBUG:

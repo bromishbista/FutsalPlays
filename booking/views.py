@@ -62,7 +62,6 @@ def booking(request):
     return render(request, 'booking.html')
 
 
-
 # CRUD Operations for Breadcrumbs 
 
 def beadcrumbs_list(request):
@@ -367,3 +366,68 @@ def match(request):
             'team_status': team_status,
                }
     return render(request, 'matches.html', context)
+
+#CRUD operation for  slider team list
+def slider_list(request):
+    Slider = slider.objects.all()
+    return render(request, 'admin/booking/Slider/index.html', {'Slider': Slider})
+
+def Slider_create(request):
+    form = SliderForm(request.POST, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('slider_list')
+    return render(request, 'admin/booking/Slider/create.html', {'form': form})
+
+
+def Slider_edit(request, pk):
+    Slider = slider.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = SliderForm(instance=Slider)
+        form = SliderForm(request.POST, request.FILES, instance=Slider)
+        if form.is_valid():
+            form.save()
+            return redirect('slider_list')
+    else:
+        form = SliderForm(instance=Slider)
+    return render(request, 'admin/booking/Slider/update.html', {'form': form})
+
+
+def Slider_delete(request, pk):
+    Slider = get_object_or_404(slider, pk=pk)
+    if request.method == 'POST':
+        Slider.delete()
+        return redirect('slider_list')
+    return render(request, 'admin/booking/Slider/delete.html', {'Slider': Slider})
+
+
+from django.contrib import messages
+
+# CRUD operation for booking  Futsal 
+
+class BookFutsal(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            team_status = Team.objects.filter(user=request.user)
+        else:
+            team_status = None
+        context = {
+            'form': BookFutsalForm(),
+            'team_status': team_status
+        }
+        return render(request, 'booking.html', context)
+
+    def post(self, request):
+        form = BookFutsalForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            book_id = instance.id
+            return redirect("/khalti-request/" + str(book_id))
+        else:
+            # Display validation errors as messages
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+        return redirect('/book_futsal/')

@@ -282,6 +282,146 @@ def user_delete(request, pk):
     return render(request, 'admin/users/delete.html', {'user': user})
 
 
+# CRUD for user site lists 
+def site_list(request):
+    site = Site.objects.all()
+    return render(request, 'admin/sites/index.html', {'site': site})
+
+def site_create(request):
+    form = SiteForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('site_list')
+    return render(request, 'admin/sites/create.html', {'form': form})
+
+def site_edit(request, pk):
+    site = get_object_or_404(Site, pk=pk)
+    form = SiteForm(request.POST or None, instance=site)
+    if form.is_valid():
+        form.save()
+        return redirect('site_list')
+    return render(request, 'admin/sites/update.html', {'form': form})
+
+def site_delete(request, pk):
+    site = get_object_or_404(Site, pk=pk)
+    if request.method == 'POST':
+        site.delete()
+        return redirect('site_list')
+    return render(request, 'admin/sites/delete.html', {'site': site})
+
+
+# CRUD operations for social account list for users 
+def socialaccount_list(request):
+    socialaccount = SocialAccount.objects.all()
+    return render(request, 'admin/socialaccounts/socialaccounts/index.html', {'socialaccount': socialaccount})
+
+def socialaccount_create(request):
+    form = SocialAccountForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('socialaccount_list')
+    return render(request, 'admin/socialaccounts/socialaccounts/create.html', {'form': form})
+
+def socialaccount_edit(request, pk):
+    socialaccount = get_object_or_404(SocialAccount, pk=pk)
+    form = SocialAccountForm(request.POST or None, instance=socialaccount)
+    if form.is_valid():
+        form.save()
+        return redirect('socialaccount_list')
+    return render(request, 'admin/socialaccounts/socialaccounts/update.html', {'form': form})
+
+def socialaccount_delete(request, pk):
+    socialaccount = get_object_or_404(SocialAccount, pk=pk)
+    if request.method == 'POST':
+        socialaccount.delete()
+        return redirect('socialaccount_list')
+    return render(request, 'admin/socialaccounts/socialaccounts/delete.html', {'socialaccount': socialaccount})
+
+# CRUD operations for social app
+def socialapp_list(request):
+    socialapp = SocialApp.objects.all()
+    return render(request, 'admin/socialaccounts/socialapps/index.html', {'socialapp': socialapp})
+
+def socialapp_create(request):
+    form = SocialAppForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('socialapp_list')
+    return render(request, 'admin/socialaccounts/socialapps/create.html', {'form': form})
+
+def socialapp_edit(request, pk):
+    socialapp = get_object_or_404(SocialApp, pk=pk)
+    form = SocialAppForm(request.POST or None, instance=socialapp)
+    if form.is_valid():
+        form.save()
+        return redirect('socialapp_list')
+    return render(request, 'admin/socialaccounts/socialapps/update.html', {'form': form})
+
+def socialapp_delete(request, pk):
+    socialapp = get_object_or_404(SocialApp, pk=pk)
+    if request.method == 'POST':
+        socialapp.delete()
+        return redirect('socialapp_list')
+    return render(request, 'admin/socialaccounts/socialapps/delete.html', {'socialapp': socialapp})
+
+
+
+# CRUD operations for social token list 
+def socialtoken_list(request):
+    socialtoken = SocialToken.objects.all()
+    return render(request, 'admin/socialaccounts/socialtokens/index.html', {'socialtoken': socialtoken})
+
+def socialtoken_create(request):
+    form = SocialTokenForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('socialtoken_list')
+    return render(request, 'admin/socialaccounts/socialtokens/create.html', {'form': form})
+
+def socialtoken_edit(request, pk):
+    socialtoken = get_object_or_404(SocialToken, pk=pk)
+    form = SocialTokenForm(request.POST or None, instance=socialtoken)
+    if form.is_valid():
+        form.save()
+        return redirect('socialtoken_list')
+    return render(request, 'admin/socialaccounts/socialtokens/update.html', {'form': form})
+
+def socialtoken_delete(request, pk):
+    socialtoken = get_object_or_404(SocialToken, pk=pk)
+    if request.method == 'POST':
+        socialtoken.delete()
+        return redirect('socialtoken_list')
+    return render(request, 'admin/socialaccounts/socialtokens/delete.html', {'socialtoken': socialtoken})
+
+
+# CRUD operations for contact list form
+def contact_list(request):
+    contact = Contact.objects.all()
+    return render(request, 'admin/contact/index.html', {'contact': contact})
+
+def contact_create(request):
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('contact_list')
+    return render(request, 'admin/contact/create.html', {'form': form})
+
+def contact_edit(request, pk):
+    contact = get_object_or_404(Contact, pk=pk)
+    form = ContactForm(request.POST or None, instance=contact)
+    if form.is_valid():
+        form.save()
+        return redirect('contact_list')
+    return render(request, 'admin/contact/edit.html', {'form': form})
+
+def contact_delete(request, pk):
+    contact = get_object_or_404(Contact, pk=pk)
+    if request.method == 'POST':
+        contact.delete()
+        return redirect('contact_list')
+    return render(request, 'admin/contact/delete.html', {'contact': contact})
+
+
 # for match list of booking view admin match list 
 def match_list(request):
     matches = Match.objects.all()

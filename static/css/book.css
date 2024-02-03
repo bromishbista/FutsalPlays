@@ -10,7 +10,7 @@
    
     padding: 20rem 10rem 10rem;
     background-color: #1F306E;
-    height: 600px;
+    height: 10px;
     background-size: contain;
 }
 
@@ -18,7 +18,7 @@
    
     padding: 20rem 10rem 10rem;
     background-color: #031425;
-    height: 600px;
+    height: 40px;
     background-size: contain;
 }
 
@@ -28,7 +28,7 @@
     flex-wrap: wrap;
     justify-content: space-around;
     margin: auto;
-    margin-top: -100px;
+    margin-top: -200px;
 }
 .login-form12{
     height: 10%;
@@ -38,8 +38,8 @@
 
 
 .login-image img {
-    width: 300px; 
-    height: 200px; 
+    width: 450px; 
+    height: 400px; 
     object-fit: fill;
     border-radius: 10px;
 }

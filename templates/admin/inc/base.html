@@ -97,7 +97,7 @@
           <a
              href="{% url 'bookfutsal_list' %}"
              class="list-group-item list-group-item-action py-2 ripple"
-             ><i class="fas fa-money-bill fa-fw me-3"></i><span>Book_Futsal</span></a
+             ><i class="fas fa-money-bill fa-fw me-3"></i><span>Book Futsal</span></a
             >
              
           <a
@@ -130,18 +130,18 @@
              class="list-group-item list-group-item-action py-2 ripple"
              ><i class="fas fa-money-bill fa-fw me-3"></i><span>Chat Message</span></a
             >
- {% comment %} 
+
           <a
              href="{% url 'slider_list' %}"
              class="list-group-item list-group-item-action py-2 ripple"
              ><i class="fas fa-money-bill fa-fw me-3"></i><span>Sliders</span></a
             >
-          
-          <a
+           
+          {% comment %} <a
              href="{% url 'testimonials_list' %}"
              class="list-group-item list-group-item-action py-2 ripple"
              ><i class="fas fa-money-bill fa-fw me-3"></i><span>Testimonials</span></a
-            >
+            > {% endcomment %}
           <a
             class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active"
             ><span class="text-center">SITE</span>
@@ -151,35 +151,42 @@
          class="list-group-item list-group-item-action py-2 ripple"
          ><i class="fas fa-money-bill fa-fw me-3"></i><span>Sites</span></a
         >
+        
           <a
             class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active"
-            ><span class="text-center">SOCIAL_ACCOUNTS</span>
+            ><span class="text-center">SOCIAL ACCOUNTS</span>
          </a>
+         
          <a
          href="{% url 'socialaccount_list' %}"
          class="list-group-item list-group-item-action py-2 ripple"
          ><i class="fas fa-money-bill fa-fw me-3"></i><span>Social Accounts</span></a
         >
+
+        <a
+        href="{% url 'socialapp_list' %}"
+        class="list-group-item list-group-item-action py-2 ripple"
+        ><i class="fas fa-money-bill fa-fw me-3"></i><span>Social applications</span></a
+       >
+       
          <a
          href="{% url 'socialtoken_list' %}"
          class="list-group-item list-group-item-action py-2 ripple"
-         ><i class="fas fa-money-bill fa-fw me-3"></i><span>Social application tokens</span></a
+         ><i class="fas fa-money-bill fa-fw me-3"></i><span>Social Tokens</span></a
         >
-         <a
-         href="{% url 'socialapp_list' %}"
-         class="list-group-item list-group-item-action py-2 ripple"
-         ><i class="fas fa-money-bill fa-fw me-3"></i><span>Social applications</span></a
-        >
+         
+         
           <a
             class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active"
             ><span class="text-center">USER_ACCOUNTS</span>
          </a>
+         
          <a
          href="{% url 'contact_list' %}"
          class="list-group-item list-group-item-action py-2 ripple"
          ><i class="fas fa-money-bill fa-fw me-3"></i><span>Contacts</span></a
         >
-      {% endcomment %}
+     
        {% else %}
        <a
          href="{% url 'custom_login' %}"
@@ -213,7 +220,7 @@
         </button>
   
         <!-- Brand -->
-        <a class="navbar-brand" href="">
+        <a class="navbar-brand" href="{% url 'index' %}">
           <h4><center>Admin Panel</center></h4>
         </a>
       
