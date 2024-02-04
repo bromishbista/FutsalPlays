@@ -16,7 +16,14 @@ from django.urls import path, include
 
 
 urlpatterns = [
-    
+
+path('search-list', views.fusallistAjax),
+path('searchfutsal', views.searchfutsal, name="searchfutsal"),
+
+ path('teams/', views.teams, name="teams"),
+ path('team/', views.teams, name="team"),
+
+
 #login
     path('admin/login/?next=/admin/', custom_login, name='custom_login'),
     path('login/', authviews.loginpage, name="login"),
@@ -41,6 +48,8 @@ urlpatterns = [
     path('register/', authviews.register, name="register"),
     path('login/', authviews.loginpage, name="login"),
     path('logout/', authviews.logoutpage, name="logout"),
+
+#password reset
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='password_reset.html'), name="password_reset"),
     path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name="password_reset_done"),
     path('password_reset_confirm/<uidb64>/<token>/', auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name="password_reset_confirm"),

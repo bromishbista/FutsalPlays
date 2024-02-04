@@ -1,0 +1,67 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %} Dashboard {% endblock title %} {% block body %}
+<!-- sliders -->
+<section class="foot-search">
+  <div class="footsal-section">
+    <div class="search-section-form">
+      <div class="search-title">
+        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item">Teams</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- sliders -->
+<section>
+  <div class="test-section">
+    <h3>All Futasl Teams</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic natus quod,
+      deserunt harum libero repudiandae cum earum. Nostrum totam mollitia veniam
+      voluptatem quis quia laudantium. Architecto quibusdam minima sit
+      exercitationem?
+    </p>
+  </div>
+</section>
+<!-- sliders -->
+<div class="text-center mb-3" style="font-size:50px">
+  <a href="{% url 'match_create' %}" class="btn btn-danger" >Create Match</a>
+</div>
+<section>
+  <div class="container">
+    {% for team in teams %}
+    <div class="row">
+        {% if team.team_image %}
+        <div class="col-lg-6 col-md-6 col-sm-12 py-3">
+            <img
+            src="{{team.team_image.url}}"
+            alt="" class="img-thumbnail"
+            style="width: 500px; height: 250px; object-fit: cover"/>
+        </div>
+        {% endif %}
+        <div class="col-lg-6 col-md-6 col-sm-12 py-3">
+          <a href="{% url 'team_detail' team.id %}" class="text-decoration-none">
+            <h4>{{team.name}}</h4></a
+          >
+          <p>From {{team.location}}</p>
+          <p>Join Date: {{team.join_date}}</p>
+        </div>
+    </div>
+    {% endfor %}
+    
+  </div>
+  <div class="pagination-custom">
+    <a href="">Pre</a>
+    <a href="">1</a>
+    <a href="">2</a>
+    <a href="">3</a>
+    <a href="">Next</a>
+  </div>
+</section>
+
+{% endblock %}

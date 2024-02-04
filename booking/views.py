@@ -53,6 +53,23 @@ def get_recommendations():
     futsals = sorted(futsals, key=lambda x: x.distance)
     return futsals[:5] # Return top 5 recommended futsals
 
+#getting user locations
+
+from django.shortcuts import render
+from django.http import HttpResponse
+
+def get_user_location(request):
+    if request.method == 'GET':
+        return render(request, 'get_location.html')
+    elif request.method == 'POST':
+        latitude = float(request.POST['latitude'])
+        longitude = float(request.POST['longitude'])
+        # TODO: Use latitude and longitude to find nearby Futsals
+        return HttpResponse('Got location: {}, {}'.format(latitude, longitude))
+    else:
+        return HttpResponse('Method not allowed', status=405)
+
+# index page
 def index(request):
     futsals = Futsal.objects.all()
     context = {'futsals': futsals}
@@ -431,3 +448,214 @@ class BookFutsal(View):
                 for error in errors:
                     messages.error(request, f"{field}: {error}")
         return redirect('/book_futsal/')
+    
+
+
+
+
+
+#CRUD for book Futsal start
+
+class BookFutsal(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            team_status = Team.objects.filter(user=request.user)
+        else:
+            team_status = None
+        context = {
+            'form': BookFutsalForm(),
+            'team_status': team_status
+        }
+        return render(request, 'booking.html', context)
+
+    def post(self, request):
+        form = BookFutsalForm(request.POST)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+            book_id = instance.id
+            return redirect("/khalti-request/" + str(book_id))
+        else:
+            # Display validation errors as messages
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
+        return redirect('/book_futsal/')
+
+
+
+# CRUD operations for  Futsal start
+
+def futsal_list(request):
+    futsals = Futsal.objects.all()
+    searchedterm=request.GET.get('futsalsearch')
+    if searchedterm:
+        futsals = futsals.filter(Q(name__icontains=searchedterm)|Q(price__icontains=searchedterm)|Q(location__icontains=searchedterm)).distinct()
+    return render(request, 'futsal.html', {'futsals': futsals})
+
+
+from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+from .models import Futsal, Review, ChatMessage
+from .form import ReviewForm, ChatMessageForm
+
+@login_required
+def futsal_details(request, pk):
+    futsal = get_object_or_404(Futsal, pk=pk)
+    reviews = Review.objects.filter(futsal=futsal)
+    chat_messages = ChatMessage.objects.filter(futsal=futsal).order_by('timestamp')
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            review = form.save(commit=False)
+            review.futsal = futsal
+            review.user = request.user
+            review.save()
+            messages.success(request, 'Review added successfully.')
+            return redirect('futsal_detail', pk=futsal.pk)
+        else:
+            chat_form = ChatMessageForm(request.user, futsal, request.POST)
+            if chat_form.is_valid():
+                chat_message = chat_form.save(commit=False)
+                chat_message.user = request.user
+                chat_message.futsal = futsal
+
+                chat_message.save()
+                return redirect('futsal_detail', pk=futsal.pk)
+    else:
+        form = ReviewForm()
+        chat_form = ChatMessageForm(request.user, futsal)
+    return render(request, 'futsal_detail.html', {'futsal': futsal, 'reviews': reviews, 'form': form, 'chat_messages': chat_messages, 'chat_form': chat_form,})
+
+#CRUD for  Match end
+def match(request):
+    if request.user.is_authenticated:
+        team_status = Team.objects.filter(user=request.user)
+    else:
+        team_status= None
+
+    match = Match.objects.all() 
+    context = {'match':match,
+            'team_status': team_status,
+               }
+    return render(request, 'matches.html', context)
+
+
+# CRUD for  Team list 
+
+def team(request):
+    if request.user.is_authenticated:
+        team_status = Team.objects.filter(user=request.user)
+    else:
+        team_status= None
+    team = Team.objects.all() 
+    context = {
+        'teams':team,
+        'team_status': team_status,
+            }
+
+    return render(request, 'teams.html', context)
+
+# creating class for creating team 
+
+class CreateTeam(View):
+    def get(self, request):
+        if request.user.is_authenticated:
+            team_status = Team.objects.filter(user=request.user)
+        else:
+            team_status= None
+        context = {
+            'form': TeamForm(),
+            'team_status': team_status,
+        }
+        return render(request, 'create_team.html', context)
+    
+    def post(self, request):
+        form = TeamForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.user = request.user
+            instance.save()
+        else:
+            print('error arised', form.errors)
+        return redirect('team')
+
+# creating class for editing  team 
+
+class EditTeam(View):
+    def get(self, request, id):
+        if request.user.is_authenticated:
+            team_status = Team.objects.filter(user=request.user)
+        else:
+            team_status= None
+        data = Team.objects.get(id=id)
+        context = {
+            'form': TeamForm(instance=data),
+            'team_status': team_status,
+        }
+        return render(request, 'edit_team.html', context)
+    
+    def post(self, reqeust, id):
+        data = Team.objects.get(id=id)
+        form = TeamForm(reqeust.POST, reqeust.FILES, instance=data)
+        if form.is_valid():
+            form.save()
+        return redirect('team')
+
+#  teams details 
+def team_detail(request, id):
+    if request.user.is_authenticated:
+        team_status = Team.objects.filter(user=request.user)
+    else:
+        team_status= None
+
+    team = Team.objects.get(id = id)
+    context = {
+        'team': team,
+        'team_status': team_status,
+        }
+    return render(request, 'teams-details.html', context)
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .models import Team, Match
+from .form import TeamForm, MatchForm
+
+@login_required
+def create_match(request):
+    if request.method == 'POST':
+        form = MatchForm(request.POST, request.FILES)
+        if form.is_valid():
+            match = form.save(commit=False)
+            match.save()
+            messages.success(request, 'Match created successfully')
+            return redirect('home')
+    else:
+        form = MatchForm()
+    return render(request, 'create_match.html', {'form': form})
+
+@login_required
+def create_team(request):
+    try:
+        team = request.user.team
+        messages.warning(request, 'You already have a team')
+        return redirect('home')
+    except Team.DoesNotExist:
+        if request.method == 'POST':
+            form = TeamForm(request.POST, request.FILES)
+            if form.is_valid():
+                team = form.save(commit=False)
+                team.user = request.user
+                team.save()
+                messages.success(request, 'Team created successfully')
+                return redirect('home')
+        else:
+            form = TeamForm()
+        return render(request, 'create_team.html', {'form': form})

@@ -62,13 +62,13 @@
                                 <a class="nav-link" href"">About</a>
                             </li> -->
                             <li class="nav-item">
-                                <a class="nav-link" href="">Futsal</a>
+                                <a class="nav-link" href="{% url 'futsal' %}"">Futsal</a>
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link" href="">Match</a>
                             </li> -->
                             <li class="nav-item">
-                                <a class="nav-link" href="">Create Team</a>
+                                <a class="nav-link" href="{% url 'create_team' %}">Create Team</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="">Contact</a>
@@ -81,11 +81,11 @@
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="">Gallery</a></li>
                                     <!-- <li><a class="dropdown-item" href="">Testimonials</a></li> -->
-                                    <li><a class="dropdown-item" href="">Match</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'match_list' %}">Match</a></li>
                                     <li> <a class="dropdown-item" href="">Blogs</a></li>
                                 </ul>
                             </li>
-                            {% comment %} 'team_detail' team_status.id% {% endcomment %}
+                           
                         </ul>
                             {% if request.user.is_authenticated %}
                        
@@ -101,7 +101,7 @@
                                     <li style="list-style-type: none;"><a class="dropdown-item" href={% url 'teams' %} >View Team</a></li>
                                    
                                     {% else %}
-                                    <li style="list-style-type: none;"><a class="dropdown-item" href="">Create Team</a></li>
+                                    <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'create_team' %}">Create Team</a></li>
                                     {% endif %}
                                     <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a></li>
                                     {% else %}
@@ -168,7 +168,7 @@
 <!-- footer section -->
 
     <!-- bootstrap Link -->
-    <script src="{% static 'js/min.js' %}"></script>
+    <script src="{% static 'JS/min.js' %}"></script>
     <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" 

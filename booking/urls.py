@@ -13,6 +13,9 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
 
     path('adminmatch/', views.match, name='adminmatch'),
+
+    path('create-match/', views.create_match, name='create_match'),
+    path('create-team/', views.create_team, name='create_team'),
     # path('login/', LoginView, name='login'),
     # path('register/', RegisterView, name='register'),
     
@@ -22,8 +25,13 @@ urlpatterns = [
 
     # path('futsal/', views.futsal_list, name='futsal'),
     # path('futsal/<int:pk>/', views.futsal_details, name='futsal_detail'),
+
 #book_futsal booking futsal 
- path('book_futsal/', views.BookFutsal.as_view(), name='book_futsal'),
+    path('book_futsal/', views.BookFutsal.as_view(), name='book_futsal'),
+
+    
+    path('futsal/', views.futsal_list, name='futsal'),
+    path('futsal/<int:pk>/', views.futsal_details, name='futsal_detail'),
 
 
 # CRUD for breadcrumbs operations 
@@ -86,6 +94,12 @@ urlpatterns = [
     path('slidercreate/', views.Slider_create, name='slider_create'),
     path('slider/<int:pk>/edit/', views.Slider_edit, name='slider_edit'),
     path('slider/<int:pk>/delete/', views.Slider_delete, name='slider_delete'),
+
+    path('adminmatch/', views.match, name='adminmatch'),
+    path('adminteam/', views.team, name='adminteam'),
+    path('create_team/', views.CreateTeam.as_view(), name='create_team'),
+    path('edit_team/<int:id>/', views.EditTeam.as_view(), name='edit_team'),
+    path('team_detail/<int:team_id>/', views.team_detail, name='team_detail'),
 
 
 ]

@@ -61,10 +61,10 @@
                 </form>
                 <h4 class="text-center pt-5">Sign in with</h4>
                 <div class="already-account">
-                    <p><a href="" style="text-decoration: none;" class="sign-btn">Forget Password?</a></p>
+                    <p><a href="{% url 'password_reset' %}" style="text-decoration: none;" class="sign-btn">Forget Password?</a></p>
                 </div>
                 <div class="signin-with d-flex justify-content-center">
-                    {% comment %} <a href="{% provider_login_url 'google'%}?next=/"><i class="fa-brands fa-google"></i>oogle</a> {% endcomment %}
+                     {% comment %} <a href="{% provider_login_url 'google'%}?next=/"><i class="fa-brands fa-google"></i>oogle</a> {% endcomment %}
                     <a href=""><i class="fa-brands fa-facebook"></i>acebook</a>
                 </div>
             </div>

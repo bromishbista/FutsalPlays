@@ -8,7 +8,7 @@ from django.contrib import messages
 from .form import *
 from allauth.account.models import EmailAddress
 
-from booking.models import Blog, Futsal, Book_futsal, Team, Testimonials, User, Review
+from booking.models import Blog, Details, Futsal, Book_futsal, Team, Testimonials, User, Review
 from django.contrib.admin.views.decorators import staff_member_required
 from calendar import month_name
 from django.contrib.auth.decorators import login_required
@@ -53,6 +53,50 @@ def index(request):
     }
     return render(request, 'admin/index.html', context)
 
+# futsal list Ajax
+from django.http import JsonResponse
+
+def fusallistAjax(request):
+    futsal = Futsal.objects.filter(status=0).values_list('name', 'price', 'location', flat=True)
+    futsallist = list(futsal)
+    return JsonResponse(futsallist, safe=False)
+from django.db.models import Q
+def searchfutsal(request):
+   
+    searchedterm = request.GET.get('futsalsearch')
+    searched = request.GET.get('futsalcost')
+    print(searchedterm)
+    print(searchedterm)
+
+    
+    futsaldata = Futsal.objects.filter(Q(name__icontains=searchedterm)|Q(price__icontains=searched)).distinct()
+    if futsaldata:
+        return redirect('futsal')
+    
+    else:
+        messages.info(request, "No futsal matched your search")
+        return redirect(request.META.get('HTTP_REFERER'))
+
+#teams in futsal
+def teams(request):
+    if request.user.is_authenticated:
+        team_status = Team.objects.filter(user=request.user)
+    else:
+        team_status = None
+    context = {
+    'team_status': team_status,
+    }
+    return render(request, 'teams.html')
+
+def teams(request):
+    detail = Details.objects.all()
+    teams = Team.objects.all()
+    if request.user.is_authenticated:
+        team_status = Team.objects.filter(user=request.user)
+    else:
+        team_status = None
+    context = {'detail':detail,'teams':teams, 'team_status': team_status}
+    return render(request, 'teams.html', context)
 
 
 
