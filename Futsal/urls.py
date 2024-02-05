@@ -14,8 +14,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('', include('user_acc.urls')),
-    # path('', include('groupchat.urls')),
+    path('', include('groupchat.urls')),
     path('', include('booking.urls')),
     path('', include('allauth.urls')),
-    # path('ratings/', include('star_ratings.urls', namespace='ratings')),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

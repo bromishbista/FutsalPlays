@@ -16,6 +16,9 @@ urlpatterns = [
 
     path('create-match/', views.create_match, name='create_match'),
     path('create-team/', views.create_team, name='create_team'),
+
+    path('recommendation/', views.futsal_recommendation, name='futsal_recommendation'),
+    path('location/', views.get_user_location, name='get_location'),
     # path('login/', LoginView, name='login'),
     # path('register/', RegisterView, name='register'),
     
@@ -23,8 +26,8 @@ urlpatterns = [
     # path('booking/', booking, name='booking'),
  
 
-    # path('futsal/', views.futsal_list, name='futsal'),
-    # path('futsal/<int:pk>/', views.futsal_details, name='futsal_detail'),
+   
+   
 
 #book_futsal booking futsal 
     path('book_futsal/', views.BookFutsal.as_view(), name='book_futsal'),

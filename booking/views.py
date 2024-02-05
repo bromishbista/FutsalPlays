@@ -24,6 +24,7 @@ from math import radians, sin, cos, sqrt, atan2
 from django.conf import settings
 
 from .models import Futsal
+# map Api 
 def get_user_location():
     url = "https://www.googleapis.com/geolocation/v1/geolocate?key=REMOVED_GOOGLE_API_KEY" + settings.GOOGLE_MAPS_API_KEY
     response = requests.post(url)
@@ -68,6 +69,44 @@ def get_user_location(request):
         return HttpResponse('Got location: {}, {}'.format(latitude, longitude))
     else:
         return HttpResponse('Method not allowed', status=405)
+    
+# recommending the futsal 
+    
+from django.shortcuts import render
+from django.db.models import Q
+from .models import Futsal
+
+def futsal_recommendation(request):
+    latitude = request.GET.get('latitude')
+    longitude = request.GET.get('longitude')
+
+    if latitude and longitude:
+        futsals = Futsal.objects.filter(Q(latitude__isnull=False) & Q(longitude__isnull=False))
+        for futsal in futsals:
+            distance = calculate_distance(latitude, longitude, futsal.latitude, futsal.longitude)
+            futsal.distance = round(distance, 2)
+        futsals = sorted(futsals, key=lambda futsal: futsal.distance)
+        return render(request, 'futsal_recommendation.html', {'futsals': futsals})
+    else:
+        return render(request, 'get_location.html')
+
+from decimal import Decimal
+from geopy.distance import geodesic
+
+def calculate_distance(latitude1, longitude1, latitude2, longitude2):
+    # Convert the latitude and longitude parameters to Decimal objects
+    latitude1 = Decimal(latitude1)
+    longitude1 = Decimal(longitude1)
+    latitude2 = Decimal(latitude2)
+    longitude2 = Decimal(longitude2)
+
+    # Calculate the distance between the two points using the geodesic function from the geopy module
+    distance = geodesic((latitude1, longitude1), (latitude2, longitude2)).km
+    return distance
+
+
+def deg2rad(deg):
+    return deg * (math.pi/180)
 
 # index page
 def index(request):
@@ -77,6 +116,17 @@ def index(request):
 
 def booking(request):
     return render(request, 'booking.html')
+
+
+# for userdashboard 
+@login_required(login_url='login')
+def userdashboard(request):
+    user_groups = UserGroups.objects.filter(members=request.user)
+    futsal_bookings = Book_futsal.objects.filter(user=request.user)
+    context = {'user_groups': user_groups, 'futsal_bookings': futsal_bookings}
+    return render(request, 'userdashboard.html', context)
+
+
 
 
 # CRUD Operations for Breadcrumbs 
@@ -365,13 +415,17 @@ def chatMessage_edit(request, pk):
         return redirect('chatMessage_list')
     return render(request, 'admin/booking/chatMessage/update.html', {'form': form})
 
+
 def chatMessage_delete(request, pk):
     chatMessage = get_object_or_404(ChatMessage, pk=pk)
     if request.method == 'POST':
-        ChatMessage.delete()
+        chatMessage.delete()
         return redirect('chatMessage_list')
     return render(request, 'admin/booking/chatMessage/delete.html', {'chatMessage': chatMessage})
 
+
+
+# matches pages    
 def match(request):
     if request.user.is_authenticated:
         team_status = Team.objects.filter(user=request.user)

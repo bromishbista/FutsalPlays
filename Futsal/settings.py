@@ -177,3 +177,8 @@ EMAIL_HOST_USER = 'bromishbista2003@gmail.com'
 EMAIL_HOST_PASSWORD = 'okokok'
 EMAIL_PORT = 587
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
+# google map API key (Google cloud Platform)
+
+GOOGLE_MAPS_API_KEY = 'REMOVED_GOOGLE_API_KEY'
+
