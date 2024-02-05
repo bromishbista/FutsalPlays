@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Group Chat: {{ group.name }}</h1>
+  <ul>
+    {% for message in messages %}
+      <li>{{ message.sender.username }}: {{ message.content }}</li>
+    {% endfor %}
+  </ul>
+  <form method="post" action="{% url 'post_message' group_id=group.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Send</button>
+  </form>
+{% endblock %}

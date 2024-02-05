@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<script>
+  window.onload = function() {
+    getLocation();
+};
+</script>
+
+<p id="demo"></p>
+
+{% endblock %}
+{% block scripts %}
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+  window.location.href = "/recommendation/?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude;
+}
+</script>
+{% endblock scripts %}
