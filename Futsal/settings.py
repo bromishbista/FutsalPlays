@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'jazzmin',
     'django.contrib.admin',
-    
+    'star_ratings',
     'django.contrib.auth',
     'django.contrib.sites',
     'django.contrib.contenttypes',
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'groupchat',
     'rest_framework',
+
 ]
 
 MIDDLEWARE = [
