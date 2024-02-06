@@ -20,11 +20,31 @@
     <link rel="stylesheet" href="{% static 'css/book.css' %}">
     {% block css %}
     {% endblock css %}
+    <style>
+        /* Custom CSS for navbar hover effect */
+        .footsal-navbar .navbar-nav .nav-item:hover .nav-link {
+            background-color: #4b208c !important;
+            color: white !important;
+            border: #4b208c;
+            border-radius: 8px;
+
+            
+        }
+         /* Custom CSS to increase gap between navbar items */
+         .navbar-nav .nav-item {
+            margin-right: 20px; /* Adjust the margin as needed */
+        }
+
+        /* Adjusting the last navbar item's margin to prevent extra gap */
+        .navbar-nav .nav-item:last-child {
+            margin-right: 0;
+        }
+    </style>
 </head>
 
 <body>
     <i class="fa-solid fa-angle-up" onclick="topFunction()" id="myBtn" title="Go to top"></i>
-    <div class="header container">
+    {% comment %} <div class="header container">
         <div class="top-part top-content">
             {% for item in detail %}
             <a href="mailto:example@gmail.com">{{item.email}}</a>
@@ -36,11 +56,11 @@
             <a href="tel:1236547891"><i class="fa-brands fa-instagram"></i></a>
         </div>
      
-    </div>
+    </div> {% endcomment %}
     <header>
-        <div class="footsal-navbar  navbar-light bg-light" id="top-arrow">
+        <div class="footsal-navbar  navbar-light bg-light" id="top-arrow" >
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container">
+                <div class="container" style="border-bottom: 2px solid blue; height: 4rem">
                     {% for item in detail %}
                     <a class="navbar-brand" href="#"><img src="{{item.logo.url}}" alt="" width="50"
                             height="40"></a>{% endfor %}
@@ -53,7 +73,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="/">Home</a>
+                                <a class="nav-link active" aria-current="page" href="/" style>Home</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'book_futsal' %}">Booking</a> 
@@ -105,9 +125,11 @@
                                     {% endif %}
                                     <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'logout' %}">Sign Out</a></li>
                                     {% else %}
-                                    <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'register' %}">Sign Up</a></li>
-                                    <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'login' %}">Sign In</a></li>
-                                    <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'index' %}">System</a></li>
+                                    <div style="display: flex; gap: 15px;">
+                                        <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'register' %}">Sign Up</a></li>
+                                        <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'login' %}">Sign In</a></li>
+                                        <li style="list-style-type: none;"><a class="dropdown-item" href="{% url 'index' %}">System</a></li>
+                                    </div>
                                     {% endif %}
                                 </ul>
                             </li>
@@ -131,15 +153,15 @@
 <!-- footer section -->
 <footer>
     <div class="footer-main-section container">
-        <div class="footer-wrapper">
-            <div class="footer-links-items">
+       
+            {% comment %} <div class="footer-links-items">
                 <div class="footer-about foot-link">
                     {% for item in detail %}
                     <img src="{{item.logo.url}}" alt="" width="60" height="50">
                     <p>{{item.footer_description}}</p>
                     {% endfor %}
                 </div>
-            </div>
+            </div> {% endcomment %}
             {% comment %} <div class="footer-links-items">
                 <div class="quick-link foot-link">
                     <a href="">Home</a>
