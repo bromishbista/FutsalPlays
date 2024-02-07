@@ -3,9 +3,9 @@
 {% block title %}Booking{% endblock title %}
 {% block body %}
 <section class="book-futsal" style="display: flex; justify-content: center; align-items: center; height: calc(100vh + 20rem); background-color: #f9f9f9; background-image: url({% static 'img/court.webp' %}); background-size: cover;">
-    <div class="book-form login-form" style="display: flex; flex-direction: row; width: 60%; border-radius: 10px; overflow: hidden; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); background-color: ; margin-top: -10rem">
-        <div class="book-form-content" style="padding: 50px; width: 80%; height: 700px; margin-left: 10px;">
-            <div class="futsal-title" style="color: #333; font-size: 24px; margin-bottom: 20px;">
+    <div class="book-form login-form" style="display: flex; flex-direction: column; max-width: 800px; border-radius: 10px; overflow: hidden; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); background-color: ; margin-top: -10rem">
+        <div class="book-form-content" style="padding: 50px; width: 100%; margin-left: 10px;">
+            <div class="futsal-title" style="color: #333; font-size: 24px; margin-bottom: 20px; text-align: center;">
                 <h2>Book Futsal Now</h2>
             </div>
             {% for message in messages %}
@@ -18,9 +18,9 @@
                 {% csrf_token %}
                 {{ form.as_p }}
                 {% if request.user.is_authenticated %}
-                <button class="button" type="submit" name="submit" style="display: inline-block; background-color: #007bff; color: #fff; font-size: 16px; padding: 12px 50px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none;">Book Futsal</button>
+                <button class="button" type="submit" name="submit" style="display: block; margin: 0 auto; background-color: #007bff; color: #fff; font-size: 16px; padding: 12px 50px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none;">Book Futsal</button>
                 {% else %}
-                <a href="{% url 'login' %}" class="button" style="display: inline-block; background-color: #007bff; color: #fff; font-size: 16px; padding: 12px 10rem; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; width: 100%;">Book</a>
+                <a href="{% url 'login' %}" class="button" style="display: block; margin: 0 auto; background-color: #007bff; color: #fff; font-size: 16px; padding: 12px 10rem; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; width: 100%; text-align: center;">Book</a>
                 {% endif %}
             </form>
         </div>

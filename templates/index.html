@@ -1,68 +1,69 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %}Dashboard{% endblock title %}
-{% block body %}
 
+{% block body %}
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
   
   *,
   *::before,
-  *::after{
+  *::after {
       margin: 10;
       padding: 10;
       box-sizing: border-box;
   }
-  .Home-Container{
-      {% comment %} margin-top: 3.2rem; {% endcomment %}
-  }
+  
+  /* .Home-Container {
+      margin-top: 3.2rem; 
+  } */
+  
   .HomeHeaderContainer {
       height: 100vh;
       width: 100%;
       overflow: hidden;
-      background: url('{% static "img/bannerbg.jpg" %}');
-      background-repeat: no-repeat;
+      background: url('{% static "img/bannerbg.jpg" %}') no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
     }
   
-    .hearContainer{
+  .hearContainer {
       display: flex;
       justify-content: center;
       align-items: center;
     }
   
-    .headerQuote{
+  .headerQuote {
       margin-bottom: 4rem;
     }
   
-    .headerQuote h1{
+  .headerQuote h1 {
       line-height: 4.5rem;
       font-size: 62px;
       font-family: 'Poppins', sans-serif;
       margin-right: 4rem;
       color: #ffff;
-  
     }
-    .headerQuote .above-quote{
+  
+  .headerQuote .above-quote {
       font-size: 20px;
       font-family: 'Poppins', sans-serif;
       margin-bottom: 15px;
       color: #AAF40C;
     }
   
-    .headerQuote h1 span{
+  .headerQuote h1 span {
       color: #AAF40C;
     }
   
-    .Home-Container img {
+  .Home-Container img {
       height: auto;
       max-width: 420px;
     }
   
-    .VenueListContainer{
+  .VenueListContainer {
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -71,28 +72,26 @@
       margin-bottom: 3rem;
     }
   
-    .venueListQuote{
+  .venueListQuote {
       font-family: 'Poppins', sans-serif;
       margin-bottom: 2rem;
-      /* display: flex;
-      flex-direction: column; */
     }
   
-    .venueListQuote h2 span{
+  .venueListQuote h2 span {
       color: #457eff;
     }
   
-    .venueListQuote p{
-      max-width: 700px
+  .venueListQuote p {
+      max-width: 700px;
     }
   
-    .venueContainer {
+  .venueContainer {
       display: flex;
       gap: 1rem;
       transition: transform 0.5s ease-in-out; /* Add a smooth transition for sliding */
     }
   
-    .venueList{
+  .venueList {
       height: 28rem;
       width: 25rem;
       border: 1px solid #edf0f2;
@@ -100,12 +99,12 @@
       transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     }
   
-    .venueList.first {
+  .venueList.first {
       opacity: 0;
       transform: translateX(-100%);
     }
   
-    .venueImage{
+  .venueImage {
       height: 12rem; 
       width: 100%;
       display: flex; 
@@ -113,8 +112,8 @@
       align-items: center; 
       overflow: hidden; 
     }
-    
-    .venueImage img{
+  
+  .venueImage img {
       height: 100%; 
       width: 100%;
       object-fit: cover; 
@@ -122,25 +121,25 @@
       border-top-left-radius: 8px;
     }
   
-    .likeIcon{
+  .likeIcon {
       margin-top: 10px;
       margin-left: 22rem;
       display: block;
       font-size: 1.2rem;
     }
   
-    .venueInfoContainer{
+  .venueInfoContainer {
       padding-left: 18px;
       padding-top: 20px;
     }
   
-    .venueName{
+  .venueName {
       font-size: 1.3rem;
       font-weight: 600;
       font-family: 'Poppins', sans-serif;
     }
-    
-    .venueInfo{
+  
+  .venueInfo {
       color: #7b8292;
       margin-top: 10px;
       display: flex;
@@ -148,49 +147,46 @@
       font-size: 1rem;
       font-family: 'Poppins', sans-serif;
     }
-    
-    .venueIcon {
+  
+  .venueIcon {
       font-size: 1.2rem;
     }
   
-    .venueInfo .venueText{
-      margin-left: 5px;
-    }
-    
-    .venueInfoContainer .venueInfo:nth-child(3) {
+  .venueInfo .venueText {
       margin-left: 5px;
     }
   
-    .venueInfoContainer hr{
+  .venueInfoContainer .venueInfo:nth-child(3) {
+      margin-left: 5px;
+    }
+  
+  .venueInfoContainer hr {
       margin-top: 1.2rem;
     }
   
-    .userInfo-bookButton{
+  .userInfo-bookButton {
       margin-top: 15px;
       display: flex;
       flex-direction: row;
-      /* justify-content: space-between; */
-      /* width: 100%;  */
     }
   
-    .userInfo{
+  .userInfo {
       display:  flex;
-      /* justify-content: center; */
       align-items: center;
-      flex-grow: 1;
       gap: 10px;
     }
   
-    .userInfo img{
+  .userInfo img {
       border-radius: 50%;
       height: 2.5rem;
     }
   
-    .userInfo .userName{
+  .userInfo .userName {
       color: #7b8292;
       font-weight: 500;
     }
-    .bookButton{
+  
+  .bookButton {
       border: 2px solid #457eff; 
       height: 3rem;
       width: 20rem;
@@ -202,16 +198,16 @@
       font-weight: 600;
       margin-right: 1rem;
       cursor: pointer;
-      flex-grow: 1
+      flex-grow: 1;
     }
-    
-    .slide-dots {
+  
+  .slide-dots {
       display: flex;
       justify-content: center;
       margin-top: 1rem;
     }
-    
-    .dot {
+  
+  .dot {
       width: 10px;
       height: 10px;
       border-radius: 50%;
@@ -219,247 +215,170 @@
       margin: 0 5px;
       cursor: pointer;
     }
-    
-    .dot.active {
+  
+  .dot.active {
       background-color: #457eff;
     }
+  
+  .responsive-img {
+      max-width: 100%;
+      height: auto;
+      transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
+    }
+  
+  .responsive-img:hover {
+      transform: scale(1.1); /* Increase the size on hover */
+    }
 </style>
-    
-    <!-- sliders -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <!-- {% for row in Slider %} -->
-            <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}" data-interval="100">
-                <img src="{{ row.image.url }}" class="d-block  w-100" alt="{{ row.title }}">
-                <div class="carousel-caption" style="background-color:rgba(228, 228, 240, 0);" >
-                </br>
-                    <a class="btn btn-success" href="{% url 'contact' %}" role="button">Contact us for more details</a>
-                    <a class="btn btn-success" href="{% url 'book_futsal' %}" role="button">Book Now</a>
-                </div>
-            </div>
-            <!-- {% endfor %}   -->
-        </div>
-    </div>
-    <!-- sliders -->
-    <section class="latest-bg">
-      <section class="Home-Container">
-        <div class="HomeHeaderContainer">
-          <div class="hearContainer">
-            <div class="headerQuote">
-              <div class="above-quote">
-                World Class Sports Venues and Premium Courts
-              </div>
-              <h1>
-                Choose Your <span>Venues</span> <br />
-                And Start Your Training
-              </h1>
-            </div>
-      
-            <style>
-              .responsive-img {
-                  max-width: 100%;
-                  height: auto;
-                  transition: transform 0.3s ease-in-out; /* Add a smooth transition effect */
-              }
-          
-              .responsive-img:hover {
-                  transform: scale(1.1); /* Increase the size on hover */
-              }
-          </style>
-           <img src="{% static 'img/whi.png' %}" alt="" class="responsive-img" />
-          
 
-          </div>
-        </div>
-      
-        {% comment %} <div class="VenueListContainer">
-          <div class="venueListQuote">
-            <h2>
-              Featured <span>Venues</span>
-            </h2>
-          </div>
-      
-          <div class="venueContainer">
-            <!-- Example Venue Card -->
-            <div class="venueList">
-              <div class="venueImage">
-                <img src="" alt="Venue Name" />
-                
-              </div>
-      
-              <div class="likeIconContainer">
-                <!-- Assuming BiLike is a like icon image -->
-                <img src="like-icon.png" class="likeIcon" alt="Like" />
-              </div>
-      
-              <div class="venueInfoContainer">
-                <div class="venueName">Venue Name</div>
-                <div class="venueInfo">
-                  <!-- Assuming IoLocationOutline is a location icon image -->
-                  <img src="location-icon.png" class="venueIcon" alt="Location" />
-                  <span class="venueText">Venue Address</span>
-                </div>
-                <div class="venueInfo">
-                  <!-- Assuming SlCalender is a calendar icon image -->
-                  <img src="calendar-icon.png" class="venueIcon" alt="Calendar" />
-                  <span class="venueText">Available</span>
-                </div>
-      
-                <hr style="color: #d1d8e6; opacity: 0.5; width: 95%" />
-      
-                <div class="userInfo-bookButton">
-                  <div class="userInfo">
-                    <img src="random-user-pic.jpg" alt="User" />
-                    <span class="userName">User Name</span>
-                  </div>
-      
-                  <div class="bookButton">
-                    <!-- Assuming SlCalender is a calendar icon image -->
-                    <img src="calendar-icon.png" alt="Calendar" />
-                    <p>Book</p>
-                  </div>
-                </div>
-              </div>
+<!-- Sliders -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        <!-- {% for row in Slider %} -->
+        <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}" data-interval="100">
+            <img src="{{ row.image.url }}" class="d-block  w-100" alt="{{ row.title }}">
+            <div class="carousel-caption" style="background-color:rgba(228, 228, 240, 0);">
+                </br>
+                <a class="btn btn-success" href="{% url 'contact' %}" role="button">Contact us for more details</a>
+                <a class="btn btn-success" href="{% url 'book_futsal' %}" role="button">Book Now</a>
             </div>
-            <!-- End of Example Venue Card -->
-          </div>
-        </div> {% endcomment %}
-      </section>
-    <div class="container py-5 text-center">
-      <h3>Futsal Near You!!!</h3>
+        </div>
+        <!-- {% endfor %}   -->
+    </div>
+</div>
+<!-- Sliders -->
+
+<section class="latest-bg">
+  <section class="Home-Container">
+    <div class="HomeHeaderContainer">
+      <div class="hearContainer">
+        <div class="headerQuote">
+          <div class="above-quote">World Class Sports Venues and Premium Courts</div>
+          <h1>
+            Choose Your <span>Venues</span> <br />
+            And Start Your Training
+          </h1>
+        </div>
+        <img src="{% static 'img/whi.png' %}" alt="" class="responsive-img" />
+      </div>
+    </div>
+  </section>
+  <div class="container py-5 text-center">
+    <h3>Futsal Near You!!!</h3>
     <ul>
-    {% for futsal in futsals %}
+      {% for futsal in futsals %}
         <li>{{ futsal.name }} - {{ futsal.location }}</li>
-    {% endfor %}
+      {% endfor %}
     </ul>
     <a class="text-center btn btn-warning" href="">Click to Recommends Nearest Futsal</a>
   </div>
-  </section>
-    <section class="foot-search">
-        <div class="footsal-section mt-4">
-            <div class="search-section-form">
-                <div class="search-title">
-                    <h3>Find your favourite futsal here</h3>
-                </div>
-                <form
-                action=""
-                method="get"
-                class="search-footsal"
-              >
-                {% csrf_token %}
-                <div class="footsal-search-main">
-                  <div class="form-left footsal-search d-flex">
-                    <i class="fa-solid fa-football fa-football1"></i>
-                    <input
-                      type="text"
-                      name="futsalsearch"
-                      value=""
-                      placeholder="Name of Futsal"
-                    />
-                  </div>
-                  <div class="form-left footsal-search d-flex">
-                    <i class="fa-solid fa-dollar-sign fa-football1"></i>
-                    <input
-                      type="text"
-                      name="futsalcost"
-                      value=""
-                      placeholder="Enter of Price"
-                    />
-                  </div>
-                  
-                </div>
-                <button type="submit" class="footsal-search-btn">Search</button>
-              </form>
-              
-            </div>
-        </div>
-    </section>
-    <!-- Footsal search section -->
+</section>
 
-    <!-- latest footsal -->
-    <section class="latest-bg">
-        <div class="container latest-footsal">
-            <div class="footsal-items" id="more-info">
-                <div class="test-section">
-                    <h3>Latest Futsal</h3>
-                    <p>Here is the list of all the latest futsal Grounds that connect with us.</p>
-                </div>
-                {% for futsal in futsals %}
-                <div class="footsal-item-wrapper">
-                    <div class="footsal-item pt-4">
-                        <img src="{{futsal.image.url}}" alt="" class="w-100">
-                        <div class="inner-footsal-items pt-4">
-                            {% comment %} <img src="{{futsal.image.url}}" alt="" style="width: 50px; height: 40px;"> {% endcomment %}
-                            <a href=""><i class="fa-solid fa-location-dot"></i>{{futsal.location}}</a>
-                            <p>Rs. {{futsal.price}}</p>
-                            <a href="{% url 'futsal' %}">
-                                <button class="more-info">More info</button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    <!-- latest footsal -->
- 
-<!-- testimonials -->
-<section class="testmonial-bg">
-    <div class="testimonials-section container">
-      <div class="test-section">
-        <h3>Testimonials</h3>
+<section class="foot-search">
+  <div class="footsal-section mt-4">
+    <div class="search-section-form">
+      <div class="search-title">
+        <h3>Find your favourite futsal here</h3>
       </div>
-      {% comment %} {% for item in testimonials %}
-      <div class="wrapper-test">
-        <div class="main-testimonials-items">
-          <div class="test-image">
-            <img src="{{item.image.url}}" alt="" style="width: 600px; height: 250px; object-fit:contain" />
+      <form action="" method="get" class="search-footsal">
+        {% csrf_token %}
+        <div class="footsal-search-main">
+          <div class="form-left footsal-search d-flex">
+            <i class="fa-solid fa-football fa-football1"></i>
+            <input type="text" name="futsalsearch" value="" placeholder="Name of Futsal" />
           </div>
-          <div class="test-message">
-            <p>{{item.description}}</p>
-            <div class="test-person">
-              <h3>{{item.name}}</h3>
-              <p>{{item.title}}</p>
-            </div>
+          <div class="form-left footsal-search d-flex">
+            <i class="fa-solid fa-dollar-sign fa-football1"></i>
+            <input type="text" name="futsalcost" value="" placeholder="Enter of Price" />
           </div>
         </div>
-      </div>
-      {% endfor %} {% endcomment %}
-    </div>
-  </section>
-    <!-- testimonials -->
-
-<!-- our Footsal Teams -->
-<section class="count-section">
-  {% for item in beadcrumbs %}
-<div class="container">
-  <div class="count">
-    <div class="count-item">
-      <h4>{{item.Total_Join_Teams}}</h4>
-      <p>Total Join Teams</p>
-    </div>
-    <div class="count-item">
-      <h4>{{item.Total_Play_Games}}</h4>
-      <p>Total Play Games</p>
-    </div>
-    <div class="count-item">
-      <h4>{{item.Total_Players}}</h4>
-      <p>Total Players</p>
-    </div>
-    <div class="count-item">
-      <h4>{{item.Total_Futsal_Ground}}</h4>
-      <p>Total Futsal Ground</p>
-    </div>
-    <div class="count-item">
-      <h4>{{item.Total_Winner_Teams}}</h4>
-      <p>Total Winner Teams</p>
+        <button type="submit" class="footsal-search-btn">Search</button>
+      </form>
     </div>
   </div>
-  {% endfor %}
-</div>
-
 </section>
-<!-- our Footsal Teams -->
 
+<!-- Latest Futsal -->
+<section class="latest-bg">
+  <div class="container latest-footsal">
+    <div class="footsal-items" id="more-info">
+      <div class="test-section">
+        <h3>Latest Futsal</h3>
+        <p>Here is the list of all the latest futsal Grounds that connect with us.</p>
+      </div>
+      {% for futsal in futsals %}
+        <div class="footsal-item-wrapper">
+          <div class="footsal-item pt-4">
+            <img src="{{futsal.image.url}}" alt="" class="w-100">
+            <div class="inner-footsal-items pt-4">
+              <a href=""><i class="fa-solid fa-location-dot"></i>{{futsal.location}}</a>
+              <p>Rs. {{futsal.price}}</p>
+              <a href="{% url 'futsal' %}">
+                <button class="more-info">More info</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- Latest Futsal -->
+
+<!-- Testimonials -->
+<section class="testmonial-bg">
+  <div class="testimonials-section container">
+    <div class="test-section">
+      <h3>Testimonials</h3>
+    </div>
+    <!-- {% for item in testimonials %}
+    <div class="wrapper-test">
+      <div class="main-testimonials-items">
+        <div class="test-image">
+          <img src="{{item.image.url}}" alt="" style="width: 600px; height: 250px; object-fit:contain" />
+        </div>
+        <div class="test-message">
+          <p>{{item.description}}</p>
+          <div class="test-person">
+            <h3>{{item.name}}</h3>
+            <p>{{item.title}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %} -->
+  </div>
+</section>
+<!-- Testimonials -->
+
+<!-- Our Futsal Teams -->
+<section class="count-section">
+  {% for item in beadcrumbs %}
+    <div class="container">
+      <div class="count">
+        <div class="count-item">
+          <h4>{{item.Total_Join_Teams}}</h4>
+          <p>Total Join Teams</p>
+        </div>
+        <div class="count-item">
+          <h4>{{item.Total_Play_Games}}</h4>
+          <p>Total Play Games</p>
+        </div>
+        <div class="count-item">
+          <h4>{{item.Total_Players}}</h4>
+          <p>Total Players</p>
+        </div>
+        <div class="count-item">
+          <h4>{{item.Total_Futsal_Ground}}</h4>
+          <p>Total Futsal Ground</p>
+        </div>
+        <div class="count-item">
+          <h4>{{item.Total_Winner_Teams}}</h4>
+          <p>Total Winner Teams</p>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</section>
+<!-- Our Futsal Teams -->
 {% endblock %}
