@@ -231,22 +231,6 @@
     }
 </style>
 
-<!-- Sliders -->
-<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <!-- {% for row in Slider %} -->
-        <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}" data-interval="100">
-            <img src="{{ row.image.url }}" class="d-block  w-100" alt="{{ row.title }}">
-            <div class="carousel-caption" style="background-color:rgba(228, 228, 240, 0);">
-                </br>
-                <a class="btn btn-success" href="{% url 'contact' %}" role="button">Contact us for more details</a>
-                <a class="btn btn-success" href="{% url 'book_futsal' %}" role="button">Book Now</a>
-            </div>
-        </div>
-        <!-- {% endfor %}   -->
-    </div>
-</div>
-<!-- Sliders -->
 
 <section class="latest-bg">
   <section class="Home-Container">
@@ -270,9 +254,27 @@
         <li>{{ futsal.name }} - {{ futsal.location }}</li>
       {% endfor %}
     </ul>
-    <a class="text-center btn btn-warning" href="">Click to Recommends Nearest Futsal</a>
+    <a class="text-center btn btn-warning" href="{% url 'get_location' %}">Click to Recommends Nearest Futsal</a>
   </div>
+  
 </section>
+
+<!-- Sliders -->
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+      <!-- {% for row in Slider %} -->
+      <div class="carousel-item {% if forloop.counter0 == 0 %}active{% endif %}" data-interval="100">
+          <img src="{{ row.image.url }}" class="d-block  w-100" alt="{{ row.title }}">
+          <div class="carousel-caption" style="background-color:rgba(228, 228, 240, 0);">
+              </br>
+              <a class="btn btn-success" href="{% url 'contact' %}" role="button">Contact us for more details</a>
+              <a class="btn btn-success" href="{% url 'book_futsal' %}" role="button">Book Now</a>
+          </div>
+      </div>
+      <!-- {% endfor %}   -->
+  </div>
+</div>
+<!-- Sliders -->
 
 <section class="foot-search">
   <div class="footsal-section mt-4">
@@ -280,7 +282,7 @@
       <div class="search-title">
         <h3>Find your favourite futsal here</h3>
       </div>
-      <form action="" method="get" class="search-footsal">
+      <form action="{% url 'searchfutsal' %}" method="get" class="search-footsal">
         {% csrf_token %}
         <div class="footsal-search-main">
           <div class="form-left footsal-search d-flex">

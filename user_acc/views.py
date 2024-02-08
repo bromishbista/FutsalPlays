@@ -510,4 +510,41 @@ def match_edit(request, pk):
         form = MatchForm(instance=match)
     return render(request, 'match_form.html', {'form': form})
 
+# ContactForm view
 
+from django.views.generic.edit import FormView
+class ContactFormView(FormView):
+    template_name = 'contact.html'
+    form_class = ContactForm
+    success_url = '/contact/'
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+# CRUD for contact
+def contact_list(request):
+    contact = Contact.objects.all()
+    return render(request, 'admin/contact/index.html', {'contact': contact})
+
+def contact_create(request):
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return redirect('contact_list')
+    return render(request, 'admin/contact/create.html', {'form': form})
+
+def contact_edit(request, pk):
+    contact = get_object_or_404(Contact, pk=pk)
+    form = ContactForm(request.POST or None, instance=contact)
+    if form.is_valid():
+        form.save()
+        return redirect('contact_list')
+    return render(request, 'admin/contact/edit.html', {'form': form})
+
+def contact_delete(request, pk):
+    contact = get_object_or_404(Contact, pk=pk)
+    if request.method == 'POST':
+        contact.delete()
+        return redirect('contact_list')
+    return render(request, 'admin/contact/delete.html', {'contact': contact})

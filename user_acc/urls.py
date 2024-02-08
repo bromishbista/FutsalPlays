@@ -10,7 +10,7 @@ from . import views
 from .views import loginpage, logout_view 
 # from .views import custom_login
 
-
+from .views import ContactFormView
 from django.urls import path, include
 
 
@@ -23,7 +23,8 @@ path('searchfutsal', views.searchfutsal, name="searchfutsal"),
  path('teams/', views.teams, name="teams"),
  path('team/', views.teams, name="team"),
 
-
+# contact page 
+path('contact/', ContactFormView.as_view(), name='contact'),
 #login
     path('admin/login/?next=/admin/', custom_login, name='custom_login'),
     path('login/', authviews.loginpage, name="login"),

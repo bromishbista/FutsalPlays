@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+<h1>Futsal Recommendation</h1>
+{% if futsals %}
+    <p>Showing Futsals near you:</p>
+    <div class="row">
+    {% for futsal in futsals %}
+           <div class="col-lg-3 col-md-4 col-sm-6 text-center">
+            <h2>{{ futsal.name }}</h2>
+            {% if futsal.image %}
+                <img src="{{ futsal.image.url }}" alt="{{ futsal.name }}" style="width: 200px; height: 200px; object-fit: cover;">
+            {% endif %}
+            <p>Distance: {{ futsal.distance }} km</p>
+            <p>Location: {{ futsal.location }}</p>
+            <p>Price: {{ futsal.price }}</p>
+            <a href="{% url 'futsal_detail' pk=futsal.pk %}" class="btn btn-sm btn-outline-secondary">More Info</a>
+           </div>
+           {% endfor %}
+        </div>
+    {% else %}
+    <p>No Futsals found near you.</p>
+</div>
+{% endif %}
+{% endblock %}

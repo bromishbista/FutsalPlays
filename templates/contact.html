@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Dashboard{% endblock title %}
+{% block body %}
+    <!-- sliders -->
+    <section class="foot-search">
+        <div class="footsal-section">
+            <div class="search-section-form">
+                <div class="search-title">
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item">Contact</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- sliders -->
+
+    <section style="background-color:rgba(206, 203, 195, 0.267);">
+        <div class="test-section" >
+            <div class="test-section-wrapper">
+                <div class="test-section-content">
+                    <h2>Get in Touch</h2>
+                    <p>Get in touch with us and we'll get back to you as soon as possible.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="">
+        <div class="contact container pt-5">
+            <div class="left-contact-section contact">
+                <div class="contact-bg-image">
+                        <h2>Contact Us</h2>
+                        <form method="post">
+                          {% csrf_token %}
+                          {{ form.as_p }}
+                          <input type="submit" value="Send">
+                        </form>
+                </div>
+            </div>
+            <div class="right-contact-section contact">
+                <div class="right-contact-lists">
+                    <div class="contact-content">
+                        <h3>Address</h3>
+                        <p>Damak, jhapa, Nepal</p>
+                    </div>
+                    <div class="contact-content">
+                        <h3>Email</h3>
+                        <p><a href="mailto:hello.chatgpt@gpt.com" class="text-decoration-none">futsal@gmail.com</a></p>
+                    </div>
+                    <div class="contact-content">
+                        <h3>Phone</h3>
+                        <p><a href="tel:79797997979" class="text-decoration-none">098547213</a></p>
+                    </div>
+                    <div class="contact-content">
+                        <h3>Web Site</h3>
+                        <p><a href="hello.com" class="text-decoration-none">Futsal .com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- our Contact  -->
+    <section class="count-section">
+        <div class="container">
+            <div class="count">
+                {% for items in beadcrumbs %}
+                <div class="count-item">
+                    <h4>5045</h4>
+                    <p>{{item.total.join.teams}}</p>
+                </div>
+                <div class="count-item">
+                    <h4>45</h4>
+                    <p>Total Play Games</p>
+                </div>
+                <div class="count-item">
+                    <h4>2245</h4>
+                    <p>Total Players</p>
+                </div>
+                <div class="count-item">
+                    <h4>51</h4>
+                    <p>Total Futsal Ground</p>
+                </div>
+                <div class="count-item">
+                    <h4>55</h4>
+                    <p>Total Winner Teams</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <!-- our Contact  -->
+
+    {% endblock %}
