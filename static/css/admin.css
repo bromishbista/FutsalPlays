@@ -10,7 +10,6 @@ body {
 
 
 /* Sidebar */
-
 .sidebar {
     position: fixed;
     top: 0;
@@ -18,20 +17,27 @@ body {
     left: 0;
     padding: 58px 0 0;
     /* Height of navbar */
-    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    box-shadow: 0 2px 5px 0 rgba(246, 231, 231, 0.05), 0 2px 10px 0 rgb(0 0 0 / 5%);
     width: 240px;
     z-index: 600;
+    background-color: #3c4b64; 
 }
 
 @media (max-width: 991.98px) {
     .sidebar {
         width: 100%;
+    
     }
+}
+.navbar-brand{ 
+    color: white;
+
 }
 
 .sidebar .active {
     border-radius: 5px;
     box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+    background-color: black;
 }
 
 .sidebar-sticky {
@@ -41,5 +47,37 @@ body {
     padding-top: 0.5rem;
     overflow-x: hidden;
     overflow-y: scroll;
-    
 }
+.table-bordered {
+    border-color: green; 
+}
+@media (min-width: 576px) {
+    .navbar-expand-sm {
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+    }
+    .navbar-expand-sm .navbar-nav {
+      flex-direction: row;
+    }
+    .navbar-expand-sm .navbar-nav .dropdown-menu {
+      position: absolute;
+    }
+    .navbar-expand-sm .navbar-nav .nav-link {
+      padding-right: 0.5rem;
+      padding-left: 0.5rem;
+    }
+    .navbar-expand-sm > .container,
+    .navbar-expand-sm > .container-fluid, .navbar-expand-sm > .container-sm, .navbar-expand-sm > .container-md, .navbar-expand-sm > .container-lg, .navbar-expand-sm > .container-xl {
+      flex-wrap: nowrap;
+    }
+    .navbar-expand-sm .navbar-nav-scroll {
+      overflow: visible;
+    }
+    .navbar-expand-sm .navbar-collapse {
+      display: flex !important;
+      flex-basis: auto;
+    }
+    .navbar-expand-sm .navbar-toggler {
+      display: none;
+    }
+  }
