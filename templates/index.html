@@ -229,6 +229,44 @@
   .responsive-img:hover {
       transform: scale(1.1); /* Increase the size on hover */
     }
+    .roanldoBackground {
+      width: 100%;
+      margin-bottom: 5rem;
+      height: 35rem;
+      border: 1px solid black;
+      background: url('{% static "img/court.jpg" %}');
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      color: #ffff;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-weight: 700;
+      font-family: 'Poppins', sans-serif;
+  }
+
+  .headings{
+    margin-bottom: 2rem;
+  }
+
+  .bbutton{
+    margin-top: 2rem;
+    padding: 14px 50px  14px 50px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    background-color: #0000;
+    color: #ffff;
+    border: 1px solid #ffff;
+    border-radius: 4px
+
+  }
+  .bbutton:hover{
+    background-color: #ffff;
+    color: black;
+  }
+
+ 
 </style>
 
 
@@ -247,8 +285,10 @@
       </div>
     </div>
   </section>
-  <div class="container py-5 text-center">
-    <h3>Futsal Near You!!!</h3>
+  
+    <div class="container py-5 text-center">
+    <h3 style="margin-top: 20px;">Futsal Near You!!!</h3>
+
     <ul>
       {% for futsal in futsals %}
         <li>{{ futsal.name }} - {{ futsal.location }}</li>
@@ -256,8 +296,17 @@
     </ul>
     <a class="text-center btn btn-warning" href="{% url 'get_location' %}">Click to Recommends Nearest Futsal</a>
   </div>
-  
+
 </section>
+
+<div class="roanldoBackground">
+  <div class="headings">
+    <h1>Easy Book Your Fustal </h1>
+    <h1>Online Booking Portal</h1>
+  </div>
+  <a class="bbutton" href="{% url 'book_futsal' %}" role="button">Book Now</a>
+
+</div>
 
 <!-- Sliders -->
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -300,7 +349,8 @@
   </div>
 </section>
 
-<!-- Latest Futsal -->
+<!-- Latest Futsal 
+
 <section class="latest-bg">
   <div class="container latest-footsal">
     <div class="footsal-items" id="more-info">
@@ -325,9 +375,9 @@
     </div>
   </div>
 </section>
-<!-- Latest Futsal -->
+Latest Futsal -->
 
-<!-- Testimonials -->
+<!-- Testimonials 
 <section class="testmonial-bg">
   <div class="testimonials-section container">
     <div class="test-section">
@@ -348,10 +398,10 @@
         </div>
       </div>
     </div>
-    {% endfor %} -->
+    {% endfor %} 
   </div>
 </section>
-<!-- Testimonials -->
+ Testimonials -->
 
 <!-- Our Futsal Teams -->
 <section class="count-section">
