@@ -1,37 +1,50 @@
 {% extends 'admin/inc/base.html' %}
-{% block content %}
-<h1>Email List</h1>
 
+{% block content %}
+<div class="card-header py-3 text-center">
+<h1>Accounts</h1>
+</div>
 <div>
-    <div class="mb-5"><a href="{% url 'email_create' %}" class="btn btn-success float-end mx-5" >Create</a>
+    <div class="mb-5">
+        <a href="{% url 'email_create' %}" class="btn btn-success float-end mx-5"><i class="fa-solid fa-plus"></i></a>
     </div>
     <div class="container p-5">
-        <table class="table " style="font-size:18px;">
-            <thead>
-              <tr>
-                <th scope="col">E-mail</th>
-                <th scope="col">User</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-    
-            <tbody>
-            {% for email in emailaddress %} 
-              <tr>
-                <td>{{ email.email }}</td>
-                <td>{{ email.user }}</td>
-                <td>
-                  <button type="button" class="btn btn-warning"><a href="{% url 'email_edit' email.pk %}" class="btn btn-warning" >
-                    Edit</a></button>
-                  <button type="button" class="btn btn-danger"><a href="{% url 'email_delete' email.pk %}" class="btn btn-danger">Delete</a></button>
-                </td>
-             
-              </tr>
-            {% empty %}
-              <li>No emails found.</li>
-            {% endfor %}  
-            </tbody>
-        </table> 
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 text-center">
+                <h6 class="m-0 font-weight-bold text-primary">Email List</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table" style="font-size: 18px;">
+                        <thead>
+                            <tr>
+                                <th scope="col">E-mail</th>
+                                <th scope="col">User</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for email in emailaddress %}
+                            <tr class="email-row">
+                                <td>{{ email.email }}</td>
+                                <td>{{ email.user }}</td>
+                                <td>
+                                    <button type="button" class="btn btn-warning"><a href="{% url 'email_edit' email.pk %}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></button>
+                                    <button type="button" class="btn btn-danger"><a href="{% url 'email_delete' email.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></button>
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="3">No emails found.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
+
 {% endblock content %}

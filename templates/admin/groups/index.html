@@ -1,34 +1,44 @@
 {% extends 'admin/inc/base.html' %}
 {% block content %}
-<h2 class="text-center">Group List</h2>
-<div>
-    <div class="mb-5"><a href="{% url 'group_create' %}" class="btn btn-success float-end mx-5" >Create</a>
-    </div>
-    <div class="container p-5">
-        <table class="table table-bordered" style="font-size:18px;">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-    
-            <tbody>
-            {% for group in group %} 
-              <tr>
-                <td>{{ group.name }}</td>
-                <td>
-                  <button type="button" class="btn btn-warning"><a href="{% url 'group_edit' group.pk %}" class="btn btn-warning" >
-                    Edit</a></button>
-                  <button type="button" class="btn btn-danger"><a href="{% url 'group_delete' group.pk %}" class="btn btn-danger">Delete</a></button>
-                </td>
-             
-              </tr>
-            {% empty %}
-              <li>No group found.</li>
-            {% endfor %}  
-            </tbody>
-        </table> 
+<div class="card-header py-3 text-center">
+  <h1>Groups</h1>
+  </div>
+  <div>
+<div class="container-fluid">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary text-center">Group List</h6>
+        </div>
+        <div class="card-body">
+            <div class="mb-5">
+                <a href="{% url 'group_create' %}" class="btn btn-success float-end mx-5"><i class="fa-solid fa-plus"></i></a>
+            </div>
+            <div class="table-responsive">
+                <table class="table" style="font-size:18px;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for group in group %} 
+                        <tr class="group-row">
+                            <td>{{ group.name }}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning"><a href="{% url 'group_edit' group.pk %}"class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></button>
+                                <button type="button" class="btn btn-danger"><a href="{% url 'group_delete' group.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></button>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">No group found.</td>
+                        </tr>
+                        {% endfor %}  
+                    </tbody>
+                </table> 
+            </div>
+        </div>
     </div>
 </div>
 {% endblock content %}

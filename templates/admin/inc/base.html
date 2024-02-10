@@ -27,18 +27,21 @@
          id="sidebarMenu"
          class="collapse d-lg-block sidebar collapse"
          >
-      <div class="position-sticky"  style="height: 600px; overflow-y: scroll;" >
+      <div class="position-sticky"  style="height: 636px; overflow-y: scroll;" >
         <div class="list-group list-group-flush mx-3 mt-4">
          
-          <a
-             href="{% url 'home' %}"
-             class="list-group-item list-group-item-action py-2 ripple active"
-             >
-            <i class="bi badge-info text-cyan"></i
-              ><span>WEBSITE</span>
-          </a>
+            <a href="{% url 'home' %}"
+            class="list-group-item list-group-item-action py-2 ripple active text-center"
+            style="background-color: transparent;"
+         >
+            <i class="bi badge-info text-cyan"></i>
+            <span>WEBSITE <i class="fa-solid fa-diamond-turn-right fa-rotate-180"></i></span>
+         </a>
+         
+
           {% if user.is_authenticated %} 
-          <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseAccounts" aria-expanded="false" aria-controls="collapseAccounts">
+          <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" 
+          href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseAccounts" aria-expanded="false" aria-controls="collapseAccounts"style="background-color: transparent;">
             <span class="text-center">ACCOUNTS    <i class="fa-solid fa-caret-down"></i></span>
             
         </a>
@@ -50,7 +53,8 @@
             </div>
         </div>
 
-        <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseAuth" aria-expanded="false" aria-controls="collapseAuth">
+        <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" 
+        href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseAuth" aria-expanded="false" aria-controls="collapseAuth" style="background-color: transparent;">
           <span class="text-center">Auth    <i class="fa-solid fa-caret-down"></i></span>
       </a>
       <div class="collapse" id="collapseAuth">
@@ -65,17 +69,18 @@
       </div>
       
           
-      <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseFutsal" aria-expanded="false" aria-controls="collapseFutsal">
+      <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active"
+       href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseFutsal" aria-expanded="false" aria-controls="collapseFutsal" style="background-color: transparent;">
         <span class="text-center">Futsal    <i class="fa-solid fa-caret-down"></i></span>
     </a>
     <div class="collapse" id="collapseFutsal">
         <div class="list-group">
-            <a href="{% url 'about_list' %}" class="list-group-item list-group-item-action">
+            {% comment %} <a href="{% url 'about_list' %}" class="list-group-item list-group-item-action">
                 <i class="fas fa-globe fa-fw me-3"></i>About
             </a>
             <a href="{% url 'beadcrumbs_list' %}" class="list-group-item list-group-item-action">
                 <i class="fas fa-building fa-fw me-3"></i>Breadcrumbs
-            </a>
+            </a> {% endcomment %}
             <a href="{% url 'futsal_list' %}" class="list-group-item list-group-item-action">
                 <i class="fas fa-users fa-fw me-3"></i>Futsal
             </a>
@@ -109,7 +114,8 @@
              class="list-group-item list-group-item-action py-2 ripple"
              ><i class="fas fa-money-bill fa-fw me-3"></i><span>Testimonials</span></a
             > {% endcomment %}
-            <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseSite" aria-expanded="false" aria-controls="collapseSite">
+            <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" 
+            href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseSite" aria-expanded="false" aria-controls="collapseSite" style="background-color: transparent;">
               <span class="text-center">SITE    <i class="fa-solid fa-caret-down"></i></span>
           </a>
           <div class="collapse" id="collapseSite">
@@ -121,7 +127,8 @@
           </div>
           
         
-          <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseSocial" aria-expanded="false" aria-controls="collapseSocial">
+          <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" 
+          href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseSocial" aria-expanded="false" aria-controls="collapseSocial" style="background-color: transparent;">
             <span class="text-center">SOCIAL ACCOUNTS    <i class="fa-solid fa-caret-down"></i></span>
         </a>
         <div class="collapse" id="collapseSocial">
@@ -130,7 +137,7 @@
                     <i class="fas fa-money-bill fa-fw me-3"></i>Social Accounts
                 </a>
                 <a href="{% url 'socialapp_list' %}" class="list-group-item list-group-item-action">
-                    <i class="fas fa-money-bill fa-fw me-3"></i>Social Applications
+                    <i class="fas fa-money-bill fa-fw me-3"></i>Social App
                 </a>
                 <a href="{% url 'socialtoken_list' %}" class="list-group-item list-group-item-action">
                     <i class="fas fa-money-bill fa-fw me-3"></i>Social Tokens
@@ -140,7 +147,8 @@
         
          
          
-        <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseUserAccounts" aria-expanded="false" aria-controls="collapseUserAccounts">
+        <a class="mt-4 text-center list-group-item list-group-item-action py-2 ripple active" 
+        href="#" role="button" data-bs-toggle="collapse" data-bs-target="#collapseUserAccounts" aria-expanded="false" aria-controls="collapseUserAccounts" style="background-color: transparent;">
           <span class="text-center">USER ACCOUNTS    <i class="fa-solid fa-caret-down"></i></span>
       </a>
       <div class="collapse" id="collapseUserAccounts">
@@ -160,13 +168,18 @@
          ><i class="fas fa-money-bill fa-fw me-3"></i><span>Login</span></a
         >
         {% endif %}
+
+        
         </div>
       </div>
     </nav> 
+    
     <!-- Sidebar -->
   
     <!-- Navbar -->
     <nav
+
+    
          id="main-navbar"
          class="navbar navbar-expand-lg navbar-light fixed-top"
          >
@@ -188,14 +201,41 @@
         <!-- Brand -->
         <a class="navbar-brand" href="{% url 'index' %}">
           
-          <h4><center>Dashboard</center></h4>
+          <h4>Dashboard <i class="fa-solid fa-gauge"></i></h4>
         </a>
   
-        <a
-        href="{% url 'custom_logout' %}"
-        class="btn btn-primary float-end"
-        ><span>Logout</span></a
-       >
+       
+                
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="d-none d-lg-inline text-gray-600 small">Admin </span>
+                        <img class="img-profile rounded-circle" src='{% static "img/admin.jpg" %}'  width="50" height="50">
+                    </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                    aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Profile
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Settings
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Activity Log
+                    </a>
+                    <a class="dropdown-item" href="{% url 'custom_logout' %}">
+                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout
+                    </a>
+            </li>
+            
+
       
         
       <!-- Container wrapper -->
@@ -205,7 +245,7 @@
   <!--Main Navigation-->
   
   <!--Main layout-->
-  <main style="margin-top: 58px">
+  <main style="margin-top: 90px">
     <div class="container pt-4" style="height: 600px; overflow-y: scroll;" >
   <h1>
     {% block content %}{% endblock content %}

@@ -1,35 +1,40 @@
 {% extends 'admin/inc/base.html' %}
 {% block content %}
-<h2 class="text-center">Futsal List</h2>
-
+<div class="card-header py-3 text-center">
+    <h1>Futsal List</h1>
+</div>
 <div>
-    <div class="mb-5"><a href="{% url 'futsal_create' %}" class="btn btn-success float-end mx-5" >Add</a>
+    <div class="mb-5">
+        <a href="{% url 'futsal_create' %}" class="btn btn-success float-end mx-5"><i class="fa-solid fa-plus"></i></a>
     </div>
     <div class="container p-5">
-        <table class="table table-bordered" style="font-size:18px;">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Action</th>
-              </tr>
-            </thead>
-    
-            <tbody>
-            {% for futsal in futsal %} 
-              <tr>
-                <td>{{ futsal.name }}</td>
-                <td>
-                  <button type="button" class="btn btn-warning"><a href="{% url 'futsal_edit' futsal.pk %}" class="btn btn-warning" >
-                    Edit</a></button>
-                  <button type="button" class="btn btn-danger"><a href="{% url 'futsal_delete' futsal.pk %}" class="btn btn-danger">Delete</a></button>
-                </td>
-             
-              </tr>
-            {% empty %}
-              <li>No futsals found.</li>
-            {% endfor %}  
-            </tbody>
-        </table> 
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <table class="table" style="font-size: 18px;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name of Futsal</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for futsal in futsal %}
+                        <tr>
+                            <td>{{ futsal.name }}</td>
+                            <td>
+                                <button type="button" class="btn btn-warning"><a href="{% url 'futsal_edit' futsal.pk %}" class="btn btn-warning"><i class="fa-solid fa-pen-to-square"></i></a></button>
+                                <button type="button" class="btn btn-danger"><a href="{% url 'futsal_delete' futsal.pk %}" class="btn btn-danger"><i class="fa-solid fa-trash"></i></a></button>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="2">No futsals found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock content %}
