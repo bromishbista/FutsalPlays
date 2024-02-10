@@ -73,10 +73,10 @@ body {
 }
 
 .custom-bg-color:hover {
-  background-color: #e8d631; /* Maintain the same background color on hover */
+  background-color: #e8d631; 
 }
 
 .custom-bg-color:hover .card-title,
 .custom-bg-color:hover .card-text {
-  color: white; /* Change text color to white on hover */
+  color: white; 
 }

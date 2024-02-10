@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khalti Payment</title>
+    <script src="https://unpkg.com/khalti-checkout-web@latest/dist/khalti-checkout.iffe.js"></script>
+</head>
+<body>
+    <h3>Your order amount is Rs. Total price: {{ total_price }}</h3>
+    
+    <button id="payment-button">Pay with Khalti</button>
+    <a href="/">Go to Home page</a>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        var config = {
+            "publicKey": "REMOVED_KHALTI_PUBLIC_KEY",
+            "productIdentity": "book_futsal_{{ book_futsal.id }}",
+            "productName": "book_futsal_{{ book_futsal.id }}",
+            "productUrl": "http://localhost:8000",
+            "paymentPreference": [
+                "MOBILE_BANKING",
+                "KHALTI",
+                "EBANKING",
+                "CONNECT_IPS",
+                "SCT",
+            ],
+            "eventHandler": {
+                onSuccess(payload) {
+                    // hit merchant api for initiating verification
+                    axios.get("/khalti-verify/", {
+                        params: {
+                            "token": payload.token,
+                            "amount": payload.amount,
+                            "order_id": "{{ book_futsal.id }}"
+                        }
+                    }).then(function(resp){
+                        if (resp.data.success === true){
+                            alert("Thanks. Payment Completed Successfully");
+                            location.href = "/";
+                        } else {
+                            alert("Sorry. Error occurred");
+                            location.href = "{{ request.build_absolute_uri }}";
+                        }
+                    });
+                },
+                onError(error) {
+                    console.log(error);
+                },
+                onClose() {
+                    console.log('widget is closing');
+                }
+            }
+        };
+
+        var checkout = new KhaltiCheckout(config);
+        var btn = document.getElementById("payment-button");
+        btn.onclick = function () {
+            // minimum transaction amount must be 10, i.e 1000 in paisa.
+            checkout.show({ amount: {{ book_futsal.futsal.price }} * 10 });
+        };
+    </script>
+</body>
+</html>

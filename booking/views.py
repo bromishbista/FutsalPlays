@@ -713,3 +713,95 @@ def create_team(request):
         else:
             form = TeamForm()
         return render(request, 'create_team.html', {'form': form})
+
+
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from .models import Team, Match
+from .form import TeamForm, MatchForm
+
+@login_required
+def create_match(request):
+    if request.method == 'POST':
+        form = MatchForm(request.POST, request.FILES)
+        if form.is_valid():
+            match = form.save(commit=False)
+            match.save()
+            messages.success(request, 'Match created successfully')
+            return redirect('home')
+    else:
+        form = MatchForm()
+    return render(request, 'create_match.html', {'form': form})
+
+@login_required
+def create_team(request):
+    try:
+        team = request.user.team
+        messages.warning(request, 'You already have a team')
+        return redirect('home')
+    except Team.DoesNotExist:
+        if request.method == 'POST':
+            form = TeamForm(request.POST, request.FILES)
+            if form.is_valid():
+                team = form.save(commit=False)
+                team.user = request.user
+                team.save()
+                messages.success(request, 'Team created successfully')
+                return redirect('home')
+        else:
+            form = TeamForm()
+        return render(request, 'create_team.html', {'form': form})
+
+
+
+# payment khalti 
+
+
+class KhaltiRequestView(View):
+    def get(self, request, id):
+        book_futsal = Book_futsal.objects.get(id=id)
+        total_price = book_futsal.duration * book_futsal.futsal.price
+        context = {
+            "book_futsal": book_futsal, "total_price":total_price
+        }
+        return render(request, "khaltipayment.html", context)
+
+
+class KhaltiVerifyView(View):
+    def get(self, request, *args, **kwargs):
+        token = request.GET.get("token")
+        amount = request.GET.get("amount")
+        o_id = request.GET.get("order_id")
+        print(token, amount, o_id)
+
+        url = "https://khalti.com/api/v2/payment/verify/"
+        payload = {
+            "token": token,
+            "amount": amount
+        }
+        headers = {
+            "Authorization": "REMOVED_KHALTI_SECRET_KEY"
+        }
+
+        book_obj = PAYMENT_REQUIRED.objects.get(id=o_id)
+
+        response = requests.post(url, payload, headers=headers)
+        resp_dict = response.json()
+        if resp_dict.get("idx"):
+            success = True
+            book_obj.payment_completed = True
+            book_obj.save()
+        else:
+            success = False
+        data = {
+            "success": success
+        }
+        return JsonResponse(data)
+    
+def payment_success(request):
+    context = {
+        'message': 'Your payment has been completed successfully. Thank you for your purchase!'
+    }
+    return render(request, 'payment_success.html', context)

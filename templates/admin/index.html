@@ -4,41 +4,54 @@
 {% load static %}
 
 {% block content %}
-<h2 class="text-center"><marquee>FutsalPlays Admin Dashboard</marquee></h2>
+<div class="col-lg-6 mx-auto mb-4">
+  <div class="card shadow">
+      <div class="card-body text-center">
+          <h2 class="font-italic text-primary">FutsalPlays Admin Dashboard</h2>
+      </div>
+  </div>
+</div>
 <h3><section></h3>
-  <div class="container py-4">
+  <div class="container py-4" style= "margin-left: 10rem;">
     <div class="row gx-3">
       <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
         <div class="card shadow custom-bg-color">
-            <div class="card-body text-center">
-                <h5 class="card-title text-white">Total Fustal</h5>
+            <div class="card-body text-center ">
+                <h5 class="card-title text-white ">Total Fustal</h5>
                 <p class="card-text text-white">
                     {{ futsal_count }} 
                 </p>
             </div>
         </div>
     </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
-        <div class="card shadow ">
-          <div class="card-body text-center">
-            <h5 class="card-title text-success">Total Booking</h5>
-            <p class="card-text">
-             {{ booking_count }}
-            </p>
+    <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+      <div class="card shadow" style= "background-color: #3399ff;"  "transition: background-color 0.3s;">
+          <div class="card-body text-center" 
+               onmouseover="this.style.backgroundColor='#f9b116'; this.style.color= '#f9b116';" 
+               onmouseout="this.style.backgroundColor=''; this.style.color='';">
+              <h5 class="card-title text-white">Total Booking</h5>
+              <p class="card-text text-white">{{ booking_count }}</p>
           </div>
-        </div>
       </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
-        <div class="card shadow ">
-          <div class="card-body text-center">
-            <h5 class="card-title text-success">Total User</h5>
-            <p class="card-text">
-            {{ user_count }}
-            </p>
-          </div>
+  </div>
+   
+  <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+    <div class="card shadow" style= "background-color: #e55352;"  "transition: background-color 0.3s;">
+        <div class="card-body text-center"
+             onmouseover="this.style.backgroundColor='#e8d631'; this.style.color='white';"
+             onmouseout="this.style.backgroundColor=''; this.style.color='';">
+            <h5 class="card-title text-white">Total User</h5>
+            <p class="card-text text-white">{{ user_count }}</p>
         </div>
-      </div>
+    </div>
+</div>
+    </section>
+
+    <section>
+      <div class="container py-4">
+        <div class="row gx-3">
       <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
+        
         <div class="card shadow ">
           <div class="card-body text-center">
             <h5 class="card-title text-success">Total Reviews</h5>
@@ -68,6 +81,8 @@
             </div>
           </div>
           </div>
+        </div>
+      </div>
           {% comment %} <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3">
             <div class="card shadow ">
               <div class="card-body text-center">

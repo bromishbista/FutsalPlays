@@ -104,6 +104,11 @@ urlpatterns = [
     path('edit_team/<int:id>/', views.EditTeam.as_view(), name='edit_team'),
     path('team_detail/<int:team_id>/', views.team_detail, name='team_detail'),
 
+#payment khalti 
+
+    path("khalti-request/<int:id>/", views.KhaltiRequestView.as_view(), name="khaltirequest"),
+    path("khalti-verify/<int:id>/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
+
 
 ]
 if settings.DEBUG:

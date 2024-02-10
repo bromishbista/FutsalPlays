@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'groupchat',
     'rest_framework',
+    'khalti'
+    
 
 ]
 
@@ -182,3 +184,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 GOOGLE_MAPS_API_KEY = 'REMOVED_GOOGLE_API_KEY'
 
+KHALTI_SECRET_KEY = "REMOVED_KHALTI_SECRET_KEY"
+KHALTI_VERIFY_URL = "https://khalti.com/api/v2/payment/verify/"
