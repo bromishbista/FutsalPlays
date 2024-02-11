@@ -769,6 +769,7 @@ class KhaltiRequestView(View):
         return render(request, "khaltipayment.html", context)
 
 
+
 class KhaltiVerifyView(View):
     def get(self, request, *args, **kwargs):
         token = request.GET.get("token")
@@ -805,3 +806,7 @@ def payment_success(request):
         'message': 'Your payment has been completed successfully. Thank you for your purchase!'
     }
     return render(request, 'payment_success.html', context)
+    
+
+
+

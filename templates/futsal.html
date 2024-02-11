@@ -3,7 +3,7 @@
 {% block title %}futsal{% endblock title %}
 {% block body %}
      <!-- sliders -->
-     <section class="foot-search">
+     {% comment %} <section class="foot-search">
         <div class="footsal-section">
             <div class="search-section-form">
                 <div class="search-title">
@@ -11,7 +11,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> {% endcomment %}
     <!-- sliders -->
 
 
@@ -19,8 +19,8 @@
         <div class="footsal-highlight">
             <div class="foot-match-content">
                 <a href="{% url 'futsal'%}">
-                    <i class="fa-solid fa-football "></i>
-                    <h4>Futsal</h4>
+                    <i class="fa-solid fa-futbol fa-xl"></i>
+                     <h4>Futsal</h4>
                 </a>
             </div>
         </div>
@@ -70,22 +70,29 @@
     <section>
         <div class="container latest-footsal">
             <div class="footsal-items">
-                <h2>Latest futsals</h2>
-                <div class="footsal-item-wrapper">
+                <div class="container" style="text-align: center;">
+                    <h2 style="font-weight: bold;">Latest futsal</h2>
+                </div>
+                <div class="futsal-container" style="display: flex; flex-wrap: wrap; justify-content: center; padding: 20px;">
                     {% for futsal in futsals %}
-                    <div class="footsal-item pt-4">
-                        <img src="{{futsal.image.url}}" alt="">
-                        <h5 style="text-align: center;">{{futsal.name}}</h5>
-                        <div class="inner-footsal-items pt-4">
-                            <img src="{% static 'img/logof.png' %}" alt="" style="width: 50px; height: 40px;">
-                            <a href=""><i class="fa-solid fa-location-dot"></i>{{futsal.location}}</a>
-                            <p>Rs. {{futsal.price}}</p>
-                            <a href="{% url 'futsal_detail' pk=futsal.pk %}" class="more-info btn btn-sm btn-outline-secondary">More Info</a>   
+                    <div class="card" style="width: 300px; margin: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                        <div class="card-img-top" style="border-top-left-radius: 10px; border-top-right-radius: 10px; overflow: hidden;">
+                            <img src="{{ futsal.image.url }}" alt="{{ futsal.name }}" style="width: 100%; height: 200px; object-fit: cover;">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center; margin-bottom: 10px;">{{ futsal.name }}</h5>
+                            <div class="futsal-info" style="text-align: center;">
+                                {% comment %} <img src="{% static 'img/logof.png' %}" alt="Location Icon" style="width: 20px; height: 20px; margin-right: 5px;"> {% endcomment %}<i class="fa-solid fa-location-dot"></i>
+                                <span style="text-decoration: none; color: #333; margin-right: 10px;">{{ futsal.location }}</span>
+                                <p style="margin-top: 5px;">Rs. {{ futsal.price }}/hrs</p>
+                            </div>
+                            <a href="{% url 'futsal_detail' pk=futsal.pk %}" class="card-button">More Info</a>
                         </div>
                     </div>
                     {% endfor %}
                 </div>
-            </div>
+                
+                
         </div>
         
     </section>

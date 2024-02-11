@@ -109,6 +109,7 @@ path('contact/', ContactFormView.as_view(), name='contact'),
     path('contact/<int:pk>/delete/', views.contact_delete, name='contact_delete'),
 
 
+
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

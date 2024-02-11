@@ -548,3 +548,5 @@ def contact_delete(request, pk):
         contact.delete()
         return redirect('contact_list')
     return render(request, 'admin/contact/delete.html', {'contact': contact})
+
+

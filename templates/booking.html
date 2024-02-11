@@ -9,10 +9,10 @@
                 <h2>Book Futsal Now</h2>
             </div>
             {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}" style="padding: 10px; margin-bottom: 20px; border-radius: 5px; 
+            {% comment %} <div class="alert alert-{{ message.tags }}" style="padding: 10px; margin-bottom: 20px; border-radius: 5px; 
                 background-color: {% if message.tags == 'success' %}#d4edda; color: #155724;{% else %}#f8d7da; color: #721c24;{% endif %};">
                 {{ message }}
-            </div>
+            </div> {% endcomment %}
             {% endfor %}
             <form action="" class="login-form" method="POST" style="width: 100%;">
                 {% csrf_token %}

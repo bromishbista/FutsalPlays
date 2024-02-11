@@ -51,7 +51,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'groupchat',
     'rest_framework',
-    'khalti'
+    'khalti',
+    
+    
+    
     
 
 ]

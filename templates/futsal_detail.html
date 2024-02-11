@@ -1,6 +1,8 @@
 {% extends 'base.html' %} 
 {% load ratings %}
+{% load static %}
 {% block css %}
+{% load custom_filters %}
 <style></style>
 {% endblock css %} {% block body %}
 
@@ -82,7 +84,7 @@ color: #bfbfbf;
 }
 </style>
 
-<section class="foot-search">
+{% comment %} <section class="foot-search">
   <div class="footsal-section">
       <div class="search-section-form">
           <div class="search-title">
@@ -96,7 +98,7 @@ color: #bfbfbf;
           </div>
       </div>
   </div>
-</section><br><br><br>
+</section><br><br><br> {% endcomment %}
 <!-- sliders -->
 
 <div class="container">
@@ -106,82 +108,91 @@ color: #bfbfbf;
         src="{{ futsal.image.url }}"
         alt="{{ futsal.name }}"
         class="img-fluid w-100"
-        style="height: 400px; object-fit: cover"
+        style="height: 300px; object-fit: cover"
       />
     </div>
   </div>
   
   <div class="container py-5">
     <div class="row">
-      <div class="col-lg-8">
-        <h1>{{ futsal.name }}</h1>
-        <p>{{ futsal.location }}</p>
-        <p>{{ futsal.description }}</p>
-        <p><b>Price: Rs. {{ futsal.price }}/hrs</b></p>
-        <a href="{% url 'book_futsal' %}" class="btn btn-success btn-sm text-white"> Book Now</a>
-      </div>
-      <div class="col-lg-4">
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Chat Now
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-body">
-                    <div class="row d-flex justify-content-center">
-                      <div class="col-md-12 col-lg-12 col-xl-12">
-                
-                        <div class="card" id="chat1" style="border-radius: 15px;">
-                          <div
-                            class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
-                            style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
-                            <p class="mb-0 fw-bold">Live chat</p>
-                            <i  type="button" class="fas fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
-                          </div>
-                          
-                          <div class="card-body">
-                          {% if user.is_authenticated %}
-                            {% if chat_messages %} <ul>
-                              {% for message in chat_messages %}
-                
-                            <div class="d-flex flex-row justify-content-start mb-4">
-                              <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
-                                alt="avatar 1" style="width: 45px; height: 100%;">
-                              <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
-                                <p class="small mb-0">{{ message.timestamp }} - {{ message.user }}: {{ message.message }}</p>
-                              </div>
-                            </div>
-                            {% endfor %}
-                            {% else %}
-                            <p>No chat messages yet.</p>
-                            {% endif %}
-                            <div class="form-outline">
-                              <form action="" method="POST">
-                                  {% csrf_token %} 
-                                  {{ chat_form.as_p }}
-                                  <button type="submit" class="btn btn-sm btn-danger">Send<i class=" ms-1 fas fa-play"></i></button>
-                              </form>
-                            </div>
-                          {% else %}
-                          <p>You must be logged in to send a message.</p>
-                          <a href="{% url 'login' %}">Log in</a>
-                          {% endif %}
-                          </div>
-                        </div>
-                
-                      </div>
-                    </div>
-                
-                  </div>
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body" style="color: #333;">
+                    <h1 class="card-title">{{ futsal.name }}</h1>
+                    <p class="card-text"><i class="fa-solid fa-location-dot"></i>       {{ futsal.location }}</p>
+                    <p class="card-text">{{ futsal.description }}</p>
+                    <p class="card-text"><b>Price: Rs. {{ futsal.price }}/hrs</b></p>
+                    <a href="{% url 'book_futsal' %}" class="card-button"> Book Now</a>
+                </div>
             </div>
-          </div>
         </div>
+        <div class="col-lg-4">
+          <div class="card">
+              <div class="card-body text-center">
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <img src="{% static 'img/Chat.png' %}" alt="Chat Image" style="width: 24px; height: 24px; margin-right: 5px;">
+                      Chat Now
+                  </button>
+              </div>
+          </div>
       </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-md-12 col-lg-12 col-xl-12">
+                                    <div class="card" id="chat1" style="border-radius: 15px;">
+                                        <div class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
+                                            style="border-top-left-radius: 15px; border-top-right-radius: 15px;">
+                                            <p class="mb-0 fw-bold">Live chat</p>
+                                            <i type="button" class="fas fa-times" data-bs-dismiss="modal" aria-label="Close"></i>
+                                        </div>
+
+                                        <div class="card-body">
+                                            {% if user.is_authenticated %}
+                                            {% if chat_messages %} <ul>
+                                                {% for message in chat_messages %}
+
+                                                <div class="d-flex flex-row justify-content-start mb-4">
+                                                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp"
+                                                        alt="avatar 1" style="width: 45px; height: 100%;">
+                                                    <div class="p-3 ms-3" style="border-radius: 15px; background-color: rgba(57, 192, 237,.2);">
+                                                        <p class="small mb-0">{{ message.timestamp }} - {{ message.user }}: {{ message.message }}</p>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                                {% else %}
+                                                <p>No chat messages yet.</p>
+                                                {% endif %}
+                                                <div class="form-outline">
+                                                    <form action="" method="POST">
+                                                        {% csrf_token %}
+                                                        {{ chat_form.as_p }}
+                                                        <button type="submit" class="btn btn-sm btn-danger">Send<i class=" ms-1 fas fa-play"></i></button>
+                                                    </form>
+                                                </div>
+                                                {% else %}
+                                                <p>You must be logged in to send a message.</p>
+                                                <a href="{% url 'login' %}">Log in</a>
+                                                {% endif %}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
   
 
   <div class="container py-5">
@@ -191,38 +202,45 @@ color: #bfbfbf;
       </div>
     </div>
   </div>
-
   <div class="container py-5">
     <div class="row">
-      <div class="title">
-        <h5>Write your review</h3>
-      </div>
-      <div class="col-lg-5 col-md-5 col-sm-12">
-        <form method="post">
-          {% csrf_token %} {{ form.as_p }}
-          <button type="submit" class="btn btn-primary">Submit Review</button>
-        </form>
-      </div>
-      <div class="col-lg-7 col-md-7 col-sm-12" >
-        <h5>Current Reviews</h5>
-       <div class="review" style="height:200px; overflow-y: auto;">
-        {% for review in reviews %}
-        <p>Review:{{ review.text }}</p>
-        <p>Rated:
-          <div class="rating" data-rating="{{ review.rating }}">
-          
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="title text-center">
+                        <h5><b>Write your review</b></h5>
+                    </div>
+                    <form method="post">
+                        {% csrf_token %} 
+                        Desc{{ form.text|add_class:"form-control border-dark" }}<br/>
+                         <i class="fa-solid fa-star fa-regular"></i><i class="fa-solid fa-star fa-regular"></i><i class="fa-regular fa-star-half-stroke"></i>{{ form.rating|add_class:"form-control border-dark" }}
+                        <button type="submit" class="btn btn-primary mt-3">Submit Review</button>
+                    </form>
+                </div>
+            </div>
         </div>
-      </p>
-        
-        <p>By: {{ review.user.username }}</p>
-        <hr>
-        {% empty %}
-        <p>No reviews yet.</p>
-        {% endfor %}
-       </div>
-      </div>
+        <div class="col-lg-7 col-md-7 col-sm-12">
+            <div class="card">
+                <div class="card-body" style="">
+                    <h5>Current Reviews</h5>
+                    <div class="review" style="height:200px; overflow-y: auto;">
+                        {% for review in reviews %}
+                        <p>Review: {{ review.text }}</p>
+                        <p>Rated: {{ review.rating }}<i class="fa-solid fa-star fa-regular"></i>
+                            <div class="rating" data-rating="{{ review.rating }}"></div>
+                        </p>
+                        <p>By: {{ review.user.username }}</p>
+                        <hr>
+                        {% empty %}
+                        <p>No reviews yet.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
 
 
 

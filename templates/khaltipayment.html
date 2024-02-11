@@ -5,12 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Khalti Payment</title>
     <script src="https://unpkg.com/khalti-checkout-web@latest/dist/khalti-checkout.iffe.js"></script>
+    
+    <style>
+        .card-container {
+            display: flex;
+            
+            height: 100vh;
+        }
+    </style>
 </head>
 <body>
-    <h3>Your order amount is Rs. Total price: {{ total_price }}</h3>
-    
-    <button id="payment-button">Pay with Khalti</button>
-    <a href="/">Go to Home page</a>
+    <div class="container card-container" >
+        <div class="card text-center"style= "background-color: white;" >
+            <div class="card-header">
+                Your Booking
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Your booking amount is Rs. Total price: {{ total_price }}</h5>
+                <button id="payment-button" class="btn btn-primary">Pay with Khalti</button>
+                <a href="/" class="btn btn-secondary">Go to Home page</a>
+            </div>
+            <div class="card-footer text-muted"><br/><br/>
+                Thank you for your booking!
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
@@ -62,4 +81,6 @@
         };
     </script>
 </body>
-</html>
+</html> 
+
+
