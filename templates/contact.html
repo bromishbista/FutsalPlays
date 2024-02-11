@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}Dashboard{% endblock title %}
 {% block body %}
-    <!-- sliders -->
+    <!-- sliders 
     <section class="foot-search">
         <div class="footsal-section">
             <div class="search-section-form">
@@ -17,10 +18,9 @@
             </div>
         </div>
     </section>
-    <!-- sliders -->
-
-    <section style="background-color:rgba(206, 203, 195, 0.267);">
-        <div class="test-section" >
+    sliders -->
+    <section style="background-color: rgba(206, 203, 195, 0.267);">
+        <div class="test-section">
             <div class="test-section-wrapper">
                 <div class="test-section-content">
                     <h2>Get in Touch</h2>
@@ -29,43 +29,82 @@
             </div>
         </div>
     </section>
+    <section>
+        <section class="ftco-section">
+            <div class="container">
+             
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="wrapper">
+                            <div class="row no-gutters">
+                                <div class="col-md-6 d-flex align-items-stretch"style="background-color: #8fd4fa;">
+                                    <div class="contact-wrap w-100 p-md-5 p-4 py-5">
+                                        <h3 class="mb-4">Write us</h3>
+                                 
+                                  <form method="post">
+                                    {% csrf_token %}
+                                    {{ form.as_p}}
+                                    <input type="submit" value="Send" class="card-button">
+                                </form>
+                                    </div>
+                                </div>
 
-    <section class="">
-        <div class="contact container pt-5">
-            <div class="left-contact-section contact">
-                <div class="contact-bg-image">
-                        <h2>Contact Us</h2>
-                        <form method="post">
-                          {% csrf_token %}
-                          {{ form.as_p }}
-                          <input type="submit" value="Send">
-                        </form>
+                                <div class="col-md-6 d-flex align-items-stretch" style="background-color:##8fd4fa;">
+                                    <div class="info-wrap w-100 p-md-5 p-4 py-5 img">
+                                        <h3 style="color: #333;">Contact information</h3>
+
+                                        <p class="mb-4" style="color: #555;">We're open for any suggestion or just to have a chat</p>
+                                        <div class="dbox w-100 d-flex align-items-start">
+                                            <div class="text pl-3" style="color: black;">
+                                                <p><span><span class="fa fa-map-marker"></span>     Address:</span> Damak, Jhapa, Nepal</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="dbox w-100 d-flex align-items-center">
+                                            <div class="text pl-3" style="color: black;">
+                                                <p><span><span class="fa fa-phone"></span>  Phone:</span> <a href="tel://9815916681" style="color: blue;">+977 9815916681</a></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="dbox w-100 d-flex align-items-center">
+                                        
+                                            <div class="text pl-3" style="color: black;">
+                                                <p><span><span class="fa fa-paper-plane"></span>   Email:</span> <a href="mailto:info@yoursite.com" style="color: blue;">bromishbista2003@gmail.com</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="dbox w-100 d-flex align-items-center">
+                                           
+                                            <div class="text pl-3" style="color: black;">
+                                                <p><span><span class="fa fa-globe"></span> Website:</span> <a href="/" style="color: blue;">FutsalPlays.com</a></p>
+                                            </div>
+                                        </div>
+                                        
+                                        <br/>
+                                        <div class="dbox w-100 d-flex align-items-center" style="border: 2px solid blue;">
+                                            
+                                              <div class="text pl-3">
+                                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7131.269548805734!2d87.6843616!3d26.660173800000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e58e14d281c547%3A0xb0d3c98577060f3d!2sDamak!5e0!3m2!1sen!2snp!4v1707675439812!5m2!1sen!2snp" width="426" height="200" style="border:10; border-color: black;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></src></iframe>
+                                              </div>
+                                            </div>
+                                          </div>
+                                    </div>
+                                </div>
+                           
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="right-contact-section contact">
-                <div class="right-contact-lists">
-                    <div class="contact-content">
-                        <h3>Address</h3>
-                        <p>Damak, jhapa, Nepal</p>
-                    </div>
-                    <div class="contact-content">
-                        <h3>Email</h3>
-                        <p><a href="mailto:hello.chatgpt@gpt.com" class="text-decoration-none">futsal@gmail.com</a></p>
-                    </div>
-                    <div class="contact-content">
-                        <h3>Phone</h3>
-                        <p><a href="tel:79797997979" class="text-decoration-none">098547213</a></p>
-                    </div>
-                    <div class="contact-content">
-                        <h3>Web Site</h3>
-                        <p><a href="hello.com" class="text-decoration-none">Futsal .com</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- our Contact  -->
+
+
+    
+    
+
+    <!-- our Contact  
     <section class="count-section">
         <div class="container">
             <div class="count">
@@ -94,6 +133,8 @@
             </div>
         </div>
     </section>
-    <!-- our Contact  -->
+     our Contact  -->
+     
 
     {% endblock %}
+   
