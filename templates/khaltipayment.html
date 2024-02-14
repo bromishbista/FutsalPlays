@@ -9,19 +9,19 @@
     <style>
         .card-container {
             display: flex;
-            
             height: 100vh;
         }
     </style>
 </head>
 <body>
-    <div class="container card-container" >
-        <div class="card text-center"style= "background-color: white;" >
+    <div class="container card-container">
+        <div class="card text-center" style="background-color: white;">
             <div class="card-header">
                 Your Booking
             </div>
             <div class="card-body">
-                <h5 class="card-title">Your booking amount is Rs. Total price: {{ total_price }}</h5>
+                <!-- Pass the amount value here -->
+                <h5 id="amount" class="card-title">Your booking amount is Rs. Total price: {{ amount }}</h5>
                 <button id="payment-button" class="btn btn-primary">Pay with Khalti</button>
                 <a href="/" class="btn btn-secondary">Go to Home page</a>
             </div>
@@ -33,54 +33,38 @@
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-        var config = {
-            "publicKey": "REMOVED_KHALTI_PUBLIC_KEY",
-            "productIdentity": "book_futsal_{{ book_futsal.id }}",
-            "productName": "book_futsal_{{ book_futsal.id }}",
-            "productUrl": "http://localhost:8000",
-            "paymentPreference": [
-                "MOBILE_BANKING",
-                "KHALTI",
-                "EBANKING",
-                "CONNECT_IPS",
-                "SCT",
-            ],
-            "eventHandler": {
-                onSuccess(payload) {
-                    // hit merchant api for initiating verification
-                    axios.get("/khalti-verify/", {
-                        params: {
-                            "token": payload.token,
-                            "amount": payload.amount,
-                            "order_id": "{{ book_futsal.id }}"
-                        }
-                    }).then(function(resp){
-                        if (resp.data.success === true){
-                            alert("Thanks. Payment Completed Successfully");
-                            location.href = "/";
-                        } else {
-                            alert("Sorry. Error occurred");
-                            location.href = "{{ request.build_absolute_uri }}";
-                        }
-                    });
-                },
-                onError(error) {
-                    console.log(error);
-                },
-                onClose() {
-                    console.log('widget is closing');
-                }
-            }
-        };
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("payment-button").addEventListener("click", function() {
+                var purchase_order_id = document.getElementById("book_id").value;
+                var amount = document.getElementById("amount").innerText; // Accessing the amount from the HTML element
+                var return_url = "https://127.0.0.1:8000/payment-success";
 
-        var checkout = new KhaltiCheckout(config);
-        var btn = document.getElementById("payment-button");
-        btn.onclick = function () {
-            // minimum transaction amount must be 10, i.e 1000 in paisa.
-            checkout.show({ amount: {{ book_futsal.futsal.price }} * 10 });
-        };
+                var config = {
+                    "publicKey": "key REMOVED_KHALTI_PUBLIC_KEY",
+                    "productUrl": window.location.href,
+                    "productIdentity": purchase_order_id,
+                    "productName": "Futsal Booking",
+                    "amount": amount * 100, // Convert amount to paisa
+                    "eventHandler": {
+                        onSuccess (payload) {
+                            console.log(payload);
+                            window.location.href = return_url;
+                        },
+                        onError (error) {
+                            console.error(error);
+                        },
+                        onClose () {
+                            console.log("Checkout closed");
+                        }
+                    }
+                };
+
+                var checkout = new KhaltiCheckout(config);
+                checkout.show({});
+            });
+        });
     </script>
+
+    <input type="hidden" id="book_id" value="{{ book_id }}">
 </body>
-</html> 
-
-
+</html>

@@ -18,4 +18,6 @@ urlpatterns = [
     path('', include('booking.urls')),
     path('', include('allauth.urls')),
     path('ratings/', include('star_ratings.urls', namespace='ratings')),
+   
+    
 ]+static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

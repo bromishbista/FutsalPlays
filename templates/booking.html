@@ -8,20 +8,23 @@
             <div class="futsal-title" style="color: #333; font-size: 24px; margin-bottom: 20px; text-align: center;">
                 <h2>Book Futsal Now</h2>
             </div>
-            {% for message in messages %}
-            {% comment %} <div class="alert alert-{{ message.tags }}" style="padding: 10px; margin-bottom: 20px; border-radius: 5px; 
-                background-color: {% if message.tags == 'success' %}#d4edda; color: #155724;{% else %}#f8d7da; color: #721c24;{% endif %};">
-                {{ message }}
-            </div> {% endcomment %}
-            {% endfor %}
+           
             <form action="" class="login-form" method="POST" style="width: 100%;">
                 {% csrf_token %}
                 {{ form.as_p }}
                 {% if request.user.is_authenticated %}
-                <button class="button" type="submit" name="submit" style="display: block; margin: 0 auto; background-color: #007bff; color: #fff; font-size: 16px; padding: 12px 50px; border: none; border-radius: 5px; cursor: pointer; text-decoration: none;">Book Futsal</button>
+                <button class="button" type="submit" name="submit" style="display: block; margin: 0 auto; background-color: #007bff; color: #fff; font-size: 16px; padding: 12px 50px; 
+                border: none; border-radius: 5px; cursor: pointer; text-decoration: none;">Book Futsal</button>
                 {% else %}
-                <a href="{% url 'login' %}" class="button" style="display: block; margin: 0 auto; background-color: #007bff; color: #fff; font-size: 16px; padding: 12px 10rem; border: none; border-radius: 5px; cursor: pointer; text-decoration: none; width: 100%; text-align: center;">Book</a>
+                <a href="{% url 'login' %}" class="button" style="display: block; margin: 0 auto; background-color: #007bff; color: #fff; font-size: 16px; padding: 12px 10rem; border: 
+                none; border-radius: 5px; cursor: pointer; text-decoration: none; width: 100%; text-align: center;">Book</a>
                 {% endif %}
+                {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}" style="padding: 10px; margin-bottom: 20px; border-radius: 5px; 
+                    background-color: {% if message.tags == 'success' %}#d4edda; color: #155724;{% else %}#f8d7da; color: #721c24;{% endif %};">
+                    {{ message }}
+                </div> 
+                {% endfor %}
             </form>
         </div>
     </div>

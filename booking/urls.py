@@ -5,7 +5,7 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from .views import payment_success
+# from .views import payment_success
 
 
 
@@ -106,9 +106,16 @@ urlpatterns = [
 
 #payment khalti 
 
-    path("khalti-request/<int:id>/", views.KhaltiRequestView.as_view(), name="khaltirequest"),
-    path("khalti-verify/<int:id>/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
+    # path("khalti-request/<int:id>/", views.KhaltiRequestView.as_view(), name="khaltirequest"),
+    # path("khalti-verify/<int:id>/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
   
+    # path('',views.home,name="home"),
+    # path("initiate",views.initkhalti,name="initiate"),
+    path('khalti-request/<int:id>/', views.KhaltiRequestView.as_view(), name='khaltirequest'),
+    path('verify',views.verifyKhalti,name="verify"),
+    # path('initiate/<int:book_id>/', views.initkhalti, name='initiate'),
+    
+    path('initiate/<int:book_id>/', views.InitKhaltiView.as_view(), name='initkhalti'),
 
 ]
 if settings.DEBUG:

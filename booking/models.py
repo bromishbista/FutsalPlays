@@ -70,7 +70,7 @@ class Book_futsal(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=12)
     futsal = models.ForeignKey(Futsal, on_delete=models.CASCADE)
-    date = models.DateField(null=True)
+    date = models.DateField(null=True)   
     start_time = models.TimeField(choices=[(datetime.strptime(f'{i}:00', '%H:%M').time(), f'{i}:00 {datetime.strptime(f"{i}:00", "%H:%M").strftime("%p")}') for i in range(10, 18)])
     duration = models.PositiveIntegerField(choices=[(i, f"{i} hour{'s' if i>1 else ''}") for i in range(1, 6)], default=1)
 

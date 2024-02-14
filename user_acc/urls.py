@@ -108,8 +108,9 @@ path('contact/', ContactFormView.as_view(), name='contact'),
     path('contact/<int:pk>/edit/', views.contact_edit, name='contact_edit'),
     path('contact/<int:pk>/delete/', views.contact_delete, name='contact_delete'),
 
-
-
+#  path('booking/', include('booking.urls', namespace='booking')),
+ 
+  
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
