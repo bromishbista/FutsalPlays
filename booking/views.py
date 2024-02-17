@@ -24,6 +24,16 @@ from math import radians, sin, cos, sqrt, atan2
 from django.conf import settings
 
 from .models import Futsal
+
+# for userdashboard 
+@login_required(login_url='login')
+def UserDashboard(request):
+    user_groups = UserGroups.objects.filter(members=request.user)
+    futsal_bookings = Book_futsal.objects.filter(user=request.user)
+    context = {'user_groups': user_groups, 'futsal_bookings': futsal_bookings}
+    return render(request, 'UserDashboard.html', context)
+
+
 # map Api 
 def get_user_location():
     url = "https://www.googleapis.com/geolocation/v1/geolocate?key=REMOVED_GOOGLE_API_KEY" + settings.GOOGLE_MAPS_API_KEY
@@ -118,13 +128,6 @@ def booking(request):
     return render(request, 'booking.html')
 
 
-# for userdashboard 
-@login_required(login_url='login')
-def userdashboard(request):
-    user_groups = UserGroups.objects.filter(members=request.user)
-    futsal_bookings = Book_futsal.objects.filter(user=request.user)
-    context = {'user_groups': user_groups, 'futsal_bookings': futsal_bookings}
-    return render(request, 'userdashboard.html', context)
 
 
 
@@ -754,8 +757,9 @@ class BookFutsal(View):
         return redirect('/book_futsal/')
 
 
-# payment khalti 
+# payment khalti integration 
 
+from .models import Book_futsal
 
 class KhaltiRequestView(View):
     def get(self, request, id):
@@ -766,8 +770,7 @@ class KhaltiRequestView(View):
         }
         return render(request, "khaltipayment.html", context)
 
-from .models import Book_futsal
-from .models import Book_futsal
+
 
 class KhaltiVerifyView(View):
     def get(self, request, *args, **kwargs):
@@ -791,7 +794,7 @@ class KhaltiVerifyView(View):
             resp_dict = response.json()
             if resp_dict.get("idx"):
                 success = True
-                book_obj.payment_completed = True
+                book_obj.success = True
                 book_obj.save()
             else:
                 success = False
@@ -1084,4 +1087,26 @@ def payment_success(request):
 
 #         return JsonResponse(response_data)
 
+
+from django.http import HttpResponse
+from django.template.loader import get_template
+from django.conf import settings
+from xhtml2pdf import pisa
+
+def download_booking_info(request, booking_id):
+    # Get the booking information based on the booking_id parameter
+    booking = Book_futsal.objects.get(id=booking_id)
     
+    # Generate a PDF file
+    template_path = 'booking_info.html'
+    context = {'booking': booking}
+    html = get_template(template_path).render(context)
+    pdf_file = settings.MEDIA_ROOT + f'booking_info_{booking_id}.pdf'
+    with open(pdf_file, 'wb') as pdf:
+        pisa.CreatePDF(html, dest=pdf)
+    
+    # Serve the PDF file as a download
+    with open(pdf_file, 'rb') as pdf:
+        response = HttpResponse(pdf.read(), content_type='application/pdf')
+        response['Content-Disposition'] = f'attachment; filename="booking_info_{booking_id}.pdf"'
+        return response

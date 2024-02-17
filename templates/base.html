@@ -104,7 +104,7 @@
                                     <i class="fa-solid fa-ghost"></i>   Account
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="list-style-type:none;">
-                                    <li><a class="dropdown-item" href="">User Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'UserDashboard' %}">User Dashboard</a></li>
                                     {% if team_status %} 
                                     <li style="list-style-type: none;"><a class="dropdown-item" href={% url 'teams' %} >View Team</a></li>
                                    

@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{% load static %}
+
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            
+        }
+        .sidebar {
+            width: 250px;
+            height: 100%;
+          
+            background-image: url('{% static "img/cr10.jpg" %}'); opacity: 0.80;
+            background-size: cover; /* Ensures the background image covers the entire container */
+            background-position: center; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            margin-left: 7rem;
+            overflow-x: hidden;
+            padding-top: 20px;
+           
+          
+        }
+        
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            margin-top: 10vh;
+        }
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            
+        }
+        .profile-name {
+            color: #fff;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .card-button {
+            background-color: #3f050b; /* Transparent background on hover */
+        }
+
+        .booking-table {
+            width: calc(100% - 400px); /* Adjust width to accommodate the table */
+            padding: 50px;
+            margin-left: 350px; /* Push table to the right of the sidebar */
+        }
+        .booking-table th, .booking-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #fff; /* White border */
+            color: black;
+        }
+        .booking-table th {
+            background-color: #ccc2ba; /* Darker background for table headers */
+        }
+        .booking-table td a {
+            color: #fff;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: #007bff;
+        }
+        .booking-table td a:hover {
+            background-color: #0056b3;
+        }
+
+        .new{
+            width: 20%;
+            margin-left: 50rem;   
+        }
+        .imgbn {
+            width: 100%; /* Ensures the image takes up the full width of its container */
+            max-width: 2560px; /* Maximum width for the image */
+            height: 360px; /* Adjust this as needed to match the aspect ratio (1440/2560 * 360) */
+            overflow: hidden; /* Ensures the image does not overflow its container */
+        }
+    
+        .imgbn img {
+            margin-left: 25rem;
+            width: 20%; /* Ensures the image takes up the full width of its container */
+            height: 300px; /* Allows the image to maintain its aspect ratio */
+            display: fit; /* Ensures proper layout */
+        }
+        .profile-tag{
+            margin-top: 40vh;
+            width: 80%;
+            margin-left: 20px;
+            
+        }
+
+        
+       
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="profile-image">
+            <img src="{% static 'img/RG Bucket list.jpg' %}" alt="Profile Picture">
+        </div>
+        <div class="profile-name">
+            {{ user.username }}
+        </div>
+        <div class="profile-name">
+            {{ user.email }}
+        </div>
+       
+        
+        <div class="profile-tag">
+        <a href="{% url 'team' %}" class="card-button"><i class="fa-solid fa-users "></i>&nbsp;  View Team </a>
+    
+        <a href="{% url 'password_reset' %}" class="card-button"><i class="fas fa-unlock-alt"></i>&nbsp; Reset your Password?</a>
+    </div>
+</div>
+<div class = "imgbn">
+    <img src= "{% static 'img/matchday.jpg'%}">
+</div>
+
+<div class="booking-table">
+    <h4 class="text-center"><b>Your Futsal Bookings</b></h4><br><br>
+  
+    <div class="new">
+        <a href="{% url 'book_futsal' %}" class="card-button"><i class="fa-solid fa-plus"></i>&nbsp; New Booking</a>
+    </div>
+    <br/>
+
+    <table class="table table-bordered " style="font-size:18px;">
+        <tr>
+            <th scope="col">Futsal Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Time Slot</th>
+            <th scope="col">Action</th>
+        </tr>
+        {% for booking in futsal_bookings %}
+        <tr>
+            <td>{{ booking.futsal.name }}</td>
+            <td>{{ booking.date| date:'F j, Y' }}</td>
+            <td>{{ booking.start_time }} to {{ booking.end_time}}</td>
+            <td> <a href="{% url 'download_booking_info' booking.id %}" class=""><i class="fa-solid fa-file-pdf"></i></a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">You haven't made any bookings yet.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+    
+    
+
+{% endblock %}
+

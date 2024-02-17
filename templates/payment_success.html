@@ -1,10 +1,63 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
 <head>
     <title>Payment Success</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            margin-top: 5vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        .card {
+            background-color: #bbe1d3;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin: 50px;
+            width: 300px;
+        
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Payment Success</h1>
-    <p>{{ message }}</p>
+    <div class="container">
+        <img src="{% static 'img/success.svg' %}" alt="Image 1">
+    </div>
+
+    <div class="big box">
+        <h1>Payment Success</h1>
+        <br/>
+        <p>{{ message }}</p>
+       
+    </div>
+    <div class="container">
+        <div class="card">
+            <a href="{% url 'book_futsal' %}" class="card-button">Continue Boooking</a>
+            <br/>
+            <a href="/" class="card-button">Go to Dashboard</a>
+        </div>
+    </div>
 </body>
 </html>

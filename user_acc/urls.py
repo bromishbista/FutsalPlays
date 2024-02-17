@@ -112,7 +112,7 @@ path('contact/', ContactFormView.as_view(), name='contact'),
     path('contact/<int:pk>/edit/', views.contact_edit, name='contact_edit'),
     path('contact/<int:pk>/delete/', views.contact_delete, name='contact_delete'),
 
-#  path('booking/', include('booking.urls', namespace='booking')),
+#   path('booking/', include('booking.urls', namespace='booking')),
  
   
 ]

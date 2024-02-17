@@ -8,7 +8,7 @@ from django.contrib.auth import views as auth_views
 # from .views import payment_success
 
 
-
+from .views import  UserDashboard
 
 urlpatterns = [
 
@@ -25,8 +25,12 @@ urlpatterns = [
     # path('index/', index, name='index'),
     # path('booking/', booking, name='booking'),
  
+    path('booking/<int:booking_id>/download/', views.download_booking_info, name='download_booking_info'),
+    path('booking/download/', views.download_booking_info, name='download_booking_info_no_id'),
 
-   
+## for user dashboard 
+
+    path('UserDashboard', UserDashboard, name='UserDashboard'),
    
 
 #book_futsal booking futsal 
