@@ -108,8 +108,9 @@ urlpatterns = [
 
 
     path("khalti-request/<int:id>/", views.KhaltiRequestView.as_view(), name="khaltirequest"),
-    path("khalti-verify/<int:id>/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
-
+    # path("khalti-verify/<int:id>/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
+    path("khalti-verify/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
+    path("payment-success/", views.payment_success, name="payment_success"),
 #payment khalti 
 
     # path("khalti-request/<int:id>/", views.KhaltiRequestView.as_view(), name="khaltirequest"),

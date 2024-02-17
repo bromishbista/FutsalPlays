@@ -690,34 +690,34 @@ def create_team(request):
 
 from django.contrib import messages
 
-# CRUD operation for booking  Futsal 
+# # CRUD operation for booking  Futsal 
 
-class BookFutsal(View):
-    def get(self, request):
-        if request.user.is_authenticated:
-            team_status = Team.objects.filter(user=request.user)
-        else:
-            team_status = None
-        context = {
-            'form': BookFutsalForm(),
-            'team_status': team_status
-        }
-        return render(request, 'booking.html', context)
+# class BookFutsal(View):
+#     def get(self, request):
+#         if request.user.is_authenticated:
+#             team_status = Team.objects.filter(user=request.user)
+#         else:
+#             team_status = None
+#         context = {
+#             'form': BookFutsalForm(),
+#             'team_status': team_status
+#         }
+#         return render(request, 'booking.html', context)
 
-    def post(self, request):
-        form = BookFutsalForm(request.POST)
-        if form.is_valid():
-            instance = form.save(commit=False)
-            instance.user = request.user
-            instance.save()
-            book_id = instance.id
-            return redirect('/khalti-request/' + str(book_id))
-        else:
-            # Display validation errors as messages
-            for field, errors in form.errors.items():
-                for error in errors:
-                    messages.error(request, f"{field}: {error}")
-        return redirect('/book_futsal/')
+#     def post(self, request):
+#         form = BookFutsalForm(request.POST)
+#         if form.is_valid():
+#             instance = form.save(commit=False)
+#             instance.user = request.user
+#             instance.save()
+#             book_id = instance.id
+#             return redirect('/khalti-request/' + str(book_id))
+#         else:
+#             # Display validation errors as messages
+#             for field, errors in form.errors.items():
+#                 for error in errors:
+#                     messages.error(request, f"{field}: {error}")
+#         return redirect('/book_futsal/')
     
 
 
@@ -745,7 +745,7 @@ class BookFutsal(View):
             instance.user = request.user
             instance.save()
             book_id = instance.id
-            return redirect('/khalti-request/' + str(book_id))
+            return redirect("/khalti-request/" + str(book_id))
         else:
             # Display validation errors as messages
             for field, errors in form.errors.items():
@@ -766,7 +766,8 @@ class KhaltiRequestView(View):
         }
         return render(request, "khaltipayment.html", context)
 
-
+from .models import Book_futsal
+from .models import Book_futsal
 
 class KhaltiVerifyView(View):
     def get(self, request, *args, **kwargs):
@@ -784,24 +785,26 @@ class KhaltiVerifyView(View):
             "Authorization": "REMOVED_KHALTI_SECRET_KEY"
         }
 
-        book_obj = PAYMENT_REQUIRED.objects.get(id=o_id)
+        try:
+            book_obj = Book_futsal.objects.get(id=o_id)
+            response = requests.post(url, payload, headers=headers)
+            resp_dict = response.json()
+            if resp_dict.get("idx"):
+                success = True
+                book_obj.payment_completed = True
+                book_obj.save()
+            else:
+                success = False
+            data = {"success": success}
+            return JsonResponse(data)
+        except Book_futsal.DoesNotExist:
+            data = {"success": False}
+            return JsonResponse(data)
 
-        response = requests.post(url, payload, headers=headers)
-        resp_dict = response.json()
-        if resp_dict.get("idx"):
-            success = True
-            book_obj.payment_completed = True
-            book_obj.save()
-        else:
-            success = False
-        data = {
-            "success": success
-        }
-        return JsonResponse(data)
     
 def payment_success(request):
     context = {
-        'message': 'Your payment has been completed successfully. Thank you for your purchase!'
+        'message': 'Your payment has been completed successfully. Thank you for booking!'
     }
     return render(request, 'payment_success.html', context)
     

@@ -102,12 +102,12 @@
                             "order_id": "{{book_futsal.id}}"
                         }
                     }).then(function(resp){
-                        if (resp.data.success == true){
+                        if (resp.data.success = true){
                             alert("Thanks. Payment Completed Successfully")
-                            location.href = "/"
+                            location.href = "{% url 'payment_success' %}";
                         }else{
                             alert("Sorry. Error occurred")
-                            location.href = "{{request.build_absolute_uri}}"
+                            location.href = "{{request.build_absolute_uri}}";
                         }
                     })
                 },
