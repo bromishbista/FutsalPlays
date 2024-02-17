@@ -23,7 +23,7 @@ path('searchfutsal', views.searchfutsal, name="searchfutsal"),
  path('teams/', views.teams, name="teams"),
  path('team/', views.teams, name="team"),
 
-path('base', views.Base, name="base"),
+
 
 # contact page 
 path('contact/', ContactFormView.as_view(), name='contact'),
