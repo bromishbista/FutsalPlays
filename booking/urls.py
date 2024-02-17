@@ -104,6 +104,12 @@ urlpatterns = [
     path('edit_team/<int:id>/', views.EditTeam.as_view(), name='edit_team'),
     path('team_detail/<int:team_id>/', views.team_detail, name='team_detail'),
 
+
+
+
+    path("khalti-request/<int:id>/", views.KhaltiRequestView.as_view(), name="khaltirequest"),
+    path("khalti-verify/<int:id>/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
+
 #payment khalti 
 
     # path("khalti-request/<int:id>/", views.KhaltiRequestView.as_view(), name="khaltirequest"),
@@ -111,11 +117,12 @@ urlpatterns = [
   
     # path('',views.home,name="home"),
     # path("initiate",views.initkhalti,name="initiate"),
-    path('khalti-request/<int:id>/', views.KhaltiRequestView.as_view(), name='khaltirequest'),
-    path('verify',views.verifyKhalti,name="verify"),
+    # path('khalti-request/<int:id>/', views.KhaltiRequestView.as_view(), name='khaltirequest'),
+    # path('verify',views.verifyKhalti,name="verify"),
+    
     # path('initiate/<int:book_id>/', views.initkhalti, name='initiate'),
     
-    path('initiate/<int:book_id>/', views.InitKhaltiView.as_view(), name='initkhalti'),
+    # path('initiate/<int:book_id>/', views.InitKhaltiView.as_view(), name='initkhalti'),
 
 ]
 if settings.DEBUG:

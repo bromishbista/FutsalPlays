@@ -711,7 +711,7 @@ class BookFutsal(View):
             instance.user = request.user
             instance.save()
             book_id = instance.id
-            return redirect('/initiate/' + str(book_id))
+            return redirect('/khalti-request/' + str(book_id))
         else:
             # Display validation errors as messages
             for field, errors in form.errors.items():
@@ -745,7 +745,7 @@ class BookFutsal(View):
             instance.user = request.user
             instance.save()
             book_id = instance.id
-            return redirect('/initiate/' + str(book_id))
+            return redirect('/khalti-request/' + str(book_id))
         else:
             # Display validation errors as messages
             for field, errors in form.errors.items():
@@ -757,53 +757,53 @@ class BookFutsal(View):
 # payment khalti 
 
 
-# class KhaltiRequestView(View):
-#     def get(self, request, id):
-#         book_futsal = Book_futsal.objects.get(id=id)
-#         total_price = book_futsal.duration * book_futsal.futsal.price
-#         context = {
-#             "book_futsal": book_futsal, "total_price":total_price
-#         }
-#         return render(request, "khaltipayment.html", context)
+class KhaltiRequestView(View):
+    def get(self, request, id):
+        book_futsal = Book_futsal.objects.get(id=id)
+        total_price = book_futsal.duration * book_futsal.futsal.price
+        context = {
+            "book_futsal": book_futsal, "total_price":total_price
+        }
+        return render(request, "khaltipayment.html", context)
 
 
 
-# class KhaltiVerifyView(View):
-#     def get(self, request, *args, **kwargs):
-#         token = request.GET.get("token")
-#         amount = request.GET.get("amount")
-#         o_id = request.GET.get("order_id")
-#         print(token, amount, o_id)
+class KhaltiVerifyView(View):
+    def get(self, request, *args, **kwargs):
+        token = request.GET.get("token")
+        amount = request.GET.get("amount")
+        o_id = request.GET.get("order_id")
+        print(token, amount, o_id)
 
-#         url = "https://khalti.com/api/v2/payment/verify/"
-#         payload = {
-#             "token": token,
-#             "amount": amount
-#         }
-#         headers = {
-#             "Authorization": "REMOVED_KHALTI_SECRET_KEY"
-#         }
+        url = "https://khalti.com/api/v2/payment/verify/"
+        payload = {
+            "token": token,
+            "amount": amount
+        }
+        headers = {
+            "Authorization": "REMOVED_KHALTI_SECRET_KEY"
+        }
 
-#         book_obj = PAYMENT_REQUIRED.objects.get(id=o_id)
+        book_obj = PAYMENT_REQUIRED.objects.get(id=o_id)
 
-#         response = requests.post(url, payload, headers=headers)
-#         resp_dict = response.json()
-#         if resp_dict.get("idx"):
-#             success = True
-#             book_obj.payment_completed = True
-#             book_obj.save()
-#         else:
-#             success = False
-#         data = {
-#             "success": success
-#         }
-#         return JsonResponse(data)
+        response = requests.post(url, payload, headers=headers)
+        resp_dict = response.json()
+        if resp_dict.get("idx"):
+            success = True
+            book_obj.payment_completed = True
+            book_obj.save()
+        else:
+            success = False
+        data = {
+            "success": success
+        }
+        return JsonResponse(data)
     
-# def payment_success(request):
-#     context = {
-#         'message': 'Your payment has been completed successfully. Thank you for your purchase!'
-#     }
-#     return render(request, 'payment_success.html', context)
+def payment_success(request):
+    context = {
+        'message': 'Your payment has been completed successfully. Thank you for your purchase!'
+    }
+    return render(request, 'payment_success.html', context)
     
 
 # import json
@@ -996,89 +996,89 @@ class BookFutsal(View):
 
 #         return JsonResponse(response_data)
     
+####new
+# from django.shortcuts import redirect, render
+# from django.views import View
+# from django.http import JsonResponse
+# import requests
+# from .models import Book_futsal
 
-from django.shortcuts import redirect, render
-from django.views import View
-from django.http import JsonResponse
-import requests
-from .models import Book_futsal
+# class KhaltiRequestView(View):
+#     def get(self, request, id):
+#         book_futsal = Book_futsal.objects.get(id=id)
+#         total_price = book_futsal.duration * book_futsal.futsal.price
+#         context = {
+#             "book_futsal": book_futsal, 
+#             "total_price": total_price
+#         }
+#         return render(request, "khaltipayment.html", context)
 
-class KhaltiRequestView(View):
-    def get(self, request, id):
-        book_futsal = Book_futsal.objects.get(id=id)
-        total_price = book_futsal.duration * book_futsal.futsal.price
-        context = {
-            "book_futsal": book_futsal, 
-            "total_price": total_price
-        }
-        return render(request, "khaltipayment.html", context)
-
-class InitKhaltiView(View):
-    def get(self, request, book_id, *args, **kwargs):
-        url = "https://a.khalti.com/api/v2/epayment/initiate/"
+# class InitKhaltiView(View):
+#     def get(self, request, book_id, *args, **kwargs):
+#         url = "https://a.khalti.com/api/v2/epayment/initiate/"
         
-        # Assuming you retrieve the amount from the request or some other source
-        amount = request.GET.get('amount')
-        purchase_order_id = book_id
+#         # Assuming you retrieve the amount from the request or some other source
+#         amount = request.GET.get('amount')
+#         purchase_order_id = book_id
 
-        token = request.GET.get("token")
+#         token = request.GET.get("token")
     
-        o_id = request.GET.get("order_id")
-        print(token, amount, o_id)
+#         o_id = request.GET.get("order_id")
+#         print(token, amount, o_id)
 
-        payload = {
-            "return_url": "https://127.0.0.1:8000/payment-success",
-            "website_url": "https://127.0.0.1:8000",
-            "amount": amount,
-            "token": token,
-            "purchase_order_id": purchase_order_id,
-            "purchase_order_name": "test",
-            "customer_info": {
-                "name": "Bromish Bista",
-                "email": "test@khalti.com",
-                "phone": "9800000001"
-            }
-        }
+#         payload = {
+#             "return_url": "https://127.0.0.1:8000/payment-success",
+#             "website_url": "https://127.0.0.1:8000",
+#             "amount": amount,
+#             "token": token,
+#             "purchase_order_id": purchase_order_id,
+#             "purchase_order_name": "test",
+#             "customer_info": {
+#                 "name": "Bromish Bista",
+#                 "email": "test@khalti.com",
+#                 "phone": "9800000001"
+#             }
+#         }
 
-        headers = {
-            'Authorization': 'Key e765b891d12449ceaa4cdfd14a27e47f',
-            'Content-Type': 'application/json',
-        }
+#         headers = {
+#             'Authorization': 'Key e765b891d12449ceaa4cdfd14a27e47f',
+#             'Content-Type': 'application/json',
+#         }
 
-        response = requests.post(url, headers=headers, json=payload)
+#         response = requests.post(url, headers=headers, json=payload)
 
-        if response.status_code == 200:
-            data = response.json()
-            payment_url = data.get('payment_url')
-            if payment_url:
-                return redirect(payment_url)
+#         if response.status_code == 200:
+#             data = response.json()
+#             payment_url = data.get('payment_url')
+#             if payment_url:
+#                 return redirect(payment_url)
 
-        # Render the template with book_id and amount
-        return render(request, 'khaltipayment.html', {'book_id': book_id, 'amount': amount})
+#         # Render the template with book_id and amount
+#         return render(request, 'khaltipayment.html', {'book_id': book_id, 'amount': amount})
 
 
-def verifyKhalti(request):
-    url = "https://a.khalti.com/api/v2/epayment/lookup/"
+# def verifyKhalti(request):
+#     url = "https://a.khalti.com/api/v2/epayment/lookup/"
 
-    if request.method == 'GET':
-        headers = {
-            'Authorization': 'key 02d8b8eff021402d8ee8b65baa10f75c',
-            'Content-Type': 'application/json',
-        }
-        pidx = request.GET.get('pidx')
-        data = {
-            'pidx': pidx
-        }
-        response = requests.post(url, headers=headers, json=data)
-        response_data = response.json()
+#     if request.method == 'GET':
+#         headers = {
+#             'Authorization': 'key 02d8b8eff021402d8ee8b65baa10f75c',
+#             'Content-Type': 'application/json',
+#         }
+#         pidx = request.GET.get('pidx')
+#         data = {
+#             'pidx': pidx
+#         }
+#         response = requests.post(url, headers=headers, json=data)
+#         response_data = response.json()
 
-        print(response_data)
+#         print(response_data)
 
-        if response_data['status'] == 'Completed':
-            pass
-        else:
-            pass
+#         if response_data['status'] == 'Completed':
+#             pass
+#         else:
+#             pass
 
-        return JsonResponse(response_data)
+#         return JsonResponse(response_data)
 
     

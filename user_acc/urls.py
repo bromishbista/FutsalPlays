@@ -23,6 +23,8 @@ path('searchfutsal', views.searchfutsal, name="searchfutsal"),
  path('teams/', views.teams, name="teams"),
  path('team/', views.teams, name="team"),
 
+path('base', views.Base, name="base"),
+
 # contact page 
 path('contact/', ContactFormView.as_view(), name='contact'),
 #login
@@ -49,6 +51,8 @@ path('contact/', ContactFormView.as_view(), name='contact'),
     path('register/', authviews.register, name="register"),
     path('login/', authviews.loginpage, name="login"),
     path('logout/', authviews.logoutpage, name="logout"),
+    
+
 
 #password reset
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='password_reset.html'), name="password_reset"),
