@@ -82,15 +82,17 @@
             margin-left: 50rem;   
         }
         .imgbn {
-            width: 100%; /* Ensures the image takes up the full width of its container */
-            max-width: 2560px; /* Maximum width for the image */
-            height: 360px; /* Adjust this as needed to match the aspect ratio (1440/2560 * 360) */
+            display: flex;
+            
+             /* Ensures the image takes up the full width of its container */
+            /* Maximum width for the image */
+            height: 100%; /* Adjust this as needed to match the aspect ratio (1440/2560 * 360) */
             overflow: hidden; /* Ensures the image does not overflow its container */
         }
     
         .imgbn img {
-            margin-left: 25rem;
-            width: 20%; /* Ensures the image takes up the full width of its container */
+            
+            width: 100%; /* Ensures the image takes up the full width of its container */
             height: 300px; /* Allows the image to maintain its aspect ratio */
             display: fit; /* Ensures proper layout */
         }
@@ -99,6 +101,19 @@
             width: 80%;
             margin-left: 20px;
             
+        }
+        .imgbn-container {
+            display: flex;
+            flex-direction: row; /* Display divs in a row */
+            margin-left: 30rem;
+        }
+        
+        .imgbn {
+            margin-right: 20px; /* Adjust the margin between divs as needed */
+        }
+        
+        .imgbn:last-child {
+            margin-right: 0; /* Remove margin for the last div */
         }
 
         
@@ -124,39 +139,59 @@
         <a href="{% url 'password_reset' %}" class="card-button"><i class="fas fa-unlock-alt"></i>&nbsp; Reset your Password?</a>
     </div>
 </div>
-<div class = "imgbn">
-    <img src= "{% static 'img/matchday.jpg'%}">
-</div>
 
+<div class="imgbn-container">
+    <div class="imgbn">
+        <img src="{% static 'img/match1.jpg' %}">
+    </div>
+    <div class="imgbn">
+        <img src="{% static 'img/matchday.jpg' %}">
+    </div>
+    <div class="imgbn">
+        <img src="{% static 'img/match2.jpg' %}">
+    </div>
+</div>
 <div class="booking-table">
-    <h4 class="text-center"><b>Your Futsal Bookings</b></h4><br><br>
-  
+    <h4 class="text-center" style="font-weight: bold; font-family: Luminari, fantasy;">For Up Comming Tournamets create team to  <br/>JOIN US</h4>
     <div class="new">
         <a href="{% url 'book_futsal' %}" class="card-button"><i class="fa-solid fa-plus"></i>&nbsp; New Booking</a>
     </div>
     <br/>
 
-    <table class="table table-bordered " style="font-size:18px;">
-        <tr>
-            <th scope="col">Futsal Name</th>
-            <th scope="col">Date</th>
-            <th scope="col">Time Slot</th>
-            <th scope="col">Action</th>
-        </tr>
-        {% for booking in futsal_bookings %}
-        <tr>
-            <td>{{ booking.futsal.name }}</td>
-            <td>{{ booking.date| date:'F j, Y' }}</td>
-            <td>{{ booking.start_time }} to {{ booking.end_time}}</td>
-            <td> <a href="{% url 'download_booking_info' booking.id %}" class=""><i class="fa-solid fa-file-pdf"></i></a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="3">You haven't made any bookings yet.</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <div class="card">
+        <div class="card-body">
+            <h4 class="text-center" style="font-weight: bold; font-family: Bradley Hand, cursive; ">Your Futsal Bookings</h4><br><br>
+            <div class="table-responsive">
+                <table class="table table-bordered" style="font-size: 18px;">
+                    <thead>
+                        <tr>
+                            <th scope="col">Futsal Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Time Slot</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for booking in futsal_bookings %}
+                        <tr>
+                            <td>{{ booking.futsal.name }}</td>
+                            <td>{{ booking.date|date:'F j, Y' }}</td>
+                            <td>{{ booking.start_time }} to {{ booking.end_time }}</td>
+                            <td>
+                                <a href="{% url 'download_booking_info' booking.id %}" class=""><i class="fa-solid fa-file-pdf"></i></a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4">You haven't made any bookings yet.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
 </div>
 
     
