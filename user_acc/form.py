@@ -35,6 +35,7 @@ class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = '__all__'
+        
 class SocialAccountForm(forms.ModelForm):
     class Meta:
         model = SocialAccount

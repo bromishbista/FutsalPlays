@@ -16,11 +16,9 @@ class BookFutsalForm(forms.ModelForm):
         model = Book_futsal
         fields = ['phone', 'futsal', 'date', 'start_time', 'duration']
         widgets = {
-     
-            'date': DateInput(attrs={'type': 'date'}),
+            'date': forms.DateInput(attrs={'type': 'date'}),
         }
 
-    
     def clean(self):
         cleaned_data = super().clean()
         futsal = cleaned_data.get('futsal')
@@ -28,11 +26,20 @@ class BookFutsalForm(forms.ModelForm):
         start_time = cleaned_data.get('start_time')
         duration = cleaned_data.get('duration')
         end_time = (datetime.combine(date, start_time) + timedelta(hours=duration)).time()
-        bookings = Book_futsal.objects.filter(futsal=futsal, date=date)
+        
+        # Check if the booking date is today or in the future
+        if date < datetime.now().date():
+            raise forms.ValidationError("Booking date cannot be in the past.")
+
+        # Exclude bookings from yesterday
+        yesterday = datetime.now().date() - timedelta(days=1)
+        bookings = Book_futsal.objects.filter(futsal=futsal, date__gte=yesterday)
+        
         for booking in bookings:
             if start_time < booking.end_time() and end_time > booking.start_time:
                 raise forms.ValidationError(f'The futsal is already booked from {booking.start_time.strftime("%I:%M %p")} to {booking.end_time().strftime("%I:%M %p")} on {date}.')
-            return cleaned_data
+        
+        return cleaned_data
 
 #class form breadcrumbsForm
 class BeadcrumbsForm(forms.ModelForm):

@@ -23,7 +23,8 @@ import requests
 from math import radians, sin, cos, sqrt, atan2
 from django.conf import settings
 
-from .models import Futsal
+from django.shortcuts import render, get_object_or_404
+from .models import Futsal, Book_futsal
 
 # for userdashboard 
 @login_required(login_url='login')
@@ -196,6 +197,11 @@ def about_delete(request, pk):
         about.delete()
         return redirect('about_list')
     return render(request, 'admin/booking/about/delete.html', {'about': about})
+
+def bookfutsal_list(request, futsal_id):
+    futsal = get_object_or_404(Futsal, pk=futsal_id)
+    booked_futsals = Book_futsal.objects.filter(futsal=futsal)
+    return render(request, 'admin/booking/bookfutsal/index.html', {'booked_futsals': booked_futsals})
 
 
 # CRUD operations for book futsal list 

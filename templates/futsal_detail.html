@@ -135,6 +135,36 @@ color: #bfbfbf;
                       Chat Now
                   </button>
               </div>
+
+              
+              {% comment %} <div class="card-body">
+                <table class="table" style="font-size: 18px;">
+                    <thead>
+                        <tr>
+                            <th scope="col">User</th>
+                            <th scope="col">Futsal</th>
+                            <th scope="col">Booking Time</th> 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for bookfutsal in booked_futsals %} 
+                        <tr>
+                            <td>{{ bookfutsal.user }}</td>
+                            <td>{{ bookfutsal.futsal.name }}</td>
+                            <td>{{ bookfutsal.booking_time|date:"F d, Y" }}</td>
+                            <td>{{ bookfutsal.booking_time|time:"h:i A" }}</td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="3">No booking futsals found.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table> 
+            </div> {% endcomment %}
+            
+
+        
           </div>
       </div>
 

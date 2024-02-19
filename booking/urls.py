@@ -6,6 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 # from .views import payment_success
+from .views import bookfutsal_list
 
 
 from .views import  UserDashboard
@@ -128,6 +129,10 @@ urlpatterns = [
     # path('initiate/<int:book_id>/', views.initkhalti, name='initiate'),
     
     # path('initiate/<int:book_id>/', views.InitKhaltiView.as_view(), name='initkhalti'),
+
+    
+
+    path('bookings/<int:futsal_id>/', bookfutsal_list, name='bookings_by_futsal'),
 
 ]
 if settings.DEBUG:
