@@ -124,17 +124,21 @@ header {
 
 .foot-search {
     padding: 2rem;
-    background-image: url("../img/player1.jpg");
+    background-image: url("../img/bnn.jpg");
     background-size: cover;
     background-position: content;
 }
 
 .footsal-section {
-    max-width: 700px;
+    max-width: 420px;
     margin: auto;
-    padding: 2rem;
-    background-color: rgb(243, 243, 243);
-}
+    padding: 1rem;
+    height: 220px;
+    background-color: #f6f6ee;
+    margin-right: 32.5%;
+   
+ 
+}   
 
 .footsal-search-main {
     display: flex;
@@ -143,15 +147,19 @@ header {
 }
 
 .footsal-search {
-    padding: 1rem;
+    padding: 1rem 4rem;
     flex: 1 1 250px;
     align-items: center;
-    border: none;
+    border: black;
+    
 }
 
 .footsal-search input,
 select {
-    border: none;
+    border: black;
+    background-color: #f8deb0;
+    width: 80%;
+    
 }
 
 .footsal-search select,
@@ -162,7 +170,7 @@ input {
 
 .fa-football1,
 .fa-search {
-    background: #fff;
+    background: #f0f1f6;
     padding: 1rem;
 }
 
@@ -182,6 +190,21 @@ input {
     left: 66%;
 }
 
+.footsal-btn {
+   
+    /* padding: 0.5rem 1.5rem; */
+    padding-top: 0.5rem;
+    padding-bottom: 0.4rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    border: none;
+    border-radius:0px;
+    color: #fff;
+    box-shadow: 2px 3px 5px #000;
+    background-color: rgb(71, 76, 207);
+    position: absolute;
+    left: 48%;
+}
 
 /* footsal */
 

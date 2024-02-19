@@ -23,21 +23,22 @@ def loginpage(request):
     if request.user.is_authenticated:
         messages.warning(request, "You are already logged in")
         return redirect("/")
-    
+   
     else:
         if request.method == 'POST':
-            username= request.POST['username']
-            passwd = request.POST['password']
+            username = request.POST.get('username')
+            password = request.POST.get('password')
             
-            user = auth.authenticate(username=username, password=passwd)
+            user = auth.authenticate(username=username, password=password)
             if user is not None:
                 auth.login(request, user)
-                messages.success(request, "logged in sucessfully")
+                messages.success(request, "logged in successfully")
                 return redirect("/")
             else:
                 messages.error(request, "Invalid username or password")
                 return redirect("/login")
         return render(request, "login.html")
+
 
 def logoutpage(request):
     if request.user.is_authenticated:
