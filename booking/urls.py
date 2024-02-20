@@ -7,11 +7,15 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 # from .views import payment_success
 from .views import bookfutsal_list
-
+from .views import BookFutsal
+from .views import*
 
 from .views import  UserDashboard
 
 urlpatterns = [
+
+    # path("bookF/", BookFutsal.as_view(), name="bookF"),
+    # path("Futsalb/", Futsal.as_view(), name="Futsalb"),
 
     path('adminmatch/', views.match, name='adminmatch'),
 

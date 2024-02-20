@@ -18,6 +18,7 @@ from django.db.models import Q
 from django.shortcuts import render
 
 
+
 # recommendation system
 import requests
 from math import radians, sin, cos, sqrt, atan2
@@ -484,13 +485,13 @@ def Slider_delete(request, pk):
 
 # CRUD operations for  Futsal start
 
+
 def futsal_list(request):
     futsals = Futsal.objects.all()
     searchedterm=request.GET.get('futsalsearch')
     if searchedterm:
         futsals = futsals.filter(Q(name__icontains=searchedterm)|Q(price__icontains=searchedterm)|Q(location__icontains=searchedterm)).distinct()
     return render(request, 'futsal.html', {'futsals': futsals})
-
 
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -1094,6 +1095,7 @@ def payment_success(request):
 #         return JsonResponse(response_data)
 
 
+##### ticket generating 
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.conf import settings
@@ -1116,3 +1118,37 @@ def download_booking_info(request, booking_id):
         response = HttpResponse(pdf.read(), content_type='application/pdf')
         response['Content-Disposition'] = f'attachment; filename="booking_info_{booking_id}.pdf"'
         return response
+    
+
+# #### For API
+# from rest_framework.response import Response
+# from rest_framework.views import APIView
+# from rest_framework import status
+# from .models import Book_futsal, Futsal  # Correct import statement for Futsal model
+# from .serializers import BookFutsalSerializer, FutsalSerializer
+
+# class BookFutsal(APIView):
+#     def get(self, request):
+#         objs = Book_futsal.objects.all()
+#         serializer = BookFutsalSerializer(objs, many=True)
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+#     def post(self, request):
+#         serializer = BookFutsalSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+# class Futsal(APIView):
+#     def get(self, request):
+#         objs = Team.objects.all()  
+#         serializer = FutsalSerializer(objs, many=True)
+#         return Response(serializer.data, status=status.HTTP_200_OK)
+    
+#     def post(self, request):
+#         serializer = FutsalSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
