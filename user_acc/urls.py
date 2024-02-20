@@ -17,16 +17,17 @@ from django.urls import path, include
 
 urlpatterns = [
 
-path('search-list', views.fusallistAjax),
-path('searchfutsal', views.searchfutsal, name="searchfutsal"),
+    path('search-list', views.fusallistAjax),
+    path('searchfutsal', views.searchfutsal, name="searchfutsal"),
+   
 
- path('teams/', views.teams, name="teams"),
- path('team/', views.teams, name="team"),
+    path('teams/', views.teams, name="teams"),
+    path('team/', views.teams, name="team"),
 
 
 
 # contact page 
-path('contact/', ContactFormView.as_view(), name='contact'),
+    path('contact/', ContactFormView.as_view(), name='contact'),
 #login
     path('admin/login/?next=/admin/', custom_login, name='custom_login'),
     path('login/', authviews.loginpage, name="login"),

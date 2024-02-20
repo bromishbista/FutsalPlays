@@ -28,6 +28,8 @@ def loginpage(request):
         if request.method == 'POST':
             username = request.POST.get('username')
             password = request.POST.get('password')
+
+            print(request.POST)
             
             user = auth.authenticate(username=username, password=password)
             if user is not None:

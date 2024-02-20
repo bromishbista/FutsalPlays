@@ -36,10 +36,10 @@ class BookFutsalForm(forms.ModelForm):
         bookings = Book_futsal.objects.filter(futsal=futsal, date__gte=yesterday)
         
         for booking in bookings:
-            if start_time < booking.end_time() and end_time > booking.start_time:
+            if (date == booking.date and
+                (start_time < booking.end_time and end_time > booking.start_time)):
                 raise forms.ValidationError(f'The futsal is already booked from {booking.start_time.strftime("%I:%M %p")} to {booking.end_time().strftime("%I:%M %p")} on {date}.')
-        
-        return cleaned_data
+
 
 #class form breadcrumbsForm
 class BeadcrumbsForm(forms.ModelForm):
