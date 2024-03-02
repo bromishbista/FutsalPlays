@@ -6,6 +6,10 @@
 <style></style>
 {% endblock css %} {% block body %}
 
+
+
+
+
 <style>
   #chat1 .form-outline .form-control~.form-notch div {
 pointer-events: none;
@@ -137,6 +141,24 @@ color: #bfbfbf;
               </div>
 
               
+              
+
+{% comment %}               
+              <p>Booked Futsals for {{ futsal.name }}</p>
+              <ul class="booked-futsals-list">
+                  {% for booked_futsal_item in booked_futsals %}
+                      <li>
+                          <strong>User:</strong> {{ booked_futsal_item.user.username }}<br>
+                          <strong>Phone:</strong> {{ booked_futsal_item.phone }}<br>
+                          <strong>Date:</strong> {{ booked_futsal_item.date }}<br>
+                          <strong>Start Time:</strong> {{ booked_futsal_item.start_time }}<br>
+                          <strong>Duration:</strong> {{ booked_futsal_item.duration }}<br>
+                      </li>
+                  {% empty %}
+                      <li>No booked futsals available.</li>
+                  {% endfor %}
+              </ul> {% endcomment %}
+              
               {% comment %} <div class="card-body">
                 <table class="table" style="font-size: 18px;">
                     <thead>
@@ -167,6 +189,9 @@ color: #bfbfbf;
         
           </div>
       </div>
+
+     
+    
 
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -223,6 +248,7 @@ color: #bfbfbf;
     </div>
 </div>
 
+
   
 
   <div class="container py-5">
@@ -233,7 +259,39 @@ color: #bfbfbf;
     </div>
   </div>
 
-  
+  <section>
+    <div class="container">
+        <h2 class="text-center text-success mb-4">Latest Booked Date of {{ futsal}}</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">S.N.</th>
+                        <th scope="col">Futsal Name</th>
+                        <th scope="col">User</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for futsal in futsalDetail %}
+                    
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ futsal.futsal.name }}</td>
+                        <td>{{ futsal.user }}</td>
+                        <td>{{ futsal.date }}</td>
+                        <td>From {{ futsal.start_time }} - {{ futsal.end_time }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </section>
+
+
+
   <div class="container py-5">
     <div class="row">
         <div class="col-lg-5 col-md-5 col-sm-12">
@@ -280,18 +338,18 @@ color: #bfbfbf;
   </div>
 </div>
   {% endblock %}
-
+  
 {% block scripts %}
 
 <script>
-  var ratings = document.querySelectorAll('.rating');
-  ratings.forEach(function(rating) {
-      var stars = rating.children;
-      var numStars = parseInt(rating.getAttribute('data-rating'));
-      for (var i = 0; i < numStars; i++) {
-          stars[i].classList.remove('fa-star-o');
-          stars[i].classList.add('fa-star');
-      }
-  });
+    var ratings = document.querySelectorAll('.rating');
+    ratings.forEach(function(rating) {
+        var stars = rating.children;
+        var numStars = parseInt(rating.getAttribute('data-rating'));
+        for (var i = 0; i < numStars; i++) {
+            stars[i].classList.remove('fa-star-o');
+            stars[i].classList.add('fa-star');
+        }
+    });
 </script>
 {% endblock scripts %}

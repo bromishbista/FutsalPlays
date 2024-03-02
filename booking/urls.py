@@ -17,6 +17,10 @@ urlpatterns = [
     # path("bookF/", BookFutsal.as_view(), name="bookF"),
     # path("Futsalb/", Futsal.as_view(), name="Futsalb"),
 
+    # path('bookedfutsal/<int:futsal_id>/', views.bookedfutsal, name='booked_futsal'),
+
+   
+
     path('adminmatch/', views.match, name='adminmatch'),
 
     path('create-match/', views.create_match, name='create_match'),

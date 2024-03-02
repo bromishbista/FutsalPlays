@@ -36,6 +36,12 @@ def UserDashboard(request):
     return render(request, 'UserDashboard.html', context)
 
 
+# @login_required
+# def bookedfutsal(request, futsal_id):
+#     futsal = get_object_or_404(Futsal, pk=futsal_id)
+#     booked_futsals = Book_futsal.objects.filter(futsal=futsal, user=request.user)
+#     return render(request, 'futsal_detail.html', {'futsal': futsal, 'booked_futsals': booked_futsals})
+
 # map Api 
 def get_user_location():
     url = "https://www.googleapis.com/geolocation/v1/geolocate?key=REMOVED_GOOGLE_API_KEY" + settings.GOOGLE_MAPS_API_KEY
@@ -525,9 +531,13 @@ def futsal_details(request, pk):
                 chat_message.save()
                 return redirect('futsal_detail', pk=futsal.pk)
     else:
+
         form = ReviewForm()
         chat_form = ChatMessageForm(request.user, futsal)
-    return render(request, 'futsal_detail.html', {'futsal': futsal, 'reviews': reviews, 'form': form, 'chat_messages': chat_messages, 'chat_form': chat_form,})
+    print(futsal)
+    futsalDetail=Book_futsal.objects.filter(futsal=futsal).order_by('-date')[:5]
+    
+    return render(request, 'futsal_detail.html', {'futsal': futsal,'futsalDetail': futsalDetail, 'reviews': reviews, 'form': form, 'chat_messages': chat_messages, 'chat_form': chat_form,})
 
 #CRUD for  Match end
 def match(request):

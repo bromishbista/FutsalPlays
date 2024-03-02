@@ -35,6 +35,7 @@ def index(request):
 
     print(futsaldata)
     print(book_futsal)
+    print(futsal)
 
     context = {
         'futsal_count': futsal_count,
@@ -52,6 +53,8 @@ def index(request):
 
     }
     return render(request, 'admin/index.html', context)
+
+    
 
 # futsal list Ajax
 from django.http import JsonResponse
@@ -114,6 +117,7 @@ def home(request):
     'team_status': team_status,
     'futsals': futsals,
     }
+    print(context)
     return render(request, 'index.html', context)
 
 #register page
