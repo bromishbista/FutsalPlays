@@ -2,30 +2,41 @@
 {% load static %} 
 {% block title %} Dashboard {% endblock title %} {% block body %}
 <!-- sliders -->
-<section class="foot-search">
-  <div class="footsal-section">
-    <div class="search-section-form">
-      <div class="search-title">
-        <nav style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item">Teams</li>
-          </ol>
-        </nav>
+
+<div class="latest-listed-items" style="background-color: aliceblue;">
+  <div class="footsal-highlight">
+      <div class="foot-match-content">
+          <a href="{% url 'futsal'%}">
+              <i class="fa-solid fa-futbol fa-xl"></i>
+               <h4>Futsal</h4>
+          </a>
       </div>
-    </div>
   </div>
-</section>
+  <div class="footsal-highlight">
+      <div class="foot-match-content">
+          <a href="{% url 'match_list' %}">
+              <i class="fa-solid fa-home "></i>
+              <h4>Match</h4>
+          </a>
+      </div>
+  </div>
+  <div class="footsal-highlight">
+      <div class="foot-match-content">
+          <a href="{% url 'team' %}">
+              <i class="fa-solid fa-users "></i>
+              <h4>Team</h4>
+          </a>
+      </div>
+  </div>
+</div>
+
+
+
+
 <!-- sliders -->
 <section>
   <div class="test-section">
     <h3>All Futasl Teams</h3>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic natus quod,
-      deserunt harum libero repudiandae cum earum. Nostrum totam mollitia veniam
-      voluptatem quis quia laudantium. Architecto quibusdam minima sit
-      exercitationem?
-    </p>
   </div>
 </section>
 <!-- sliders -->

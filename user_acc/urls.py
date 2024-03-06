@@ -117,6 +117,12 @@ urlpatterns = [
  
     # path('bookF/', include('booking.urls')),
     # path('Futsalb/', include('booking.urls')),
+    
+    ## for match create
+    path('match/', views.match_list, name='match_list'),
+    path('<int:pk>/', views.match_detail, name='match_detail'),
+    path('new/', views.match_create, name='match_create'),
+    path('<int:pk>/edit/', views.match_edit, name='match_edit'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

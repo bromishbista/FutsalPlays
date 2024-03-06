@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Create Team{% endblock title %}
+{% block body %}
+    <section class="booking-footsal">
+        <div class="booking-form login-form">
+            <div class="login-image login-form1 register-image">
+                <img src="{% static 'img/banner.png' %}" alt="">
+            </div>
+            <div class="booking-form-content login-form1">
+                <div class="footsal-title">
+                    <h2>Create Team</h2>
+                </div>
+                {% for message in messages %}
+                {{message.sucess}}
+                {% endfor %}
+                <form action="" class="login-form" method = 'POST' enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <button class="button" type="submit" name="submit">Create Team</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    {% endblock %}

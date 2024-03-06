@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="row">
+  <div class="col-md-5 text-center" >
+    <h1>{{ match.first_team }}</h1><br>
+    <img style="width:500px; height:500px;" src="{{ match.first_image.url }}">
+  </div>
+  <div class="col-md-2">
+    <br><br>
+    <h1 class="text-center accent-danger" style="font-size:120px; margin-top:250px">VS</h1>
+  </div>
+  <div class="col-md-5 text-center">
+    <h1>{{ match.second_team }}</h1><br>
+    <img style="width:500px; height:500px;" src="{{ match.second_image.url }}">
+  </div>
+</div><br>
+<div class="container text-center">
+   <p  style="font-size:20px; color:blue;">Date: {{ match.date }}</p>
+   <p  style="font-size:20px; color:blue;">Start time: {{ match.start_time }}</p>
+   <p  style="font-size:20px; color:blue;">End time: {{ match.end_time }}</p>
+   <p  style="font-size:20px; color:blue;">Number of players: {{ match.playercount }}</p>
+   <p  style="font-size:20px; color:blue;">Game type: {{ match.gametype }}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+<!-- match_form.html -->
+{% extends 'base.html' %} {% block body %}
+
+<div class="m-5 col-md-6">
+  <h1>Create New Match</h1>
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{ form.as_p }}
+    <div id="errorContainer">
+      {% for field in form %} {% if field.errors %}
+      <div class="text-danger">{{ field.errors.0 }}</div>
+    </div>
+
+    {% endif %} {% endfor %}
+  </form>
+  <button class="btn btn-success text-center" type="submit">Create</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("#createMatchForm").on("submit", function (event) {
+      event.preventDefault();
+
+      // Clear previous error messages
+      $("#errorContainer").empty();
+
+      // Perform validation
+      var formValid = true;
+      $("input[required]").each(function () {
+        if ($(this).val() === "") {
+          formValid = false;
+          var fieldName = $(this).attr("name");
+          $("#errorContainer").append(
+            '<p class="text-danger">The ' +
+              fieldName +
+              " field is required.</p>"
+          );
+        }
+      });
+
+      // Submit the form or show error message
+      if (formValid) {
+        $(this).unbind("submit").submit();
+      }
+    });
+  });
+</script>
+{% endblock %}

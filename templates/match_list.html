@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block css %}
+<style>
+    .list-unstyled li:before {
+        content: none;
+    }
+</style>
+{% endblock css %}
+{% block title %}Dashboard{% endblock title %}
+{% block body %}
+
+
+<div class="latest-listed-items" style="background-color: aliceblue;">
+    <div class="footsal-highlight">
+        <div class="foot-match-content">
+            <a href="{% url 'futsal'%}">
+                <i class="fa-solid fa-futbol fa-xl"></i>
+                 <h4>Futsal</h4>
+            </a>
+        </div>
+    </div>
+    <div class="footsal-highlight">
+        <div class="foot-match-content">
+            <a href="{% url 'match_list' %}">
+                <i class="fa-solid fa-home "></i>
+                <h4>Match</h4>
+            </a>
+        </div>
+    </div>
+    <div class="footsal-highlight">
+        <div class="foot-match-content">
+            <a href="{% url 'team' %}">
+                <i class="fa-solid fa-users "></i>
+                <h4>Team</h4>
+            </a>
+        </div>
+    </div>
+</div>
+
+    <section>
+        <div class="test-section">
+            <h3>All Matches</h3>
+        </div>
+    </section>
+    <!-- sliders -->
+
+
+
+    <!-- Matches footsal -->
+    <section>
+        {% for match in matches %}
+        <div class="container">
+            <a href="{% url 'match_detail' pk=match.pk %}" class="text-decoration-none text-danger">
+            <div class="row">
+              <div class="col-md-5 text-center" >
+                <h1>{{ match.first_team }}</h1><br>
+                <!-- {{ match.first_image }} -->
+              </div>
+              <div class="col-md-2">
+                <h1 class="text-center accent-danger" style="font-size:120px;">VS</h1>
+              </div>
+              <div class="col-md-5 text-center">
+                <h1>{{ match.second_team }}</h1><br>
+                <!-- {{ match.second_image }} -->
+              </div>
+            </div>
+        </a>
+        </div>
+        {% empty %}
+                        <h5 class="text-center">No matches yet.</h5>
+                        {% endfor %}
+     
+        <div class="text-center mb-3">
+            <a href="{% url 'match_create' %}" class="btn btn-primary">Create New Match</a>
+          </div>
+        <div class="pagination-custom">
+            <a href="">Pre</a>
+            <a href="">1</a>
+            <a href="">2</a>
+            <a href="">3</a>
+            <a href="">Next</a>
+        </div>
+    </section>
+    <!-- Matches footsal -->
+
+    {% endblock %}
