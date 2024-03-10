@@ -179,10 +179,11 @@ SITE_ID = 1
 
 #sending forget pw email
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'bromishbista2003@gmail.com'
-EMAIL_HOST_PASSWORD = 'okokok'
+EMAIL_HOST_PASSWORD = 'REMOVED_EMAIL_APP_PASSWORD'
 EMAIL_PORT = 587
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 

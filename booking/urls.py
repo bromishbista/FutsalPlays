@@ -139,6 +139,7 @@ urlpatterns = [
     # path('initiate/<int:book_id>/', views.InitKhaltiView.as_view(), name='initkhalti'),
 
     
+   
 
     path('bookings/<int:futsal_id>/', bookfutsal_list, name='bookings_by_futsal'),
 
