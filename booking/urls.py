@@ -48,7 +48,11 @@ urlpatterns = [
     
     path('futsal/', views.futsal_list, name='futsal'),
     path('futsal/<int:pk>/', views.futsal_details, name='futsal_detail'),
-
+     
+     path('futsal/', views.futsal_details, name='futsal_detail'),
+  
+  
+   
 
 # CRUD for breadcrumbs operations 
     path('adminbeadcrumbs/', views.beadcrumbs_list, name='beadcrumbs_list'),

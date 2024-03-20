@@ -88,22 +88,6 @@ color: #bfbfbf;
 }
 </style>
 
-{% comment %} <section class="foot-search">
-  <div class="footsal-section">
-      <div class="search-section-form">
-          <div class="search-title">
-              <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="/">Home</a></li>
-                      <li class="breadcrumb-item active" aria-current="page">Futsals</li>
-                      <li class="breadcrumb-item active" aria-current="page">Futsals-Details</li>
-                  </ol>
-              </nav>
-          </div>
-      </div>
-  </div>
-</section><br><br><br> {% endcomment %}
-<!-- sliders -->
 
 <div class="container">
   <div class="row">
@@ -139,54 +123,6 @@ color: #bfbfbf;
                       Chat Now
                   </button>
               </div>
-
-              
-              
-
-{% comment %}               
-              <p>Booked Futsals for {{ futsal.name }}</p>
-              <ul class="booked-futsals-list">
-                  {% for booked_futsal_item in booked_futsals %}
-                      <li>
-                          <strong>User:</strong> {{ booked_futsal_item.user.username }}<br>
-                          <strong>Phone:</strong> {{ booked_futsal_item.phone }}<br>
-                          <strong>Date:</strong> {{ booked_futsal_item.date }}<br>
-                          <strong>Start Time:</strong> {{ booked_futsal_item.start_time }}<br>
-                          <strong>Duration:</strong> {{ booked_futsal_item.duration }}<br>
-                      </li>
-                  {% empty %}
-                      <li>No booked futsals available.</li>
-                  {% endfor %}
-              </ul> {% endcomment %}
-              
-              {% comment %} <div class="card-body">
-                <table class="table" style="font-size: 18px;">
-                    <thead>
-                        <tr>
-                            <th scope="col">User</th>
-                            <th scope="col">Futsal</th>
-                            <th scope="col">Booking Time</th> 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for bookfutsal in booked_futsals %} 
-                        <tr>
-                            <td>{{ bookfutsal.user }}</td>
-                            <td>{{ bookfutsal.futsal.name }}</td>
-                            <td>{{ bookfutsal.booking_time|date:"F d, Y" }}</td>
-                            <td>{{ bookfutsal.booking_time|time:"h:i A" }}</td>
-                        </tr>
-                        {% empty %}
-                        <tr>
-                            <td colspan="3">No booking futsals found.</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table> 
-            </div> {% endcomment %}
-            
-
-        
           </div>
       </div>
 

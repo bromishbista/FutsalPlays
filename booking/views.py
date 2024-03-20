@@ -539,6 +539,8 @@ def futsal_details(request, pk):
     
     return render(request, 'futsal_detail.html', {'futsal': futsal,'futsalDetail': futsalDetail, 'reviews': reviews, 'form': form, 'chat_messages': chat_messages, 'chat_form': chat_form,})
 
+
+
 #CRUD for  Match end
 def match(request):
     if request.user.is_authenticated:

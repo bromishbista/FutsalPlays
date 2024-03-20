@@ -199,7 +199,6 @@ def home(request):
         # 'detail':detail, 
         # 'Slider':Slider, 'futsal':futsal, 
         'testimonials':testimonials, 
-        # 'beadcrumbs':beadcrumbs,
         'team_status': team_status,
         }
     
@@ -525,6 +524,10 @@ class ContactFormView(FormView):
     def form_valid(self, form):
         form.save()
         return super().form_valid(form)
+    
+def chat(request):
+    
+    return render(request, 'chat.html')
 
 # CRUD for contact
 def contact_list(request):

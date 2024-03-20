@@ -5,6 +5,8 @@ from .models import Book_futsal
 from django.forms import DateInput
 
 
+
+
 #booking futsal form
 class BookFutsalForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -37,8 +39,15 @@ class BookFutsalForm(forms.ModelForm):
         
         for booking in bookings:
             if (date == booking.date and
-                (start_time < booking.end_time and end_time > booking.start_time)):
-                raise forms.ValidationError(f'The futsal is already booked from {booking.start_time.strftime("%I:%M %p")} to {booking.end_time().strftime("%I:%M %p")} on {date}.')
+                (start_time < booking.end_time() and end_time > booking.start_time)):
+                
+                raise forms.ValidationError(f'The futsal is already booked from {start_time.strftime("%I:%M %p")} to {end_time.strftime("%I:%M %p")} on {date}.')
+
+
+
+
+
+
 
 
 #class form breadcrumbsForm
