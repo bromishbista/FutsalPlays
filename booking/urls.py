@@ -50,7 +50,14 @@ urlpatterns = [
     path('futsal/<int:pk>/', views.futsal_details, name='futsal_detail'),
      
      path('futsal/', views.futsal_details, name='futsal_detail'),
-  
+
+
+# CRUD for blog
+    path('adminblogs/', views.blogs_list, name='blogs_list'),
+    path('blogscreate/', views.blogs_create, name='blogs_create'),
+    path('blogs/<int:pk>/edit/', views.blogs_edit, name='blogs_edit'),
+    path('blogs/<int:pk>/delete/', views.blogs_delete, name='blogs_delete'),
+
   
    
 

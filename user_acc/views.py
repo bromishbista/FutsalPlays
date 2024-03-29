@@ -557,3 +557,16 @@ def contact_delete(request, pk):
     return render(request, 'admin/contact/delete.html', {'contact': contact})
 
 
+def blogs(request):
+    blogs = Blog.objects.order_by('-created_at')
+    context = {
+        'blogs': blogs
+    }
+    return render(request, 'blogs.html', context)
+
+def blog_detail(request, blog_slug):
+    blog = get_object_or_404(Blog, slug=blog_slug)
+    context = {
+        'blog': blog
+    }
+    return render(request, 'blog_detail.html', context)

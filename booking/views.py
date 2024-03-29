@@ -891,3 +891,37 @@ def download_booking_info(request, booking_id):
         response = HttpResponse(pdf.read(), content_type='application/pdf')
         response['Content-Disposition'] = f'attachment; filename="booking_info_{booking_id}.pdf"'
         return response
+
+
+#CRUD for  blogs start
+def blogs_list(request):
+    blogs = Blog.objects.all()
+    return render(request, 'admin/booking/blogs/index.html', {'blogs': blogs})
+
+def blogs_create(request):
+    form = BlogForm(request.POST, request.FILES or None)
+    if form.is_valid():
+        form.save()
+        return redirect('blogs_list')
+    return render(request, 'admin/booking/blogs/create.html', {'form': form})
+
+
+def blogs_edit(request, pk):
+    blogs = Blog.objects.get(pk=pk)
+    if request.method == 'POST':
+        form = BlogForm(instance=blogs)
+        form = BlogForm(request.POST, request.FILES, instance=blogs)
+        if form.is_valid():
+            form.save()
+            return redirect('blogs_list')
+    else:
+        form = BlogForm(instance=blogs)
+    return render(request, 'admin/booking/blogs/update.html', {'form': form})
+
+
+def blogs_delete(request, pk):
+    blogs = get_object_or_404(Blog, pk=pk)
+    if request.method == 'POST':
+        blogs.delete()
+        return redirect('blogs_list')
+    return render(request, 'admin/booking/blogs/delete.html', {'blogs': blogs})

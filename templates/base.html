@@ -30,6 +30,7 @@
             color: white !important;
             border: #4b208c;
             border-radius: 8px;
+            
         }
         
         /* Custom CSS to adjust navbar item margin */
@@ -94,9 +95,8 @@
                                     Pages
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="">Gallery</a></li>
                                     <li><a class="dropdown-item" href="{% url 'match_list' %}">Match</a></li>
-                                    <li><a class="dropdown-item" href="">Blogs</a></li>
+                                    <li><a class="dropdown-item" href="{% url 'blogs' %}">Blogs</a></li>
                                 </ul>
                             </li>
                         </ul>

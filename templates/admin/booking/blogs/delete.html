@@ -1,0 +1,11 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+<h3>Blogs Delete</h3>
+<h5>Are you sure you want to delete "{{ blogs.name }}"?</h5>
+<form method ="post">
+{% csrf_token %}
+<button class="btn btn-danger" type="submit">Yes, delete</button>
+<a href="{% url 'blogs_list' %}" class="btn btn-primary">No, cancel</a>
+
+</form>
+{% endblock content %}

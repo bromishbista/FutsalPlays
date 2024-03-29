@@ -1,0 +1,13 @@
+{% extends 'admin/inc/base.html' %}
+{% block content %}
+
+<h3>Add Blogs</h3>
+
+<form class="m-5" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Create</button>
+    <a href="{% url 'blogs_list' %}" class="btn btn-primary">Back</a>
+</form>
+
+{% endblock content %}

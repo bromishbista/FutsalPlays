@@ -24,9 +24,10 @@ urlpatterns = [
     path('teams/', views.teams, name="teams"),
     path('team/', views.teams, name="team"),
 
-     path('chat/', views.chat, name="chat"),
+    path('chat/', views.chat, name="chat"),
 
-
+    path('blogs/', views.blogs, name="blogs"),
+    path('blog-detail/<str:blog_slug>', views.blog_detail, name="blog-detail"),
 
 # contact page 
     path('contact/', ContactFormView.as_view(), name='contact'),

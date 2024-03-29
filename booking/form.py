@@ -3,7 +3,7 @@ from .models import *
 from django.core.exceptions import ValidationError
 from .models import Book_futsal
 from django.forms import DateInput
-
+from .models import Blog
 
 
 
@@ -173,3 +173,15 @@ class SliderForm(forms.ModelForm):
     class Meta:
         model =slider
         fields = '__all__'
+
+class BlogForm(forms.ModelForm):
+    class Meta:
+        model = Blog
+        fields = ['slug','name', 'image', 'small_description', 'description']
+        widgets = {
+            'slug': forms.TextInput(attrs={'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'image': forms.ClearableFileInput(attrs={'class': 'form-control-file'}),
+            'small_description': forms.TextInput(attrs={'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+        }
