@@ -6,106 +6,37 @@
 {% block css %}
 {% load custom_filters %}
 {% endblock css %} {% block body %}
-<style>
-    .gradient-custom {
-      
-        
-        }
-        
-        .mask-custom {
-        background: rgba(24, 24, 16, .2);
-        border-radius: 2em;
-        backdrop-filter: blur(15px);
-        border: 2px solid rgba(255, 255, 255, 0.05);
-        background-clip: padding-box;
-        box-shadow: 10px 10px 10px rgba(46, 54, 68, 0.03);
-        }
-        .custom-font {
-          font-size: 30px; 
-          font-family: 'Times New Roman', Times, serif; 
-      }
 
-    </style>
    
-
-    
-
-<section class="gradient-custom">
-    <div class="container py-5">
-  
-      <div class="row">
-  
-        <div class="col-md-6 col-lg-5 col-xl-5 mb-4 mb-md-0" style= "margin-left: 370px">
-  
-          <h5 class="custom-font font-weight-bold mb-3 text-center text-black">Futsal List</h5>
-  
-          <div class="card mask-custom">
-            <div class="card-body">
-              <ul class="list-unstyled mb-0">
-                <li class="p-2 border-bottom" style="border-bottom: 1px solid rgba(255,255,255,.3) !important;">
-                  <a href="#!" class="d-flex justify-content-between link-light">
-                    <div class="d-flex flex-row">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp" alt="avatar"
-                        class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                        <div class="pt-1">
-                          <a href="/futsal/1/" class="fw-bold mb-0 text-black">Beast Futsal</a>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              
-
-                <li class="p-2 border-bottom" style="border-bottom: 1px solid rgba(255,255,255,.3) !important;">
-                  <a href="#!" class="d-flex justify-content-between link-light">
-                    <div class="d-flex flex-row">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-1.webp" alt="avatar"
-                        class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                        <div class="pt-1">
-                          <a href="/futsal/2/" class="fw-bold mb-0 text-black">Nepa Futsal</a>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-
-                <li class="p-2 border-bottom" style="border-bottom: 1px solid rgba(255,255,255,.3) !important;">
-                  <a href="#!" class="d-flex justify-content-between link-light">
-                    <div class="d-flex flex-row">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-2.webp" alt="avatar"
-                        class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                        <div class="pt-1">
-                          <a href="/futsal/3/" class="fw-bold mb-0 text-black">Futsal Arena Bouddha </a>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-
-                <li class="p-2 border-bottom" style="border-bottom: 1px solid rgba(255,255,255,.3) !important;">
-                  <a href="#!" class="d-flex justify-content-between link-light">
-                    <div class="d-flex flex-row">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp" alt="avatar"
-                        class="rounded-circle d-flex align-self-center me-3 shadow-1-strong" width="60">
-                        <div class="pt-1">
-                          <a href="/futsal/4/" class="fw-bold mb-0 text-black">Futsal</a>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-               
-
-              </ul>
-  
+<!-- latest footsal -->
+<section>
+    <div class="container latest-footsal">
+        <div class="footsal-items">
+            <div class="container" style="text-align: center;">
+                <h2 style="font-weight: bold;">"Pair up with your sports partners"</h2>
             </div>
-          </div>
-  
-        </div>
-  
-        
-  
-      </div>
-  
+            <div class="futsal-container" style="display: flex; flex-wrap: wrap; justify-content: center; padding: 20px;">
+                {% for futsal in futsals %}
+                <div class="card" style="width: 300px; margin: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <div class="card-img-top" style="border-top-left-radius: 10px; border-top-right-radius: 10px; overflow: hidden;">
+                        <img src="{{ futsal.image.url }}" alt="{{ futsal.name }}" style="width: 100%; height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align: center; margin-bottom: 10px;">{{ futsal.name }}</h5>
+                        <a href="{% url 'futsal_detail' pk=futsal.pk %}?chat_clicked=true" class="card-button"><i class="fas fa-comment" style="color: white;"></i></a>
+
+                    </div>
+                </div>
+                {% endfor %}
+            </div>  
     </div>
-  </section>
-     
+
+  
+</section>
+
+
+
+<!-- latest footsal -->
 
 {% endblock %}
    

@@ -48,6 +48,8 @@ urlpatterns = [
     
     path('futsal/', views.futsal_list, name='futsal'),
     path('futsal/<int:pk>/', views.futsal_details, name='futsal_detail'),
+
+     path('chatd/', views.chat_list, name='chat'),
      
      path('futsal/', views.futsal_details, name='futsal_detail'),
 

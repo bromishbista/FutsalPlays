@@ -683,7 +683,7 @@ textarea {
 }
 
 footer {
-    background-color: aliceblue;
+    background-color: #0f0f0f;
 }
 
 .footer-wrapper {
@@ -705,7 +705,7 @@ footer {
 }
 
 .ending-footer {
-    background-color: antiquewhite;
+    background-color: #0f0f0f;
     text-align: center;
 }
 

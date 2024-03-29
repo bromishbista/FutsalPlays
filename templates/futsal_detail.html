@@ -117,14 +117,27 @@ color: #bfbfbf;
         <div class="col-lg-4">
           <div class="card">
               <div class="card-body text-center">
-                  <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      <img src="{% static 'img/Chat.png' %}" alt="Chat Image" style="width: 24px; height: 24px; margin-right: 5px;">
-                      Chat Now
-                  </button>
+                 
+                  <button id="chatButton" type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <img src="{% static 'img/Chat.png' %}" alt="Chat Image" style="width: 24px; height: 24px; margin-right: 5px;">
+                    Chat Now
+                </button>
               </div>
           </div>
       </div>
+
+      <!-- Add script to trigger click event -->
+      <script>
+        // Wait for the page to load
+        document.addEventListener("DOMContentLoaded", function() {
+            // Check if the parameter 'chat_clicked' is present in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('chat_clicked')) {
+                // Simulate a click event on the button with id "chatButton"
+                document.getElementById("chatButton").click();
+            }
+        });
+      </script>
 
      
     

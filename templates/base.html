@@ -24,7 +24,7 @@
 
     <!-- Custom Styles -->
     <style>
-        /* Custom CSS for navbar hover effect */
+      
         .footsal-navbar .navbar-nav .nav-item:hover .nav-link {
             background-color: #4b208c !important;
             color: white !important;
@@ -33,14 +33,29 @@
             
         }
         
-        /* Custom CSS to adjust navbar item margin */
+     
         .navbar-nav .nav-item {
             margin-right: 20px; /* Adjust the margin as needed */
         }
 
-        /* Adjusting the last navbar item's margin to prevent extra gap */
+        
         .navbar-nav .nav-item:last-child {
             margin-right: 0;
+        }
+
+        .ending-footer{
+            background-color: #2596be;
+        }
+
+        .social-icons {
+            display: inline-block;
+            float: right;
+            margin-right: 70px;
+            margin-top: 10px;
+        }
+        
+        .icon-large {
+            font-size: 24px; /* Adjust the size as needed */
         }
     </style>
 </head>
@@ -87,9 +102,12 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i>  Contact</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'blogs' %}"><i class="fa-brands fa-blogger"></i> Blogs</a>
+                            </li>
                             
                             <!-- Dropdown menu -->
-                            <li class="nav-item dropdown">
+                            {% comment %} <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     Pages
@@ -98,7 +116,7 @@
                                     <li><a class="dropdown-item" href="{% url 'match_list' %}">Match</a></li>
                                     <li><a class="dropdown-item" href="{% url 'blogs' %}">Blogs</a></li>
                                 </ul>
-                            </li>
+                            </li> {% endcomment %}
                         </ul>
                         
                         <!-- Account section --> {% if request.user.is_authenticated %}
@@ -148,14 +166,40 @@
     {% endblock scripts %}
 
     <!-- Footer -->
+    {% comment %} <footer>
+        <div class="footer-main-section container">
+            <!-- Footer Content -->
+            <div class="ending-footer">
+                <p style="color: white;">&copy; 2024 FutsalPlays. All rights reserved. </p>
+            </div>
+        </div>
+    </footer> {% endcomment %}
+
     <footer>
         <div class="footer-main-section container">
             <!-- Footer Content -->
             <div class="ending-footer">
-                <p>&copy; 2024 Futsal. All rights reserved. </p>
+                &nbsp;<p style="color: white; display: inline-block;">&copy; 2024 FutsalPlays. All rights reserved. </p>
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <!-- Facebook Icon -->
+                    <a href="https://www.facebook.com/bromish.bista/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-facebook icon-large" style="color: #63E6BE;"></i>
+                    </a>
+                    &nbsp;
+                    <!-- Instagram Icon -->
+                    <a href="https://www.instagram.com/bromish628/?next=%2F" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram icon-large" style="color: #63E6BE;"></i>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-o9zh58J7FTL0Jqb8HgRhXabTRZZ9p7vZWUer7e5GnMGnqj4QUx+Dpb+nXVm+0MCQqJYWhgVqlMC0+Ij1E2uSjA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
 
     <!-- Bootstrap and Custom JavaScript -->
     <script src="{% static 'JS/min.js' %}"></script>

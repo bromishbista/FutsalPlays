@@ -499,6 +499,13 @@ def futsal_list(request):
         futsals = futsals.filter(Q(name__icontains=searchedterm)|Q(price__icontains=searchedterm)|Q(location__icontains=searchedterm)).distinct()
     return render(request, 'futsal.html', {'futsals': futsals})
 
+def chat_list(request):
+    futsals = Futsal.objects.all()
+    searchedterm=request.GET.get('futsalsearch')
+    if searchedterm:
+        futsals = futsals.filter(Q(name__icontains=searchedterm)|Q(price__icontains=searchedterm)|Q(location__icontains=searchedterm)).distinct()
+    return render(request, 'chat.html', {'futsals': futsals})
+
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
