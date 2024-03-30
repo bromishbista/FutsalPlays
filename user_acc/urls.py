@@ -24,6 +24,9 @@ urlpatterns = [
     path('teams/', views.teams, name="teams"),
     path('team/', views.teams, name="team"),
 
+
+  
+
     path('chat/', views.chat, name="chat"),
 
     path('blogs/', views.blogs, name="blogs"),

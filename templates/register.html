@@ -4,6 +4,99 @@
 
 
 <head> 
+    <style>
+                /* Add this CSS to your style.css file */
+
+            body {
+                background-color: #f0f0f0; /* Set background color */
+            }
+
+            .register-futsal {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;;
+                height: 100vh;
+              
+            }
+
+            .login-form11 {
+                background-color: #; /* Set background color */
+                border: 1px solid #ccc; /* Add border */
+                border-radius: 10px; /* Add border radius */
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1); /* Add box shadow */
+                overflow: hidden; /* Hide overflowing content */
+               
+            }
+
+            .login-form12 {
+                padding: 20px;
+                width: 100%;
+                
+            }
+
+            .login-image {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .register-image img {
+                max-width: 100%;
+                height: auto;
+            }
+
+            .book-form-content h2 {
+                margin-bottom: 20px;
+                text-align: center;
+                
+            }
+
+            .form-control {
+                border: 1px solid #ccc; /* Add border to input fields */
+                border-radius: 10px; /* Add border radius to input fields */
+                
+            }
+
+            .button1 {
+                width: 50%;
+                background-color: #21130d; /* Set button background color */
+                color: #fff; /* Set button text color */
+                border: none;
+                padding: 5px 5px 5px;
+                margin-left: 70px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+
+            .button1:hover {
+                background-color: #0056b3; /* Change button background color on hover */
+            }
+
+            .already-account {
+                margin-top: 15px;
+                text-align: center;
+            }
+
+            .already-account a {
+                color: #007bff; /* Set link color */
+                text-decoration: none;
+            }
+
+            .already-account a:hover {
+                text-decoration: underline; /* Underline link on hover */
+            }
+
+            .signin-with a {
+                margin: 0 10px;
+                color: #007bff; /* Set link color */
+            }
+
+            .signin-with a:hover {
+                text-decoration: none; /* Remove underline on hover */
+            }
+
+    </style>
     <meta charset="UTF-9">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
@@ -32,16 +125,17 @@
                 <form action=" " class="login-form12" method='POST'>
                     {% csrf_token %}
                     {{form.as_p}}
-                    <button class="button" type="submit" name="submit">Create Account</button>
+                    <br/>
+                    <button class="button1"  type="submit" name="submit">Create Account</button>
                     <div class="already-account">
                         <p>Already have an account ?<a href="{% url 'login' %}" class="sign-btn">Sign In</a></p>
                     </div>
                 </form>
-                <h4 class="text-center">Sign in with</h4>
+                {% comment %} <h4 class="text-center">Sign in with</h4> {% endcomment %}
                 <div class="signin-with d-flex justify-content-center">
                             
-                    {% comment %} <a href="{% provider_login_url 'google'%}?next=/"><i class="fa-brands fa-google"></i>oogle</a> {% endcomment %}
-                    <a href=""><i class="fa-brands fa-facebook"></i>acebook</a>
+                   {% comment %} <a href="{% provider_login_url 'google'%}?next=/"><i class="fa-brands fa-google"></i>oogle</a>  {% endcomment %}
+                    {% comment %} <a href=""><i class="fa-brands fa-facebook"></i>acebook</a> {% endcomment %}
                 </div>
             </div>
         </div>

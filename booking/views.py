@@ -577,6 +577,22 @@ def team(request):
 
     return render(request, 'teams.html', context)
 
+
+def teamsdetailss(request, team_id):
+    if request.user.is_authenticated:
+        team_status = Team.objects.filter(user=request.user)
+    else:
+        team_status= None
+    team = Team.objects.get(id = team_id)
+    context = {
+        'teams':team,
+        'team_status': team_status,
+            }
+
+    return render(request, 'teams-details.html', context)
+
+
+
 # creating class for creating team 
 
 class CreateTeam(View):
@@ -624,13 +640,13 @@ class EditTeam(View):
         return redirect('team')
 
 #  teams details 
-def team_detail(request, id):
+def team_detail(request, team_id):
     if request.user.is_authenticated:
         team_status = Team.objects.filter(user=request.user)
     else:
         team_status= None
 
-    team = Team.objects.get(id = id)
+    team = Team.objects.get(id = team_id)
     context = {
         'team': team,
         'team_status': team_status,

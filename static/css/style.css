@@ -680,10 +680,12 @@ textarea {
 
 .footer-main-section {
     padding: 1rem !important;
+   
+    
 }
 
 footer {
-    background-color: #0f0f0f;
+    background-color: #f4eeee;
 }
 
 .footer-wrapper {
@@ -705,7 +707,7 @@ footer {
 }
 
 .ending-footer {
-    background-color: #0f0f0f;
+    background-color: #f9f9f9;
     text-align: center;
 }
 

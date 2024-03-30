@@ -100,11 +100,12 @@
                                 <a class="nav-link" href="{% url 'chat' %}"><i class="fa-brands fa-rocketchat"></i>  Chat</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i>  Contact</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="{% url 'blogs' %}"><i class="fa-brands fa-blogger"></i> Blogs</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i>  Contact Us</a>
+                            </li>
+                            
                             
                             <!-- Dropdown menu -->
                             {% comment %} <li class="nav-item dropdown">
@@ -179,8 +180,10 @@
         <div class="footer-main-section container">
             <!-- Footer Content -->
             <div class="ending-footer">
+                <img src="{% static 'img/whi.png' %}" alt="" class="responsive-img" style="float: left; weidth: 100px; height: 80px; margin-right: 10px; margin-top:-12px;">
                 &nbsp;<p style="color: white; display: inline-block;">&copy; 2024 FutsalPlays. All rights reserved. </p>
                 <!-- Social Media Icons -->
+
                 <div class="social-icons">
                     <!-- Facebook Icon -->
                     <a href="https://www.facebook.com/bromish.bista/" target="_blank" rel="noopener noreferrer">

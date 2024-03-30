@@ -126,30 +126,25 @@ urlpatterns = [
 
     path('adminmatch/', views.match, name='adminmatch'),
     path('adminteam/', views.team, name='adminteam'),
+
+ 
+
+    
+
     path('create_team/', views.CreateTeam.as_view(), name='create_team'),
     path('edit_team/<int:id>/', views.EditTeam.as_view(), name='edit_team'),
-    path('team_detail/<int:team_id>/', views.team_detail, name='team_detail'),
+
+
+    path('team_detail/<int:team_id>/', views.teamsdetailss, name='team_detail'),
 
 
 
 
     path("khalti-request/<int:id>/", views.KhaltiRequestView.as_view(), name="khaltirequest"),
-    # path("khalti-verify/<int:id>/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
+
     path("khalti-verify/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
     path("payment-success/", views.payment_success, name="payment_success"),
-#payment khalti 
 
-    # path("khalti-request/<int:id>/", views.KhaltiRequestView.as_view(), name="khaltirequest"),
-    # path("khalti-verify/<int:id>/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
-  
-    # path('',views.home,name="home"),
-    # path("initiate",views.initkhalti,name="initiate"),
-    # path('khalti-request/<int:id>/', views.KhaltiRequestView.as_view(), name='khaltirequest'),
-    # path('verify',views.verifyKhalti,name="verify"),
-    
-    # path('initiate/<int:book_id>/', views.initkhalti, name='initiate'),
-    
-    # path('initiate/<int:book_id>/', views.InitKhaltiView.as_view(), name='initkhalti'),
 
     
    

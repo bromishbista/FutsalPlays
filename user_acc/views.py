@@ -103,6 +103,7 @@ def teams(request):
 
 
 
+
 # Original home view
 def home(request):
     futsals = Futsal.objects.all() # Retrieve all Futsal objects

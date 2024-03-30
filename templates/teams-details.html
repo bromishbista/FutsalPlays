@@ -3,108 +3,31 @@
 {% block title %}Dashboard{% endblock title %}
 {% block body %}
 
-    <!-- sliders -->
-    <section class="foot-search">
-        <div class="footsal-section">
-            <div class="search-section-form">
-                <div class="search-title">
-                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="/">Home</a></li>
-                          <li class="breadcrumb-item">Teams Details</li>
-                        </ol>
-                      </nav>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- sliders -->
+   
 
-    <section>
-        <div class="search-team-form">
-            <form action="" class="new-form-search" style="max-width: 500px; margin: auto;">
-                <input type="text" placeholder="Enter Footsal Team Name">
-                <input type="submit" style="width:100px">
-            </form>
-        </div><br>
-        <div class="footsal-team container">
-            <div class="left-team-section team">
-                <div class="team-bg-image">
-                    <img src="{{Team.team_image.url}}" alt="">
-                </div>
-            </div>
-            <div class="right-team-section team">
-                <div class="right-team-lists">
-                    <h3>Footsal teams</h3>
-                    <div class="teams-items">
-                        <a href="{% url 'create_team' %}">Create Team</a>
-                        <a href="">Join Team</a>
-                        <a href="">Play Match</a>
-                        <a href="">Create Match</a>
-                    </div>
-                    <div class="team-bg-image1">
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptates quod ad voluptatem nihil
-                            ratione doloremque voluptas quia facilis quae a ipsa obcaecati quidem magnam vitae animi, ea
-                            blanditiis aut exercitationem!</p>
-
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                        </ul>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quisquam similique, ipsum
-                            in deserunt officiis velit quos repellendus culpa cupiditate quis voluptatibus incidunt
-                            nobis inventore tempora qui voluptates fugit cumque.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- latest footsal -->
-    <section style="background-color:bisque">
-        <div class="container latest-footsal3">
-            <div class="footsal-items3 new-footsal3">
-                <div class="search-name3 pt-4">
-                    <div class="team-join">
-                        <h3>Join Team</h3>
-                    </div>
-                    <div class="popular1 join-team-members-section">
-                        <div class="join-team-member">
-                           <div class="dot">
-                            <img src="assets/img/player1.jpg" alt="" width="60" height="50">
-                            <a href=""> Team Name</a> 
-                            <a href=""> 5 members</a> 
-                            <a href=""> Join</a> 
-                           </div>
-                        </div>  
-                        <div class="join-team-member">
-                           <div class="dot">
-                            <img src="assets/img/player1.jpg" alt="" width="60" height="50">
-                            <a href=""> Team Name</a> 
-                            <a href=""> 5 members</a> 
-                            <a href=""> Join</a> 
-                           </div>
-                        </div>  
-                        <div class="join-team-member">
-                           <div class="dot">
-                            <img src="assets/img/player1.jpg" alt="" width="60" height="50">
-                            <a href=""> Team Name</a> 
-                            <a href=""> 5 members</a> 
-                            <a href=""> Join</a> 
-                           </div>
-                        </div>  
-                    </div>
-                </div>
-                <div class="team-members-image">
-                    <img src="assets/img/player1.jpg" alt="">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- latest footsal -->
+<section>
+    <div class="container">
+      {% for team in teams %}
+      <div class="row">
+          {% if team.team_image %}
+          <div class="col-lg-6 col-md-6 col-sm-12 py-3">
+              <img
+              src="{{team.team_image.url}}"
+              alt="" class="img-thumbnail"
+              style="width: 500px; height: 250px; object-fit: cover"/>
+          </div>
+          {% endif %}
+          <div class="col-lg-6 col-md-6 col-sm-12 py-3">
+            <a href="{% url 'team_detail' team.id %}" class="text-decoration-none">
+              <h4>{{team.name}}</h4></a
+            >
+            <p>From {{team.location}}</p>
+            <p>Join Date: {{team.join_date}}</p>
+          </div>
+      </div>
+      {% endfor %}
+      
+    </div>
+ 
+  </section>
     {% endblock %}
