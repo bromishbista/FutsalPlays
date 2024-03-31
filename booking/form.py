@@ -101,7 +101,7 @@ from .models import Team, Match
 class TeamForm(forms.ModelForm):
     class Meta:
         model = Team
-        fields = ['name', 'team_image', 'location_url', 'location', 'join_date', 'players']
+        fields = ['name', 'team_image', 'location', 'join_date', 'players']
         widgets = {
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'team_image': forms.ClearableFileInput(attrs={'class': 'form-control'}),

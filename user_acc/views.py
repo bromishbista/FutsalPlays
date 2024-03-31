@@ -22,7 +22,7 @@ def index(request):
     teams = Team.objects.count()
     match = Match.objects.count()
     blog = Blog.objects.count()
-    testimonials = Testimonials.objects.count()
+ 
     futsal=Book_futsal.objects.all().order_by('-date')[:5]
     booked_futsal=Futsal.objects.all()
     book_futsal=[]
@@ -45,7 +45,7 @@ def index(request):
         'teams':teams,
         'match':match,
         'blog':blog,
-        'testimonials':testimonials,
+        # 'testimonials':testimonials,
         'futsals':futsal,
         'futsaldata':futsaldata,
         'book_futsal':book_futsal,

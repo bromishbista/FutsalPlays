@@ -117,9 +117,12 @@
                 <br/>
                 <br/>
                 <button class="button" type="submit" name="submit"> Login</button>
-                {% if error_message %}
-                    <div class="error-message">{{ error_message }}</div>
-                {% endif %}
+              
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}"> <i class="fas fa-exclamation-circle"></i> {{ message }}</div>
+                {% endfor %}
+              
+              
                 <div class="already-acc">
                     <p>Create an account<a href="{% url 'register' %}" style="text-decoration: none;" class="sign-btn">Sign Up</a></p>
                 </div>
