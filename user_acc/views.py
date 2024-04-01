@@ -1,14 +1,14 @@
 from ast import Match
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout 
 from django.contrib.auth import logout
 from django.contrib import messages
 # Create your views here.
 from .form import *
 from allauth.account.models import EmailAddress
 
-from booking.models import Blog, Details, Futsal, Book_futsal, Team, Testimonials, User, Review
+from booking.models import Blog, Details, Futsal, Book_futsal, Team, User, Review
 from django.contrib.admin.views.decorators import staff_member_required
 from calendar import month_name
 from django.contrib.auth.decorators import login_required
@@ -53,7 +53,31 @@ def index(request):
     }
     return render(request, 'admin/index.html', context)
 
+from django.urls import reverse
+# Custom login view for admin
+def custom_login(request):
+    print('hello')
+    if request.user.is_authenticated:
+        return redirect(reverse('index'))
     
+    if request.method == 'POST':
+      
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            next_url = request.GET.get('next', reverse('index'))
+            return redirect(next_url)
+        else:
+            print('Invalid credentials')
+            # Add an error message to the template context
+            context = {'error': 'Invalid credentials'}
+            messages.error(request, 'Invalid credentials')
+            return render(request, 'admin/login.html', context)
+    else:
+       
+        return render(request, 'admin/login.html')    
 
 # futsal list Ajax
 from django.http import JsonResponse
@@ -186,51 +210,21 @@ def home(request):
 
 #redirect new home view
 def home(request):
-    # detail = Details.objects.all()
-    # Slider = slider.objects.all()
+   
     futsal = Futsal.objects.all()
-    testimonials= Testimonials.objects.all()
-    # beadcrumbs= Beadcrumbs.objects.all()
     if request.user.is_authenticated:
         team_status = Team.objects.filter(user=request.user)
     else:
         team_status = None
     context = {
-        # 'detail':detail, 
-        # 'Slider':Slider, 'futsal':futsal, 
-        'testimonials':testimonials, 
         'team_status': team_status,
         }
     
     return render(request, 'index.html', context)
 
-from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
-from django.contrib import messages
-from django.urls import reverse
-# Custom login view for admin
-def custom_login(request):
-    if request.user.is_authenticated:
-        return redirect(reverse('index'))
-    
-    if request.method == 'POST':
-        print('post')
-        username = request.POST['username']
-        password = request.POST['password']
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            next_url = request.GET.get('next', reverse('index'))
-            return redirect(next_url)
-        else:
-            print('Invalid credentials')
-            # Add an error message to the template context
-           
-            messages.error(request, 'Invalid credentials')
-            return render(request, 'admin/login.html')
-    else:
-       
-        return render(request, 'admin/login.html')
+
+
+
     
     
 from django.views.decorators.http import require_POST

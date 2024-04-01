@@ -152,7 +152,7 @@ urlpatterns = [
     path('bookings/<int:futsal_id>/', bookfutsal_list, name='bookings_by_futsal'),
 
 
-    path('notificationMessage/', views.notificationMessage_list, name='chatMessage_list'),
+    path('notificationMessage/', views.notificationMessage_list, name='Message_list'),
 
 ]
 if settings.DEBUG:

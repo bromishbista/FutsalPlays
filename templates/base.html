@@ -98,6 +98,11 @@
             border-bottom: none;
         }
         
+        .notification-box {
+            /* Your existing styles */
+            max-height: 200px; /* Adjust this value as needed */
+            overflow-y: auto; /* Enable vertical scrolling if content exceeds the max height */
+        }
         
         
         
@@ -150,32 +155,18 @@
                                 <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i>  Contact Us</a>
                             </li>
 
+                          
+                            <!-- notification -->
+                            <button id="notificationButton"><i class="fa-solid fa-bell"></i></button>
 
-                            <li class="nav-item" style="position: relative;">
-                                <a class="nav-link" href="#" id="notificationButton">
-                                    <i class="fa-solid fa-bell"></i>
-                                    <span class="notification-badge">1</span>
-                                </a>
-                                <div class="notification-box" id="notificationBox">
-                                    {% include 'notification_messages.html' %}
-                                </div>
-                            </li>
+                            <div class="notification-box" id="notificationBox">
+                    
+                            </div>
                             
-                            
+                           
                             
                         
-                            
-                            <!-- Dropdown menu -->
-                            {% comment %} <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Pages
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{% url 'match_list' %}">Match</a></li>
-                                    <li><a class="dropdown-item" href="{% url 'blogs' %}">Blogs</a></li>
-                                </ul>
-                            </li> {% endcomment %}
+                        
                         </ul>
 
                         
@@ -218,6 +209,8 @@
         </div>
     </header>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
     <!-- Body Content -->
     {% block body %}
 
@@ -226,15 +219,44 @@
     <!-- Scripts -->
     {% block scripts %}
     <script>
-        document.getElementById('notificationButton').addEventListener('click', function(e) {
-            e.preventDefault();
-            var notificationBox = document.getElementById('notificationBox');
-            if (notificationBox.style.display === 'block') {
-                notificationBox.style.display = 'none';
-            } else {
-                notificationBox.style.display = 'block';
-            }
+        $(document).ready(function(){
+           
+            var customCSS = "<style>#notificationButton { background: none; border: none; padding: 0; cursor: pointer; /* Add additional styles as needed */ }</style>";
+            $('head').append(customCSS);
+        
+            // When the notification button is clicked
+            $('#notificationButton').click(function(){
+           
+                $('#notificationBox').toggle();
+        
+               
+                if ($('#notificationBox').is(':visible')) {
+                    // Fetch the content from the URL using jQuery
+                    $.get("{% url 'Message_list' %}", function(data){
+                        // Display the fetched content in the notification box
+                        $('#notificationBox').html(data);
+        
+                      
+                        var buttonOffset = $('#notificationButton').offset();
+                        var buttonHeight = $('#notificationButton').outerHeight();
+                        var notificationBoxHeight = $('#notificationBox').outerHeight();
+                        var topPosition = buttonOffset.top + buttonHeight;
+                        var leftPosition = buttonOffset.left;
+        
+                        // Position the notification box
+                        $('#notificationBox').css({
+                            'position': 'absolute',
+                            'top': topPosition + 'px',
+                            'left': leftPosition + 'px'
+                        });
+                    });
+                }
+            });
         });
+        
+
+        
+        
     </script>
 
     {% endblock scripts %}
@@ -248,7 +270,8 @@
             </div>
         </div>
     </footer> {% endcomment %}
-
+<br/>
+<br/>
     <footer>
         <div class="footer-main-section container">
             <!-- Footer Content -->
@@ -271,9 +294,10 @@
             </div>
         </div>
     </footer>
+
     
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-o9zh58J7FTL0Jqb8HgRhXabTRZZ9p7vZWUer7e5GnMGnqj4QUx+Dpb+nXVm+0MCQqJYWhgVqlMC0+Ij1E2uSjA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
 
     
 

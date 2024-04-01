@@ -411,16 +411,16 @@ def review_delete(request, pk):
 
 
 def notificationMessage_list(request):
-    chatMessage = ChatMessage.objects.all()
-    print(chatMessage)
-    return render(request, 'notification_messages.html', {'chatMessage': chatMessage})
+    top_10_messages = ChatMessage.objects.order_by('-timestamp')[:10]
+    print('hello')
+    return render(request, 'notification_messages.html', {'chatMessage': top_10_messages})
+
+
 
 # CRUD operations for creating chatMessage 
 def adminchatMessage_list(request):
     chatMessage = ChatMessage.objects.all()
     return render(request, 'admin/booking/chatMessage/index.html', {'chatMessage': chatMessage})
-
-
 
 
 

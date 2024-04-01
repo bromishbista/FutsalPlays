@@ -3,9 +3,8 @@
 <html lang="en">
 {% block content %}
 
-<div>
 {% for chatMessage in chatMessage %}
-    <div class="notification">{{ chatMessage.user }}: {{ chatMessage.futsal }}</div>
+    <div class="notification"><strong>{{ chatMessage.futsal }}</strong>: {{ chatMessage.user }}: {{ chatMessage.timestamp }}</div>
 {% empty %}
     <div class="notification">No notifications</div>
 {% endfor %}

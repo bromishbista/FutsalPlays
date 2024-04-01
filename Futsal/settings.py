@@ -75,6 +75,7 @@ ROOT_URLCONF = 'Futsal.urls'
 
 
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
