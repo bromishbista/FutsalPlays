@@ -45,7 +45,6 @@ def index(request):
         'teams':teams,
         'match':match,
         'blog':blog,
-        # 'testimonials':testimonials,
         'futsals':futsal,
         'futsaldata':futsaldata,
         'book_futsal':book_futsal,
@@ -205,7 +204,9 @@ def home(request):
     
     return render(request, 'index.html', context)
 
-
+from django.shortcuts import redirect, render
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from django.urls import reverse
 # Custom login view for admin
 def custom_login(request):
@@ -224,14 +225,17 @@ def custom_login(request):
         else:
             print('Invalid credentials')
             # Add an error message to the template context
-            context = {'error': 'Invalid credentials'}
+           
             messages.error(request, 'Invalid credentials')
-            return render(request, 'admin/login.html', context)
+            return render(request, 'admin/login.html')
     else:
-        print('hello')
+       
         return render(request, 'admin/login.html')
-
+    
+    
+from django.views.decorators.http import require_POST
 #logout admin
+@require_POST
 @login_required
 def custom_logout(request):
     logout(request)
@@ -530,6 +534,9 @@ def chat(request):
     
     return render(request, 'chat.html')
 
+
+
+
 # CRUD for contact
 def contact_list(request):
     contact = Contact.objects.all()
@@ -571,3 +578,4 @@ def blog_detail(request, blog_slug):
         'blog': blog
     }
     return render(request, 'blog_detail.html', context)
+    

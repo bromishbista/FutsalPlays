@@ -12,7 +12,7 @@ admin.site.register(Book_futsal)
 
 admin.site.register(About)
 admin.site.register(Beadcrumbs)
-
+admin.site.register(Blog)
 admin.site.register(slider)
 admin.site.register(Details)
 admin.site.register(Review)

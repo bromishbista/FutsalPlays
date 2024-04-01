@@ -2,5 +2,9 @@
 
 {% block content %}
     <h1>You have been logged out</h1>
-    <p>Thank you for using our site. You may now <a href="{% url 'custom_login' %}">log back in</a>.</p>
+    <p>Thank you for using our site.</p>
+    <form action="{% url 'custom_login' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Log back in</button>
+    </form>
 {% endblock %}

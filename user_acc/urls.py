@@ -26,7 +26,7 @@ urlpatterns = [
 
 
   
-
+   
     path('chat/', views.chat, name="chat"),
 
     path('blogs/', views.blogs, name="blogs"),
@@ -129,6 +129,8 @@ urlpatterns = [
     path('<int:pk>/', views.match_detail, name='match_detail'),
     path('new/', views.match_create, name='match_create'),
     path('<int:pk>/edit/', views.match_edit, name='match_edit'),
+
+  
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

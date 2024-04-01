@@ -39,9 +39,9 @@
               </br>
             
                 <div class="form bg-light shadow p-4 w-25 mx-auto">
-                    {% if error %}
-                        <p>{{ error }}</p>
-                    {% endif %}
+                    {% for message in message %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
                     <div class="title my-8">
                         
                         <h3 class="text-center text-primary">Admin Login Panel</h3>
@@ -69,7 +69,7 @@
          <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
         <script src="" async defer></script>
         <script>
-            {% for message in messages %}
+            {% for message in message %}
              alertify.set('notifier','position', 'top-right');
              
              alertify.error('{{message}}');

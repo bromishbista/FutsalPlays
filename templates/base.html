@@ -57,6 +57,50 @@
         .icon-large {
             font-size: 24px; /* Adjust the size as needed */
         }
+
+        .notification-badge {
+            background-color: red;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-left: 5px; /* Add some space between the text and the badge */
+        }
+
+        .notification-box {
+            position: absolute;
+            top: calc(100% + 5px); /* Adjust as needed */
+            left: 0;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            display: none;
+            z-index: 999;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+        }
+
+        .notification-box .notification {
+            padding: 5px 0;
+            border-bottom: 1px solid #ccc;
+            color: #333;
+            text-decoration: none;
+            display: block;
+        }
+
+        .notification-box .notification:last-child {
+            border-bottom: none;
+        }
+        
+        
+        
+        
     </style>
 </head>
 
@@ -105,7 +149,21 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{% url 'contact' %}"><i class="fa-solid fa-address-book"></i>  Contact Us</a>
                             </li>
+
+
+                            <li class="nav-item" style="position: relative;">
+                                <a class="nav-link" href="#" id="notificationButton">
+                                    <i class="fa-solid fa-bell"></i>
+                                    <span class="notification-badge">1</span>
+                                </a>
+                                <div class="notification-box" id="notificationBox">
+                                    {% include 'notification_messages.html' %}
+                                </div>
+                            </li>
                             
+                            
+                            
+                        
                             
                             <!-- Dropdown menu -->
                             {% comment %} <li class="nav-item dropdown">
@@ -125,6 +183,8 @@
                         <!-- Account section --> {% if request.user.is_authenticated %}
                         <ul>
                             <li class="nav-item dropdown" style="list-style-type:none;">
+
+
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fa-solid fa-ghost"></i>   Account
@@ -165,6 +225,17 @@
 
     <!-- Scripts -->
     {% block scripts %}
+    <script>
+        document.getElementById('notificationButton').addEventListener('click', function(e) {
+            e.preventDefault();
+            var notificationBox = document.getElementById('notificationBox');
+            if (notificationBox.style.display === 'block') {
+                notificationBox.style.display = 'none';
+            } else {
+                notificationBox.style.display = 'block';
+            }
+        });
+    </script>
 
     {% endblock scripts %}
 

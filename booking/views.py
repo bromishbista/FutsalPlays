@@ -406,10 +406,23 @@ def review_delete(request, pk):
         return redirect('review_list')
     return render(request, 'admin/booking/review/delete.html', {'review': review})
 
+
+
+
+
+def notificationMessage_list(request):
+    chatMessage = ChatMessage.objects.all()
+    print(chatMessage)
+    return render(request, 'notification_messages.html', {'chatMessage': chatMessage})
+
 # CRUD operations for creating chatMessage 
 def adminchatMessage_list(request):
     chatMessage = ChatMessage.objects.all()
     return render(request, 'admin/booking/chatMessage/index.html', {'chatMessage': chatMessage})
+
+
+
+
 
 def chatMessage_create(request):
     if request.method == 'POST':
