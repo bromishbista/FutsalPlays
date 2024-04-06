@@ -49,7 +49,7 @@
             margin-top: 10px;
         }
         .card-button {
-            background-color: #3f050b; /* Transparent background on hover */
+            background-color: #3f050b; 
         }
 
         .booking-table {
@@ -64,7 +64,7 @@
             color: black;
         }
         .booking-table th {
-            background-color: #ccc2ba; /* Darker background for table headers */
+            background-color: #ccc2ba; 
         }
         .booking-table td a {
             color: #fff;
@@ -84,17 +84,15 @@
         .imgbn {
             display: flex;
             
-             /* Ensures the image takes up the full width of its container */
-            /* Maximum width for the image */
-            height: 100%; /* Adjust this as needed to match the aspect ratio (1440/2560 * 360) */
-            overflow: hidden; /* Ensures the image does not overflow its container */
+            height: 100%; 
+            overflow: hidden; 
         }
     
         .imgbn img {
             
-            width: 100%; /* Ensures the image takes up the full width of its container */
-            height: 300px; /* Allows the image to maintain its aspect ratio */
-            display: fit; /* Ensures proper layout */
+            width: 100%; 
+            height: 300px; 
+            display: fit; 
         }
         .profile-tag{
             margin-top: 40vh;
@@ -104,16 +102,16 @@
         }
         .imgbn-container {
             display: flex;
-            flex-direction: row; /* Display divs in a row */
+            flex-direction: row; 
             margin-left: 30rem;
         }
         
         .imgbn {
-            margin-right: 20px; /* Adjust the margin between divs as needed */
+            margin-right: 20px; 
         }
         
         .imgbn:last-child {
-            margin-right: 0; /* Remove margin for the last div */
+            margin-right: 0; 
         }
 
         
@@ -172,7 +170,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {% for booking in futsal_bookings %}
+                        {% for booking in futsal_bookings|dictsortreversed:"date" %}
                         <tr>
                             <td>{{ booking.futsal.name }}</td>
                             <td>{{ booking.date|date:'F j, Y' }}</td>
