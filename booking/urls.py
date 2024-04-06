@@ -10,6 +10,7 @@ from .views import bookfutsal_list
 from .views import BookFutsal
 from .views import*
 
+
 from .views import  UserDashboard
 
 urlpatterns = [
@@ -21,7 +22,7 @@ urlpatterns = [
 
    
 
-    path('adminmatch/', views.match, name='adminmatch'),
+    # path('adminmatch/', views.match, name='adminmatch_list'),
 
     path('create-match/', views.create_match, name='create_match'),
     path('create-team/', views.create_team, name='create_team'),
@@ -124,7 +125,7 @@ urlpatterns = [
     path('slider/<int:pk>/edit/', views.Slider_edit, name='slider_edit'),
     path('slider/<int:pk>/delete/', views.Slider_delete, name='slider_delete'),
 
-    path('adminmatch/', views.match, name='adminmatch'),
+    # path('adminmatch/', views.match, name='adminmatch'),
     path('adminteam/', views.team, name='adminteam'),
 
  
@@ -153,7 +154,10 @@ urlpatterns = [
 
 
     path('notificationMessage/', views.notificationMessage_list, name='Message_list'),
+    
+    
 
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+   

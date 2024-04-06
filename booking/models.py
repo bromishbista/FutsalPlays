@@ -53,6 +53,7 @@ class Match(models.Model):
         ('12','12'),
         ('14','14'),
         ('16','16'),
+        ('20','20'),
     )
     playercount = models.CharField(max_length=150,choices=player, default='5')
     game = (

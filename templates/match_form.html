@@ -1,31 +1,96 @@
-<!-- match_form.html -->
-{% extends 'base.html' %} {% block body %}
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+<head>
+<link rel="stylesheet" href="{% static 'boot/css/bootstrap.min.css' %}">
+</head>
+<body>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
 
-<div class="m-5 col-md-6">
-  <h1>Create New Match</h1>
+      <div class="card">
+        <div class="card-header bg-primary text-white d-flex justify-content-center">
+          <h1 class="mb-0">Create New Match</h1>
+        </div>
+        <br/>
 
-  <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %} {{ form.as_p }}
-    <div id="errorContainer">
-      {% for field in form %} {% if field.errors %}
-      <div class="text-danger">{{ field.errors.0 }}</div>
+        <form method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group row">
+            <label for="id_futsal" class="col-sm-3 col-form-label"> &nbsp; Futsal:</label>
+            <div class="col-sm-6">
+              {{ form.futsal }}
+            </div>
+          </div>
+          <br/>
+          <div class="form-group row">
+            <label for="id_date" class="col-sm-3 col-form-label">&nbsp; Date:</label>
+            <div class="col-sm-6">
+              {{ form.date }}
+            </div>
+          </div>
+          <br/>
+          <div class="form-group row">
+            <label for="id_first_team" class="col-sm-3 col-form-label">&nbsp; First Team:</label>
+            <div class="col-sm-6">
+              {{ form.first_team }} {{ form.first_image }}
+            </div>
+          </div>
+          <br/>
+          <br/>
+          <div class="form-group row">
+            <label for="id_second_team" class="col-sm-3 col-form-label">&nbsp; Second Team:</label>
+            <div class="col-sm-6">
+              {{ form.second_team }}  {{ form.second_image }}
+            </div>
+          </div>
+          <br/>
+          <br/>
+          <div class="form-group row">
+            <label for="id_start_time" class="col-sm-3 col-form-label">&nbsp; Start Time:</label>
+            <div class="col-sm-6">
+              {{ form.start_time }}
+            </div>
+          </div>
+          <br/>
+          <div class="form-group row">
+            <label for="id_end_time" class="col-sm-3 col-form-label">&nbsp; End Time:</label>
+            <div class="col-sm-6">
+              {{ form.end_time }}
+            </div>
+          </div>
+          <br/>
+          <div class="form-group row">
+            <label for="id_playercount" class="col-sm-3 col-form-label">&nbsp; Player Count:</label>
+            <div class="col-sm-6">
+              {{ form.playercount }}
+            </div>
+          </div>
+          <br/>
+          <div class="form-group row">
+            <label for="id_gametype" class="col-sm-3 col-form-label">&nbsp; Game Type:</label>
+            <div class="col-sm-6">
+              {{ form.gametype }}
+            </div>
+          </div>
+          <br/>
+          <button class="card-button" type="submit">Create</button>
+        </form>
+      </div>
+
     </div>
-
-    {% endif %} {% endfor %}
-  </form>
-  <button class="btn btn-success text-center" type="submit">Create</button>
+  </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+<script src="{% static 'boot/js/bootstrap.min.js' %}"></script>
 <script>
   $(document).ready(function () {
     $("#createMatchForm").on("submit", function (event) {
-      event.preventDefault();
-
-      // Clear previous error messages
+     
       $("#errorContainer").empty();
 
-      // Perform validation
+      
       var formValid = true;
       $("input[required]").each(function () {
         if ($(this).val() === "") {
@@ -39,11 +104,12 @@
         }
       });
 
-      // Submit the form or show error message
-      if (formValid) {
-        $(this).unbind("submit").submit();
+      // If form is not valid, prevent submission
+      if (!formValid) {
+        event.preventDefault();
       }
     });
   });
 </script>
+
 {% endblock %}

@@ -27,8 +27,12 @@ class BookFutsalForm(forms.ModelForm):
         date = cleaned_data.get('date')
         start_time = cleaned_data.get('start_time')
         duration = cleaned_data.get('duration')
-        end_time = (datetime.combine(date, start_time) + timedelta(hours=duration)).time()
         
+        if date is None:
+            raise forms.ValidationError("Date field is required.")
+
+        end_time = (datetime.combine(date, start_time) + timedelta(hours=duration)).time()
+
         # Check if the booking date is today or in the future
         if date < datetime.now().date():
             raise forms.ValidationError("Booking date cannot be in the past.")
@@ -42,7 +46,6 @@ class BookFutsalForm(forms.ModelForm):
                 (start_time < booking.end_time() and end_time > booking.start_time)):
                 
                 raise forms.ValidationError(f'The futsal is already booked from {start_time.strftime("%I:%M %p")} to {end_time.strftime("%I:%M %p")} on {date}.')
-
 
 
 

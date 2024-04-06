@@ -19,6 +19,11 @@ from django.shortcuts import render
 
 
 
+
+
+
+
+
 # recommendation system
 import requests
 from math import radians, sin, cos, sqrt, atan2
@@ -87,6 +92,7 @@ def get_user_location(request):
         return HttpResponse('Got location: {}, {}'.format(latitude, longitude))
     else:
         return HttpResponse('Method not allowed', status=405)
+
     
 # recommending the futsal 
     

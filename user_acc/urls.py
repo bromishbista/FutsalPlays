@@ -128,6 +128,7 @@ urlpatterns = [
     ## for match create
     path('match/', views.match_list, name='match_list'),
     path('<int:pk>/', views.match_detail, name='match_detail'),
+    
     path('new/', views.match_create, name='match_create'),
     path('<int:pk>/edit/', views.match_edit, name='match_edit'),
 
