@@ -68,9 +68,23 @@
         <img src="{% static 'img/khalti.png' %}" alt="Product Image" class="product-image">
         <div class="container" style= "background-color: #542867;">
         <h3>Your total amount is Rs. {{ total_price }}</h3>
-        <button id="payment-button">Pay with Khalti</button>
-        <a href="/" style="color: white;">Go to Home page</a>
-    </div>
+        <button id="payment-button">Pay with Khalti (Old)</button>
+       
+   
+
+<br/>
+<br/>
+<form action="{% url 'payment_page' %}" method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="purchase_order_id" value="2">
+    <input type="hidden" name="return_url" value="http://127.0.0.1:8000/payment-success/">
+    <input type="hidden" name="amount" value="{{ total_price }}">
+    <input type="hidden" name="email" value="{{user.email}}">
+    <input type="hidden" name="name" value=" {{ user.username }}">
+    <button id="payment-button" type="submit">Pay with khalti (New)</button>
+</form>
+<a href="/" style="color: white;">Go to Home page</a>
+</div>
 </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

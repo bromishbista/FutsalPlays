@@ -866,6 +866,54 @@ class KhaltiVerifyView(View):
             data = {"success": False}
             return JsonResponse(data)
 
+
+
+def payment(request):
+    context = {
+    }
+    return render(request, 'member/payment_page.html', context)
+
+import json
+def payment_page(request):
+
+    url = "https://a.khalti.com/api/v2/epayment/initiate/"
+
+    return_url = request.POST.get('return_url')
+    purchase_order_id = request.POST.get('purchase_order_id')
+    amount = request.POST.get('amount')
+    email = request.POST.get('email')
+    name = request.POST.get('name')
+
+    print("p", purchase_order_id)
+    print("R", return_url)
+    print("A", amount)
+    print("e", email)
+    print("n", name)
+
+    payload = json.dumps({
+        "return_url": return_url,
+        "website_url": "http://127.0.0.1:8000",
+        "amount": amount,
+        "purchase_order_id": purchase_order_id,
+        "purchase_order_name": "test",
+        "customer_info": {
+            "name": name,
+            "email": email,
+            "phone": "9800000001"
+        }
+    })
+    headers = {
+        'Authorization': 'key e765b891d12449ceaa4cdfd14a27e47f',
+        'Content-Type': 'application/json',
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload)
+
+    print(response.text)
+    new_res = json.loads(response.text)
+    print(new_res)
+    return redirect(new_res['payment_url'])
+
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags

@@ -146,6 +146,7 @@ urlpatterns = [
     path("khalti-verify/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
     path("payment-success/", views.payment_success, name="payment_success"),
 
+     path("payment_page/", views.payment_page, name="payment_page"),
 
     
    
