@@ -2,18 +2,6 @@
 {% load static %}
 {% block title %}futsal{% endblock title %}
 {% block body %}
-     <!-- sliders -->
-     {% comment %} <section class="foot-search">
-        <div class="footsal-section">
-            <div class="search-section-form">
-                <div class="search-title">
-                    <h3>Futsal</h3>
-                </div>
-            </div>
-        </div>
-    </section> {% endcomment %}
-    <!-- sliders -->
-
 
     <div class="latest-listed-items" style="background-color: aliceblue;">
         <div class="footsal-highlight">
@@ -40,12 +28,11 @@
                 </a>
             </div>
         </div>
-        <form
+             <form
                 action="{% url 'futsal' %}"
                 method="get"
                 class="search-footsal"
-                style="display:flex;float:right;justify-content: right;align-items: right;"
-              >
+                style="display:flex;float:right;justify-content: right;align-items: right;">
                 {% csrf_token %}
                 <div class="footsal-search-main">
                   <div class="form-left footsal-search d-flex">

@@ -131,9 +131,6 @@ def booking(request):
     return render(request, 'booking.html')
 
 
-
-
-
 # CRUD Operations for Breadcrumbs 
 
 def beadcrumbs_list(request):
@@ -303,8 +300,6 @@ def details_edit(request, pk):
         form = DetailsForm(instance=details)
     return render(request, 'admin/booking/details/update.html', {'form': form})
 
-
-
 def details_delete(request, pk):
     details = get_object_or_404(Details, pk=pk)
     if request.method == 'POST':
@@ -407,7 +402,6 @@ def notificationMessage_list(request):
     top_10_messages = ChatMessage.objects.order_by('-timestamp')[:10]
     print('hello')
     return render(request, 'notification_messages.html', {'chatMessage': top_10_messages})
-
 
 
 # CRUD operations for creating chatMessage 
@@ -883,6 +877,7 @@ def payment_success(request):
     return render(request, 'payment_success.html', context)
 
 #sending email
+@login_required
 def send_email(request):
     html_message = render_to_string('mail.html')
     plain_message = strip_tags(html_message)
