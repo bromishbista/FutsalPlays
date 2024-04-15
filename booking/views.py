@@ -19,11 +19,6 @@ from django.shortcuts import render
 
 
 
-
-
-
-
-
 # recommendation system
 import requests
 from math import radians, sin, cos, sqrt, atan2
@@ -40,12 +35,6 @@ def UserDashboard(request):
     context = {'user_groups': user_groups, 'futsal_bookings': futsal_bookings}
     return render(request, 'UserDashboard.html', context)
 
-
-# @login_required
-# def bookedfutsal(request, futsal_id):
-#     futsal = get_object_or_404(Futsal, pk=futsal_id)
-#     booked_futsals = Book_futsal.objects.filter(futsal=futsal, user=request.user)
-#     return render(request, 'futsal_detail.html', {'futsal': futsal, 'booked_futsals': booked_futsals})
 
 # map Api 
 def get_user_location():
@@ -140,7 +129,6 @@ def index(request):
 
 def booking(request):
     return render(request, 'booking.html')
-
 
 
 
@@ -413,8 +401,7 @@ def review_delete(request, pk):
     return render(request, 'admin/booking/review/delete.html', {'review': review})
 
 
-
-
+### Notification 
 
 def notificationMessage_list(request):
     top_10_messages = ChatMessage.objects.order_by('-timestamp')[:10]
@@ -753,40 +740,6 @@ def create_team(request):
         return render(request, 'create_team.html', {'form': form})
 
 from django.contrib import messages
-
-# # CRUD operation for booking  Futsal 
-
-# class BookFutsal(View):
-#     def get(self, request):
-#         if request.user.is_authenticated:
-#             team_status = Team.objects.filter(user=request.user)
-#         else:
-#             team_status = None
-#         context = {
-#             'form': BookFutsalForm(),
-#             'team_status': team_status
-#         }
-#         return render(request, 'booking.html', context)
-
-#     def post(self, request):
-#         form = BookFutsalForm(request.POST)
-#         if form.is_valid():
-#             instance = form.save(commit=False)
-#             instance.user = request.user
-#             instance.save()
-#             book_id = instance.id
-#             return redirect('/khalti-request/' + str(book_id))
-#         else:
-#             # Display validation errors as messages
-#             for field, errors in form.errors.items():
-#                 for error in errors:
-#                     messages.error(request, f"{field}: {error}")
-#         return redirect('/book_futsal/')
-    
-
-
-
-
 
 #CRUD for book Futsal start
 

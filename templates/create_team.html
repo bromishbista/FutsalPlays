@@ -11,7 +11,7 @@
                 <div class="col-md-6">
                 
                     
-                    <div class="ctimage" style= "background-color: #222d55; height: 70vh; width: 80vh;  margin-left: 80px">
+                    <div class="ctimage" style= "background-color: #222d55; height: 70vh; width: 80vh;  margin-left:60px">
                        
                         <img src="{% static 'img/whi.png' %}" alt="" class="img-fluid" style= "margin-left: 50px; height: 50vh; width: 60vh;">
                         <h1 style="color: white; text-align: center;">
@@ -21,18 +21,19 @@
                     </div>
                  
                            
-                        
                 </div>
                 <div class="col-md-6">
+                    
                     <div class="custom-form-bg custom-login-form">
                     
                         <div class="custom-form-content custom-login-form">
-                           
+                            
                             {% for message in messages %}
                             <div class="alert alert-success" role="alert">
                                 {{ message }}
                             </div>
                             {% endfor %}
+                            <br/>
                             <form action="" class="custom-login-form" method="POST" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {{ form.as_p }}
