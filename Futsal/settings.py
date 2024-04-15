@@ -53,11 +53,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'khalti',
     'django_extensions',
-    
-    
-    
-    
-
 ]
 
 MIDDLEWARE = [
@@ -72,8 +67,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'Futsal.urls'
-
-
 
 
 TEMPLATES = [

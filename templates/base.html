@@ -162,14 +162,8 @@
                             <div class="notification-box" id="notificationBox">
                     
                             </div>
-                            
-                           
-                            
-                        
-                        
-                        </ul>
 
-                        
+                        </ul>
                         
                         <!-- Account section --> {% if request.user.is_authenticated %}
                         <ul>
@@ -252,24 +246,10 @@
                     });
                 }
             });
-        });
-        
-
-        
-        
+        });        
     </script>
 
     {% endblock scripts %}
-
-    <!-- Footer -->
-    {% comment %} <footer>
-        <div class="footer-main-section container">
-            <!-- Footer Content -->
-            <div class="ending-footer">
-                <p style="color: white;">&copy; 2024 FutsalPlays. All rights reserved. </p>
-            </div>
-        </div>
-    </footer> {% endcomment %}
 <br/>
 <br/>
     <footer>
@@ -297,10 +277,6 @@
 
     
     
-    
-
-    
-
     <!-- Bootstrap and Custom JavaScript -->
     <script src="{% static 'JS/min.js' %}"></script>
     <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>

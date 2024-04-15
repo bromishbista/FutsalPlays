@@ -7,30 +7,10 @@ from  user_acc.controller import authviews
 from django.contrib.auth import views as auth_views
 from .views import custom_login, custom_logout
 from . import views
-
-# from .views import custom_login
-
 from .views import ContactFormView
 from django.urls import path, include
 
-
-
 urlpatterns = [
-
-    path('search-list', views.fusallistAjax),
-    path('searchfutsal', views.searchfutsal, name="searchfutsal"),
-   
-
-    path('teams/', views.teams, name="teams"),
-    path('team/', views.teams, name="team"),
-
-
-  
-   
-    path('chat/', views.chat, name="chat"),
-
-    path('blogs/', views.blogs, name="blogs"),
-    path('blog-detail/<str:blog_slug>', views.blog_detail, name="blog-detail"),
 
 # contact page 
     path('contact/', ContactFormView.as_view(), name='contact'),
@@ -60,8 +40,6 @@ urlpatterns = [
     path('login/', authviews.loginpage, name="login"),
     path('logout/', authviews.logoutpage, name="logout"),
     
-
-
 #password reset
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='password_reset.html'), name="password_reset"),
     path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name="password_reset_done"),
@@ -119,18 +97,24 @@ urlpatterns = [
     path('contactcreate/', views.contact_create, name='contact_create'),
     path('contact/<int:pk>/edit/', views.contact_edit, name='contact_edit'),
     path('contact/<int:pk>/delete/', views.contact_delete, name='contact_delete'),
-
-#   path('booking/', include('booking.urls', namespace='booking')),
- 
-    # path('bookF/', include('booking.urls')),
-    # path('Futsalb/', include('booking.urls')),
-    
+        
     ## for match create
     path('match/', views.match_list, name='match_list'),
     path('<int:pk>/', views.match_detail, name='match_detail'),
     
     path('new/', views.match_create, name='match_create'),
     path('<int:pk>/edit/', views.match_edit, name='match_edit'),
+
+    path('search-list', views.fusallistAjax),
+    path('searchfutsal', views.searchfutsal, name="searchfutsal"),
+   
+
+    path('teams/', views.teams, name="teams"),
+    path('team/', views.teams, name="team"),
+    path('chat/', views.chat, name="chat"),
+
+    path('blogs/', views.blogs, name="blogs"),
+    path('blog-detail/<str:blog_slug>', views.blog_detail, name="blog-detail"),
 
   
 ]

@@ -5,64 +5,18 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-# from .views import payment_success
 from .views import bookfutsal_list
 from .views import BookFutsal
 from .views import*
-
-
 from .views import  UserDashboard
 
 urlpatterns = [
-
-    # path("bookF/", BookFutsal.as_view(), name="bookF"),
-    # path("Futsalb/", Futsal.as_view(), name="Futsalb"),
-
-    # path('bookedfutsal/<int:futsal_id>/', views.bookedfutsal, name='booked_futsal'),
-
-   
-
-    # path('adminmatch/', views.match, name='adminmatch_list'),
-
-    path('create-match/', views.create_match, name='create_match'),
-    path('create-team/', views.create_team, name='create_team'),
-
-    path('recommendation/', views.futsal_recommendation, name='futsal_recommendation'),
-    path('location/', views.get_user_location, name='get_location'),
-    # path('login/', LoginView, name='login'),
-    # path('register/', RegisterView, name='register'),
-    
-    # path('index/', index, name='index'),
-    # path('booking/', booking, name='booking'),
- 
-    path('booking/<int:booking_id>/download/', views.download_booking_info, name='download_booking_info'),
-    path('booking/download/', views.download_booking_info, name='download_booking_info_no_id'),
-
-## for user dashboard 
-
-    path('UserDashboard', UserDashboard, name='UserDashboard'),
-   
-
-#book_futsal booking futsal 
-    path('book_futsal/', views.BookFutsal.as_view(), name='book_futsal'),
-
-    
-    path('futsal/', views.futsal_list, name='futsal'),
-    path('futsal/<int:pk>/', views.futsal_details, name='futsal_detail'),
-
-     path('chatd/', views.chat_list, name='chat'),
-     
-     path('futsal/', views.futsal_details, name='futsal_detail'),
-
 
 # CRUD for blog
     path('adminblogs/', views.blogs_list, name='blogs_list'),
     path('blogscreate/', views.blogs_create, name='blogs_create'),
     path('blogs/<int:pk>/edit/', views.blogs_edit, name='blogs_edit'),
     path('blogs/<int:pk>/delete/', views.blogs_delete, name='blogs_delete'),
-
-  
-   
 
 # CRUD for breadcrumbs operations 
     path('adminbeadcrumbs/', views.beadcrumbs_list, name='beadcrumbs_list'),
@@ -125,39 +79,49 @@ urlpatterns = [
     path('slider/<int:pk>/edit/', views.Slider_edit, name='slider_edit'),
     path('slider/<int:pk>/delete/', views.Slider_delete, name='slider_delete'),
 
-    # path('adminmatch/', views.match, name='adminmatch'),
+# path('adminmatch/', views.match, name='adminmatch'),
     path('adminteam/', views.team, name='adminteam'),
 
+  path('create-match/', views.create_match, name='create_match'),
+    path('create-team/', views.create_team, name='create_team'),
+
+    path('recommendation/', views.futsal_recommendation, name='futsal_recommendation'),
+    path('location/', views.get_user_location, name='get_location'),
  
+    path('booking/<int:booking_id>/download/', views.download_booking_info, name='download_booking_info'),
+    path('booking/download/', views.download_booking_info, name='download_booking_info_no_id'),
+
+## for user dashboard 
+
+    path('UserDashboard', UserDashboard, name='UserDashboard'),
+    
+#book_futsal booking futsal 
+    path('book_futsal/', views.BookFutsal.as_view(), name='book_futsal'),
 
     
+    path('futsal/', views.futsal_list, name='futsal'),
+    path('futsal/<int:pk>/', views.futsal_details, name='futsal_detail'),
+
+    path('chatd/', views.chat_list, name='chat'),
+    
+    path('futsal/', views.futsal_details, name='futsal_detail'), 
 
     path('create_team/', views.CreateTeam.as_view(), name='create_team'),
     path('edit_team/<int:id>/', views.EditTeam.as_view(), name='edit_team'),
-
-
     path('team_detail/<int:team_id>/', views.teamsdetailss, name='team_detail'),
 
-
-
-
+### Khalti Payment 
     path("khalti-request/<int:id>/", views.KhaltiRequestView.as_view(), name="khaltirequest"),
-
     path("khalti-verify/", views.KhaltiVerifyView.as_view(), name="khaltiverify"),
     path("payment-success/", views.payment_success, name="payment_success"),
-
-     path("payment_page/", views.payment_page, name="payment_page"),
-
-    
+    path("payment_page/", views.payment_page, name="payment_page"),
    
-
+###booking futsal 
     path('bookings/<int:futsal_id>/', bookfutsal_list, name='bookings_by_futsal'),
 
-
+## notifications 
     path('notificationMessage/', views.notificationMessage_list, name='Message_list'),
     
-    
-
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

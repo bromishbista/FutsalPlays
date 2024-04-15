@@ -818,7 +818,7 @@ class BookFutsal(View):
         return redirect('/book_futsal/')
 
 
-# payment khalti integration 
+# payment khalti integration old code 
 
 from .models import Book_futsal
 
@@ -868,6 +868,7 @@ class KhaltiVerifyView(View):
 
 
 
+### khalti new code latest update
 def payment(request):
     context = {
     }
@@ -918,13 +919,8 @@ from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 
+#payment success page redirection
 def payment_success(request):
-    # Sending email after successful payment
-    # subject = 'Booking Confirmation'
-    # html_message = render_to_string('mail.html', {'username': request.user.username})
-    # plain_message = strip_tags(html_message) 
-    # from_email = 'bromishbista2003@gmail.com'
-    # to_emails = [request.user.email]
     
     send_email(request)
     
@@ -932,7 +928,8 @@ def payment_success(request):
         'message': 'Your payment has been completed successfully. Thank you for booking!'
     }
     return render(request, 'payment_success.html', context)
-# 
+
+#sending email
 def send_email(request):
     html_message = render_to_string('mail.html')
     plain_message = strip_tags(html_message)
@@ -944,18 +941,6 @@ def send_email(request):
     send_mail(subject, plain_message, from_email, to_email, html_message=html_message)
     return render(request, 'mail.html')
 
-
-
-# def send_html_email(request):
-#     subject = 'Test HTML Email'
-#     html_message = render_to_string('mail.html', {'username': 'John'})
-#     plain_message = 'This is a sample plain text message.'
-#     from_email = 'bromishbista2003@gmail.com'
-#     to_emails = ['bromishbista2003@gmail.com']
-
-#     send_mail(subject, plain_message, from_email, to_emails, html_message=html_message)
-
-#     return HttpResponse('Email sent successfully!')
  
 
 ##### ticket generating 
