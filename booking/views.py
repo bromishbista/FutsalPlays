@@ -38,7 +38,7 @@ def UserDashboard(request):
 
 # map Api 
 def get_user_location():
-    url = "https://www.googleapis.com/geolocation/v1/geolocate?key=REMOVED_GOOGLE_API_KEY" + settings.GOOGLE_MAPS_API_KEY
+    url = "https://www.googleapis.com/geolocation/v1/geolocate?key=" + settings.GOOGLE_MAPS_API_KEY
     response = requests.post(url)
     json_data = response.json()
     return json_data["location"]["lat"], json_data["location"]["lng"]
@@ -774,7 +774,8 @@ class KhaltiRequestView(View):
         book_futsal = Book_futsal.objects.get(id=id)
         total_price = book_futsal.duration * book_futsal.futsal.price
         context = {
-            "book_futsal": book_futsal, "total_price":total_price
+            "book_futsal": book_futsal, "total_price":total_price,
+            "khalti_public_key": settings.KHALTI_PUBLIC_KEY
         }
         return render(request, "khaltipayment.html", context)
 
@@ -793,7 +794,7 @@ class KhaltiVerifyView(View):
             "amount": amount
         }
         headers = {
-            "Authorization": "REMOVED_KHALTI_SECRET_KEY"
+            "Authorization": f"Key {settings.KHALTI_SECRET_KEY}"
         }
 
         try:

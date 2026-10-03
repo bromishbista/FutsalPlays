@@ -13,18 +13,23 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 
+from dotenv import load_dotenv
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Secrets and keys are read from a local .env file (see .env.example), never from the code
+load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'REMOVED_DJANGO_SECRET_KEY'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'dev-only-insecure-key-change-me')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -176,14 +181,15 @@ SITE_ID = 1
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'bromishbista2003@gmail.com'
-EMAIL_HOST_PASSWORD = 'REMOVED_EMAIL_APP_PASSWORD'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', '')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', '')
 EMAIL_PORT = 587
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # google map API key (Google cloud Platform)
 
-GOOGLE_MAPS_API_KEY = 'REMOVED_GOOGLE_API_KEY'
+GOOGLE_MAPS_API_KEY = os.environ.get('GOOGLE_MAPS_API_KEY', '')
 
-KHALTI_SECRET_KEY = "REMOVED_KHALTI_SECRET_KEY"
+KHALTI_SECRET_KEY = os.environ.get("KHALTI_SECRET_KEY", "")
+KHALTI_PUBLIC_KEY = os.environ.get("KHALTI_PUBLIC_KEY", "")
 KHALTI_VERIFY_URL = "https://khalti.com/api/v2/payment/verify/"

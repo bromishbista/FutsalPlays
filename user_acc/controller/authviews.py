@@ -1,4 +1,3 @@
-from tkinter import NO
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.shortcuts import redirect, render

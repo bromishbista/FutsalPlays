@@ -1,0 +1,140 @@
+[
+{
+  "model": "booking.futsal",
+  "pk": 1,
+  "fields": {
+    "name": "Beast",
+    "latitude": "26.663844",
+    "longitude": "87.692669",
+    "location": "Damak, Jhapa",
+    "location_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3565.5325317949087!2d87.69006217488642!3d26.66344587075929!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e58fdeefb4621d%3A0x7ea54b8af3a6d0be!2sBeast%20futsal!5e0!3m2!1sen!2snp!4v1707140334480!5m2!1sen!2snp\" width=\"400\" height=\"300\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade",
+    "owner": "Bromish",
+    "image": "img/futsal-kickoff-scaled.jpg",
+    "description": "Best in the town",
+    "price": 1000
+  }
+},
+{
+  "model": "booking.futsal",
+  "pk": 2,
+  "fields": {
+    "name": "Nepa Futsal",
+    "latitude": "27.717971",
+    "longitude": "85.296520",
+    "location": "Sankhamul, Kathmandu",
+    "location_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2881.314842138738!2d85.29270354194385!3d27.717896416375197!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb192ede0d87b9%3A0xb30735a9b4bb5f90!2sNepa%20futsal!5e0!3m2!1sen!2snp!4v1707147788636!5m2!1sen!2snp\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"",
+    "owner": "Syam Bhatt",
+    "image": "img/Futsal-Arenas.jpg",
+    "description": "Newly Futsal",
+    "price": 1300
+  }
+},
+{
+  "model": "booking.futsal",
+  "pk": 3,
+  "fields": {
+    "name": "Futsal Arena Boudha",
+    "latitude": "27.716105",
+    "longitude": "85.362275",
+    "location": "Boudha, Kathmandu",
+    "location_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.0434962334202!2d85.35969997457687!3d27.71594327617765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1bd0e441b9d1%3A0x81962eaa6a191e35!2sFutsal%20Arena%20Boudha!5e0!3m2!1sen!2snp!4v1707659707364!5m2!1sen!2snp\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"",
+    "owner": "Nishan Shrestha",
+    "image": "img/FAB.jpg",
+    "description": "A big arena suitable for 7A side which can be converted into two 5A side futsal. Wonderful place for futsal lovers. A big area and good facilities of washroom and changing rooms.",
+    "price": 700
+  }
+},
+{
+  "model": "booking.futsal",
+  "pk": 7,
+  "fields": {
+    "name": "Hamro Futsal Sarswotinagar",
+    "latitude": "27.722977",
+    "longitude": "85.347961",
+    "location": "Chabahil, Kathmandu",
+    "location_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.8137118046957!2d85.34544697532432!3d27.72303747617357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1961765b3947%3A0x5dfaeb0f762f202a!2sHamro%20Futsal%20Saraswotinagar%20Chabahil!5e0!3m2!1sne!2snp!4v1712066931573!5m2!1sne!2snp\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"",
+    "owner": "Jiwan Bhandari",
+    "image": "img/Dhuku-Futsal-Hub-20130717230903.jpg",
+    "description": "Best place for burning calories.",
+    "price": 1200
+  }
+},
+{
+  "model": "booking.futsal",
+  "pk": 8,
+  "fields": {
+    "name": "Shantinagar Futsal",
+    "latitude": "27.692197",
+    "longitude": "85.347833",
+    "location": "Shantinagar , Kathmandu",
+    "location_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.819650393087!2d85.34522597457581!3d27.691968476191324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb198f03394b37%3A0xcd7712094f490bf2!2sShantinagar%20Futsal!5e0!3m2!1sen!2snp!4v1712067509947!5m2!1sen!2snp\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"",
+    "owner": "Amrit",
+    "image": "img/sf.jpg",
+    "description": "\"Shantinagar Futsal: Experience the thrill of indoor soccer on our state-of-the-art courts. Perfect for fast-paced matches and skills training, our futsal courts offer a high-quality playing surface, ample seating, and a vibrant atmosphere for players of all levels.\"",
+    "price": 1000
+  }
+},
+{
+  "model": "booking.futsal",
+  "pk": 9,
+  "fields": {
+    "name": "5 5 Soccer Center",
+    "latitude": "27.690486",
+    "longitude": "85.351062",
+    "location": "Mangal Galli, Kathmandu",
+    "location_url": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14131.278648091826!2d85.34007609733192!3d27.691968116810482!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19896b9a4dc3%3A0x14239e43f9aa8738!2s5%205%20Soccer%20Center!5e0!3m2!1sen!2snp!4v1712068270702!5m2!1sen!2snp\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"",
+    "owner": "Ram Khanal",
+    "image": "img/55_court.jpg",
+    "description": "\"5 5 Soccer Center: Dive into the action on our premium futsal arena. Designed for agility and precision, our courts provide the ultimate setting for competitive matches and friendly games alike. Join us for an unforgettable futsal experience!\"",
+    "price": 1200
+  }
+},
+{
+  "model": "booking.blog",
+  "pk": 1,
+  "fields": {
+    "slug": "1",
+    "name": "How to choose your futsal boots",
+    "image": "img/Post-Tipos-Zapatillas-futsal-6.jpg",
+    "small_description": "Futsal is continuously evolving and so do all the technologies used in the manufacture of futsal boots. Today we'll talk about soles, midsoles and cuts to purchase the correct futsal boot.",
+    "description": "Despite this sport is always changing and now we're more aware of it, it has always been pretty classic. Boots with a traditional cut like Munich Continental or Kelme Precision are top-sellers year after year amongst futsal players. This isn't something negative at all but it may make us disregard other characteristics brands provide.\r\n\r\nChoosing by playstyle:\r\nKnowing ourselves as players is key. We don't all play in the same way and despite at Futbol Emotion we repeat that the most important thing is that the boot adapts to your foot, sometimes we feel lost and hesitate among several models so this review may help us take a decision.\r\n\r\nPotence futsal boots: robust and very sturdy boots with good shooting qualities. These boots usually have a classic cut like Munich Continental, Gresca, G3, Kelme Precision, Gems Viper FX IN, etc.\r\n\r\nSpeed futsal boots: they're very light and provide speed to the player. They usually have low/mid-height midsoles like Nike Mercurial VaporX, adidas X Tango 18.3 IN, Munich Tiga, etc.",
+    "created_at": "2024-03-29T08:12:09.307Z"
+  }
+},
+{
+  "model": "booking.blog",
+  "pk": 2,
+  "fields": {
+    "slug": "2",
+    "name": "For the love of the game!",
+    "image": "img/BlogFeb.jpg",
+    "small_description": "You often hear people talk about ‘the love of the game’: what is it though and how do you help foster an environment that allows this to grow?",
+    "description": "“Why would we select at the youngest ages and train young children? The favelas and pick up games in and around every Brazilian city already does the job for us”.\r\n\r\nSo as an organisation we will continue to focus on participation and instilling a love of sport with the hope that we can positively impact as many children as possible. In fact our aim is to be able to improve the lives of 1 million children per week. By instilling a love of sport and keeping children playing into adulthood, we believe this will not reduce elite performance in fact the opposite. If we keep more children playing for longer the talent pool from where we should be selecting will by its very nature grow and therefore elite performance will mirror this. In the meantime lets create as many environments as possible to foster a love of movement and allow children to play.\r\n\r\nI quote Mark O’Sullivan and call for the following:\r\n\r\n“The most possible, for as long as possible in the best environment possible”.",
+    "created_at": "2024-03-29T09:44:25.051Z"
+  }
+},
+{
+  "model": "booking.blog",
+  "pk": 3,
+  "fields": {
+    "slug": "3",
+    "name": "What is Futsal?",
+    "image": "img/what_is_futsal_-_the_futsal_shop_uk_1944x.webp",
+    "small_description": "Futsal: The Fast-Paced, Skilful Indoor Soccer Game That's Taking the World by Storm",
+    "description": "Futsal is a fast-paced, indoor version of soccer that is played on a smaller court with a smaller ball. It is a great way to get a workout and have some fun, and it is a popular sport for kids and adults of all ages. It will change the way you look, think, and play football... not jokes!\r\n\r\nIf you are a passionate sports lover, then you are sure to enjoy futsal. The game is exciting and challenging, and it requires a lot of skill and athleticism. You will need to be able to dribble, pass, and shoot quickly and accurately, and you will also need to be able to think and react quickly.\r\n\r\nOne of the things that makes futsal so exciting is the fact that it is a very physical game. Players are constantly moving and jockeying for position, and there is a lot of contact. This makes the game very exciting to watch, and it also makes it a great workout.\r\n\r\nAnother thing that makes futsal so exciting is the fact that it is a very technical game. Players need to be able to control the ball very well in order to be successful. This requires a lot of practice and skill, and it is one of the things that makes futsal such a challenging game. It will teach you how to play out under constant pressure. Improving control, decision-making, and physical positioning!\r\n\r\nIf you are looking for a fun and exciting way to get a workout, then futsal is the perfect sport for you. It is a great way to improve your skills, and it is also a lot of fun to play. So what are you waiting for? Give futsal a try today!",
+    "created_at": "2024-03-29T09:55:40.422Z"
+  }
+},
+{
+  "model": "booking.blog",
+  "pk": 5,
+  "fields": {
+    "slug": "4",
+    "name": "Futsal in Focus: Dynamics, Rules, and Enjoyment",
+    "image": "img/ss.png",
+    "small_description": "Precision, Pace, Fairness – The Futsal Rules",
+    "description": "The playing field is more compact than in traditional football, with a game lasting 40 minutes, divided into two halves of 20 minutes each of effective playing time. A 15-minute halftime allows the five players per team (one goalkeeper and four field players) time to recover. Up to nine players can be substituted to make tactical adjustments and inject fresh energy into the game.\r\n\r\nA notable feature is the option of rolling substitutions during the game. Substitutions, however, are only allowed in the designated substitution zone.\r\n\r\nIn Futsal, the referee can decide between a direct and an indirect free kick for fouls. In the penalty area, fouls result in a penalty kick, similar to regular football. This penalty kick from a distance of six meters provides an excellent opportunity to score against the opposing team.\r\n\r\nAdditionally, Futsal incorporates yellow and red cards. However, receiving a red card does not mean that the affected team must play with fewer players. Instead, the offender must leave the field for two minutes and can be replaced by another player after that time. If the opposing team scores during this period, the team is immediately replenished.\r\n\r\nContrary to common belief, sliding tackles are allowed in Futsal, but only against the ball, for example, as a block. The rules permit high-level sliding tackles.\r\n\r\nUnlike regular football, both teams are granted a 60-second timeout per half. However, this timeout can only be taken when the team is in possession of the ball.\r\n\r\nFutsal games are officiated by two referees positioned along the sidelines, with a third official overseeing compliance with the playing time.",
+    "created_at": "2024-04-06T16:33:04.792Z"
+  }
+}
+]
